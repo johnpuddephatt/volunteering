@@ -1,0 +1,10 @@
+.register-form {
+  background-color: #fff;
+  border-radius: $base-border-radius;
+  width: 100%;
+  max-width: $medium-screen;
+  padding: 2 * $base-spacing;
+  margin-top: 2 * $base-spacing;
+  margin-bottom: 4 * $base-spacing;
+  box-shadow: 0 $base-spacing 2 * $base-spacing rgba(0,0,0,0.12) !important
+}

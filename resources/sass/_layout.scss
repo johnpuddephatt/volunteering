@@ -1,0 +1,42 @@
+html {
+  background-color: $viewport-background-color;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: $light-gray;
+}
+
+main {
+  min-height: calc(100vh - #{ $navbar-height });
+}
+
+.container {
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $base-spacing;
+  padding-right: $base-spacing;
+
+  &__full-height {
+    min-height: calc(100vh - #{ $navbar-height });
+  }
+
+  &__center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+}

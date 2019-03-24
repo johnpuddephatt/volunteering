@@ -1,0 +1,38 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateCategoryOpportunityTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('category_opportunity', function (Blueprint $table) {
+
+            $table->unsignedBigInteger('opportunity_id')->nullable();
+            $table->foreign('opportunity_id')->references('id')
+                ->on('opportunities')->onDelete('cascade');
+
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->foreign('category_id')->references('id')
+                ->on('categories')->onDelete('cascade');
+
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('category_opportunity');
+    }
+}

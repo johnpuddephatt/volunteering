@@ -1,0 +1,55 @@
+// Sizes
+$medium-screen: 600px;
+$large-screen: 900px;
+$xl-screen: 1200px;
+$xxl-screen: 1400px;
+
+$max-width: $xl-screen;
+
+// Typography
+$base-font-family: Yantramanav, $font-stack-system;
+$heading-font-family: $base-font-family;
+
+// Letter-spacing
+$body-letter-spacing: 0.02em;
+
+// Line height
+$base-line-height: 1.75;
+$heading-line-height: 1.2;
+
+// Other Sizes
+
+$base-border-radius: 3px;
+$base-spacing: 1.5rem;
+$small-spacing: $base-spacing / 2;
+$base-z-index: 0;
+
+$navbar-height: 3 * $base-spacing;
+
+// Colors
+$blue: #2763C3;
+$red: #ff0000;
+$dark-gray: #333;
+$medium-gray: #999;
+$light-gray: #F3F4F3;
+
+// Font Colors
+$base-font-color: $dark-gray;
+$action-color: $blue;
+
+// Border
+$base-border-color: $light-gray;
+$base-border: 1px solid $base-border-color;
+
+// Background Colors
+$viewport-background-color: #fff;
+
+// Focus
+$focus-outline-color: transparentize($action-color, 0.4);
+$focus-outline-width: 3px;
+$focus-outline: $focus-outline-width solid $focus-outline-color;
+$focus-outline-offset: 2px;
+
+// Animations
+$base-duration: 150ms;
+$base-timing: ease;

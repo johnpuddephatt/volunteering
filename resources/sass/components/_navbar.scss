@@ -1,0 +1,49 @@
+.navbar {
+  height: $navbar-height;
+  line-height: $navbar-height;
+
+  &__primary {
+    background-color: $blue;
+    color: white;
+    text-transform: lowercase;
+
+    a:not(.button) {
+      color: white;
+      opacity: .9;
+      text-decoration: none;
+      transition: opacity $base-duration $base-timing;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .container {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.navbar--brand {
+  font-size: modular-scale(2);
+  opacity: 1 !important;
+  margin-right: 3 * $base-spacing;
+}
+
+.navbar--nav {
+  display: flex;
+  flex-direction: row;
+
+  &__right {
+    margin-left: auto;
+    padding-left: $base-spacing;
+  }
+}
+
+.nav-item + .nav-item {
+  margin-left: $base-spacing;
+}
+
+.navbar--toggler {
+  display: none;
+}
