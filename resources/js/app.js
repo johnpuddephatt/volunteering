@@ -1,33 +1,83 @@
+require('intersection-observer');
+// require('./bootstrap');
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
 
-require('./bootstrap');
+// const geoLocationButton = document.querySelector('.geolocation-button');
+// if(geoLocationButton) {
+//   geoLocationButton.onclick = function() {
+//     var startPos;
+//     var nudge = document.getElementById("nudge");
+//
+//     var showNudgeBanner = function() {
+//       nudge.style.display = "block";
+//     };
+//
+//     var hideNudgeBanner = function() {
+//       nudge.style.display = "none";
+//     };
+//
+//     var nudgeTimeoutId = setTimeout(showNudgeBanner, 5000);
+//
+//     var geoSuccess = function(position) {
+//       hideNudgeBanner();
+//       // We have the location, don't display banner
+//       clearTimeout(nudgeTimeoutId);
+// console.log('success');
+//       // Do magic with location
+//       startPos = position;
+//       document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+//       document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+//     };
+//     var geoError = function(error) {
+//       nudge.innerHTML = 'Error code ' + error.code;
+//       switch(error.code) {
+//         case error.TIMEOUT:
+//           // The user didn't accept the callout
+//           showNudgeBanner();
+//           break;
+//       }
+//     };
+//
+//     navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
+//   };
+//
+// }
 
-window.Vue = require('vue');
+const footerElement = document.querySelector('.primary-footer');
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+if (footerElement && 'IntersectionObserver' in window) {
+  document.body.classList.remove('intersectionless-footer');
+  createObserver();
+}
 
-// const files = require.context('./', true, /\.vue$/i);
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
+function createObserver() {
+  var observer = new IntersectionObserver(
+    handleIntersect,
+    {
+      root: null,
+      rootMargin: '0px',
+      threshold: [0.5,1],
+    }
+  );
+  observer.observe(footerElement);
+}
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+function handleIntersect(entry) {
+  if(entry[0].intersectionRatio > 0.5) {
+    document.body.classList.add('has-visible-footer');
+  }
+  else {
+    document.body.classList.remove('has-visible-footer');
+  }
+}
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
 
-const app = new Vue({
-    el: '#app'
-});
+//  Close buttons
+
+const closeButton = document.querySelector('.alert .close');
+if(closeButton) {
+  closeButton.addEventListener('click',(e)=>{
+    let alert = e.target.parentNode.parentNode;
+    alert.parentNode.removeChild(alert);
+  });
+}

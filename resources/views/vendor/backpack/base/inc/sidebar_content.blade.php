@@ -12,6 +12,7 @@
       <li><a href="{{ backpack_url('category') }}"><i class="fa fa-tag"></i> <span>Categories</span></a></li>
       <li><a href="{{ backpack_url('suitability') }}"><i class="fa fa-exchange"></i> <span>Suitabilities</span></a></li>
       <li><a href="{{ backpack_url('accessibility') }}"><i class="fa fa-deaf"></i> <span>Accessibilities</span></a></li>
+      <li><a href="{{ backpack_url('location') }}"><i class="fa fa-map"></i> <span>Locations</span></a></li>
   </ul>
 </li>
 

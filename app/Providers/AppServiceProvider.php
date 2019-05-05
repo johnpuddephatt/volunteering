@@ -23,6 +23,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+      view()->composer('*', function($view){
+        $view_name = str_replace('.', '-', $view->getName());
+        view()->share('view_name', $view_name);
+
+        $total_opportunities = \Cache::remember('users', (60*24), function() {
+          return \App\Models\Opportunity::count();
+        });
+        view()->share('total_opportunities', $total_opportunities);
+      });
+
+
+
+
     }
 }

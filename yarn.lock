@@ -1388,10 +1388,9 @@ charenc@~0.0.1:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/charenc/-/charenc-0.0.2.tgz#c0a1d2f3a7092e03774bfa83f14c0fc5790a8667"
 
-choices.js@^6.0.3:
+"choices.js@github:jshjohnson/Choices#pull/525/head":
   version "6.0.3"
-  resolved "https://registry.yarnpkg.com/choices.js/-/choices.js-6.0.3.tgz#487fc42942e21b386f3de9f20fb1f86bc0030395"
-  integrity sha512-ATsvH/VwjEvbLrM49n+uo87P59iSna3IW+sViadLml5/OKcpRdF3UUUhHlc7TDNVDpD1tDJFB2vfqHga9B28jQ==
+  resolved "https://codeload.github.com/jshjohnson/Choices/tar.gz/4acacdf9e0655b0985611933e4a426e22a37d86d"
   dependencies:
     classnames "^2.2.6"
     custom-event-polyfill "^0.3.0"
@@ -3215,6 +3214,11 @@ internal-ip@^4.2.0:
 interpret@^1.1.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.2.0.tgz#d5061a6224be58e8083985f5014d844359576296"
+
+intersection-observer@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/intersection-observer/-/intersection-observer-0.6.0.tgz#d64aae04211b4cec051537168f5fa670a4acc770"
+  integrity sha512-WUVAqGJr08yh73XKe1JhylQ9BiBIytrkt8SH5Knu7Uy44ij5cICi6PbVLIbV/D2eIx9LJVkGBo9WF80R4VXJ+w==
 
 invariant@^2.2.2:
   version "2.2.4"

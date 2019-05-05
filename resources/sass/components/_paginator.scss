@@ -1,0 +1,39 @@
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.page-link {
+  font-size: modular-scale(1);
+  display: inline-block;
+  background-color: $light-gray;
+  color: $dark-gray;
+  border-radius: $base-border-radius;
+  height: 2 * $base-spacing;
+  // width: 2 * $base-spacing;
+  padding: 0 $base-spacing;
+  line-height: 2 * $base-spacing;
+  text-align: center;
+  text-decoration: none;
+  transition: all $base-duration ease;
+}
+
+a.page-link:hover {
+  background-color: transparentize($green,.5);
+  color: $black;
+}
+
+.active .page-link {
+  background-color: $green;
+  color: white;
+}
+
+.disabled .page-link {
+  color: $medium-gray;
+}
+
+.page-item + .page-item {
+  margin-left: $small-spacing;
+}

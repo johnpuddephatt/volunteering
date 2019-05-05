@@ -1,0 +1,83 @@
+.opportunity-single {
+  @extend %box;
+  @extend %padded-box;
+  @media screen and (min-width: $large-screen) {
+    width: $card-width;
+  }
+  margin-top: 2 * $base-spacing;
+  &--enquire-button {
+    float: right;
+    margin-top: -$small-spacing;
+  }
+  &--title {
+    font-size: modular-scale(2);
+    color: $blue;
+    margin-bottom: 0;
+  }
+  &--intro {
+    font-size: modular-scale(1);
+    line-height: $heading-line-height;
+    margin-bottom: $base-spacing;
+    margin-top: $small-spacing;
+  }
+  &--description {
+    margin-bottom: 2 * $base-spacing;
+  }
+  &--key-features {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: $base-spacing;
+    color: $dark-gray;
+    padding-bottom: $base-spacing;
+    border-bottom: $light-border;
+
+    span {
+      flex: 0 1 auto;
+      + span {
+        margin-left: $base-spacing;
+      }
+    }
+  }
+  &--hours,
+  &--location,
+  &--dates {
+    &::before {
+      vertical-align: text-top;
+      content: '';
+      display: inline-block;
+      height: $base-spacing / 1.5;
+      width: $base-spacing / 1.5;
+      margin-right: $small-spacing/3;
+      background-image: url('/images/icons/clock.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+  &--location::before {
+    background-image: url('/images/icons/map-marker.svg');
+  }
+  &--dates::before {
+    background-image: url('/images/icons/calendar.svg');
+  }
+
+  &--other-features {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 (-$small-spacing/2);
+    line-height: $heading-line-height;
+    div {
+      flex: 1 1 25%;
+      margin: $small-spacing $small-spacing/1.5;
+      color: $dark-gray;
+      font-size: modular-scale(-1);
+    }
+    h3 {
+      font-size: modular-scale(1);
+      color: $black;
+      font-family: $base-font-family;
+      font-weight: 400;
+      margin-bottom: $small-spacing/2;
+    }
+  }
+}

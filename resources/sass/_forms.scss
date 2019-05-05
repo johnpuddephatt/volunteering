@@ -7,11 +7,18 @@ fieldset {
   border: 0;
   margin: 0;
   padding: 0;
+  padding: 0 0 2 * $base-spacing;
+  border-bottom: $light-border;
+}
+
+.fieldset-heading {
+  margin: $base-spacing 0;
 }
 
 legend {
   font-weight: 600;
-  margin-bottom: $small-spacing / 2;
+  font-size: modular-scale(1);
+  margin-right: $small-spacing;
   padding: 0;
 }
 
@@ -26,18 +33,20 @@ select,
 textarea {
   display: block;
   font-family: $base-font-family;
-  font-size: 16px;
+  font-size: modular-scale(0);
 }
 
 #{$all-text-inputs} {
   appearance: none;
-  background-color: $_form-background-color;
+  background-color: $light-gray;
+  background-color: white;
   border: $base-border;
+  border: .1rem solid $medium-gray;
   border-radius: $base-border-radius;
   box-shadow: $_form-box-shadow;
   box-sizing: border-box;
   margin-bottom: $small-spacing;
-  padding: $base-spacing / 3;
+  padding: $base-spacing / 1.5;
   transition: border-color $base-duration $base-timing;
   width: 100%;
 
@@ -47,7 +56,7 @@ textarea {
 
   &:focus {
     border-color: $action-color;
-    box-shadow: $_form-box-shadow-focus;
+    // box-shadow: $_form-box-shadow-focus;
     outline: none;
   }
 
@@ -62,6 +71,10 @@ textarea {
 
   &::placeholder {
     color: tint($base-font-color, 40%);
+  }
+
+  &.input__large {
+    font-size: modular-scale(2);
   }
 }
 
@@ -87,6 +100,20 @@ textarea {
 select {
   margin-bottom: $small-spacing;
   width: 100%;
+  height: 2.2 * $base-spacing;
+  box-shadow: $_form-box-shadow;
+  background-color: white;
+  border: .1em solid $medium-gray;
+  border-radius: 0;
+  &:hover {
+    border-color: shade($base-border-color, 20%);
+  }
+
+  &:focus {
+    border-color: $action-color;
+    box-shadow: $_form-box-shadow-focus;
+    outline: none !important;
+  }
 }
 
 [type="checkbox"],
@@ -99,10 +126,37 @@ select {
   }
 }
 
+.form-group {
+  margin-bottom: $base-spacing;
+  &__half-width {
+    width: 47.5%;
+    float: left;
+    overflow: hidden;
+    + .form-group__half-width {
+      margin-left: 5%;
+    }
+  }
+  &__hidden {
+    display: none;
+  }
+}
+
 .is-invalid {
   border-color: $red;
 }
 
 .text-danger {
   color: $red;
+  margin-top: -$small-spacing;
+}
+
+.help-block {
+  margin-top: -$small-spacing/2;
+  color: $medium-gray;
+  transition: color $base-duration ease;
+  line-height: $heading-line-height;
+}
+
+:focus + .help-block {
+  color: $action-color;
 }

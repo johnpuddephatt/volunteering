@@ -82,7 +82,14 @@ class OpportunityCrudController extends CrudController
         $descriptionArray = [
             'name' => 'description',
             'type' => 'quill',
-            'toolbar' => "[{ header: [1, 2, false] },['bold', 'italic'],['link'],[{ list: 'ordered' }, { list: 'bullet' }]",
+            'toolbar' => "[{ header: [1, 2, false] }],['bold', 'italic'],['link'],[{ list: 'ordered' }, { list: 'bullet' }]",
+            'tab' => 'About'
+        ];
+
+        $introFieldArray = [
+            'name' => 'intro',
+            'label' => 'Intro',
+            'type' => 'textarea',
             'tab' => 'About'
         ];
 
@@ -274,7 +281,7 @@ class OpportunityCrudController extends CrudController
         ];
 
         $accessibilityFieldArray = [ // Table
-            'name' => 'accessibility',
+            'name' => 'accessibilities',
             'label' => 'Accessibility',
             'type' => 'select2_multiple',
             'entity' => 'accessibilities', // the method that defines the relationship in your Model
@@ -322,7 +329,7 @@ class OpportunityCrudController extends CrudController
             }
         ];
 
-        $this->crud->addFields([$titleArray, $descriptionArray, $expensesFieldArray, $placesArray, $statusHeading, $activeFieldArray, $renewFieldArray, $organisationFieldArray, $locationHeading, $addressFieldArray, $contactHeading, $emailFieldArray, $phoneFieldArray, $fromHomeFieldArray, $hoursHeading, $frequencyFieldArray, $hoursFieldArray, $dateHeading, $startDateFieldArray, $endDateFieldArray, $categoriesFieldArray, $skillsNeededFieldArray, $skillsGainedFieldArray, $requirementsFieldArray, $suitabilitiesFieldArray, $accessibilityFieldArray]);
+        $this->crud->addFields([$titleArray, $introFieldArray, $descriptionArray, $expensesFieldArray, $placesArray, $statusHeading, $activeFieldArray, $renewFieldArray, $organisationFieldArray, $locationHeading, $addressFieldArray, $contactHeading, $emailFieldArray, $phoneFieldArray, $fromHomeFieldArray, $hoursHeading, $frequencyFieldArray, $hoursFieldArray, $dateHeading, $startDateFieldArray, $endDateFieldArray, $categoriesFieldArray, $skillsNeededFieldArray, $skillsGainedFieldArray, $requirementsFieldArray, $suitabilitiesFieldArray, $accessibilityFieldArray]);
         $this->crud->addColumns([$organisationColumnArray, $titleArray, $expiryColumnArray]);
 
         $this->crud->addButtonFromView('line', 'renew', 'renew', 'beginning');
@@ -335,9 +342,9 @@ class OpportunityCrudController extends CrudController
     public function store(StoreRequest $request)
     {
         // your additional operations before save here
-        if(isset($request['address']) && $request['address']) {
-          $request['address_ward'] = $this->getWardData($request['address']);
-        }
+        // if(isset($request['address']) && $request['address']) {
+        //   $request['address_ward'] = $this->getWardData($request['address']);
+        // }
 
         $redirect_location = parent::storeCrud($request);
         // your additional operations after save here
@@ -348,28 +355,13 @@ class OpportunityCrudController extends CrudController
     public function update(UpdateRequest $request)
     {
         // your additional operations before save here
-        if(isset($request['address']) && $request['address']) {
-          $request['address_ward'] = $this->getWardData($request['address']);
-        }
+        // if(isset($request['address']) && $request['address']) {
+        //   $request['address_ward'] = $this->getWardData($request['address']);
+        // }
         $redirect_location = parent::updateCrud($request);
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;
-    }
-
-    public function getWardData($address) {
-      $address = json_decode($address);
-      if (property_exists($address,'postal_code') && isset($address->postal_code)) {
-          $postcode = $address->postal_code;
-          $client = new Client();
-          $response = $client->request('GET', 'https://api.postcodes.io/postcodes/' . $postcode);
-          $response_body = $response->getBody();
-          $response_json = json_decode($response_body, true);
-          return json_encode($response_json['result']);
-      }
-      else {
-          return null;
-      }
     }
 
     public function renew($id) {

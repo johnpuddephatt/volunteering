@@ -26,8 +26,9 @@ class FrontOpportunityRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|max:100',
+            'title' => 'required|max:50',
             'description' => 'required|max:1000',
+            'intro' => 'required|max:100',
             'places' => 'nullable',
             'minimum_age' => 'nullable',
             'expenses' => 'nullable',

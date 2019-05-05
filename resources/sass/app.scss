@@ -3,5 +3,22 @@
 @import 'base';
 
 @import 'components/navbar';
+@import 'components/footer';
+
 @import 'components/login';
 @import 'components/register';
+@import 'components/alerts';
+@import 'components/filter';
+
+@import 'components/card';
+@import 'components/choices';
+@import 'components/paginator';
+
+@import 'layouts/home-hero';
+@import 'layouts/home-categories';
+@import 'layouts/home-locations';
+
+@import 'layouts/opportunity-form';
+@import 'layouts/opportunity-card';
+@import 'layouts/opportunity-single';
+@import 'layouts/opportunity-sidebar';

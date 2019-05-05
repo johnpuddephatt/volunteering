@@ -1,48 +1,63 @@
 // Sizes
-$medium-screen: 600px;
+$small-screen: 600px;
+$medium-screen: 760px;
 $large-screen: 900px;
 $xl-screen: 1200px;
 $xxl-screen: 1400px;
 
-$max-width: $xl-screen;
+$card-width: $medium-screen;
+$max-width: 1.5 * $card-width;
 
 // Typography
 $base-font-family: Yantramanav, $font-stack-system;
-$heading-font-family: $base-font-family;
+$heading-font-family: Faro, $base-font-family;
 
 // Letter-spacing
-$body-letter-spacing: 0.02em;
+$body-letter-spacing: 0.025em;
 
 // Line height
-$base-line-height: 1.75;
-$heading-line-height: 1.2;
+$base-line-height: 1.6;
+$heading-line-height: 1.25;
 
 // Other Sizes
 
-$base-border-radius: 3px;
+// $base-border-radius: 4px;
+$base-border-radius: 0;
 $base-spacing: 1.5rem;
 $small-spacing: $base-spacing / 2;
 $base-z-index: 0;
-
 $navbar-height: 3 * $base-spacing;
 
 // Colors
+
+$black: #222;
+$dark-gray: #6E6E6E;
+$medium-gray: #ccc;
+$light-gray: #F1F2F7;
+
 $blue: #2763C3;
+$light-blue: #abd7f0;
+$very-light-blue: tint($blue, 92.5%);
+
+$green: #11bfab;
 $red: #ff0000;
-$dark-gray: #333;
-$medium-gray: #999;
-$light-gray: #F3F4F3;
+$pink: #ffd3e5;
+$yellow: #fbe300;
 
 // Font Colors
-$base-font-color: $dark-gray;
+$base-font-color: $black;
 $action-color: $blue;
 
+//Shadows
+$base-box-shadow: 0 2 * $base-spacing 2 * $base-spacing (-$base-spacing) rgba(0,0,0,0.12);
+
 // Border
-$base-border-color: $light-gray;
+$base-border-color: $medium-gray;
 $base-border: 1px solid $base-border-color;
+$light-border: 2px solid $light-gray;
 
 // Background Colors
-$viewport-background-color: #fff;
+$viewport-background-color: $light-gray;
 
 // Focus
 $focus-outline-color: transparentize($action-color, 0.4);

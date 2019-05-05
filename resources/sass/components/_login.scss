@@ -1,10 +1,86 @@
+.login-wrapper {
+  // margin-left: 50%;
+  width: 50%;
+  height: 100vh;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  z-index: 9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-form--title {
+  font-size: modular-scale(4);
+  margin: 1.5 * $base-spacing 0;
+  color: $blue;
+}
+
+.login-form--extras {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5 * $base-spacing;
+  label, a {
+    color: $dark-gray !important;
+    font-weight: 400 !important;
+    -webkit-font-smoothing: subpixel-antialiased !important;
+  }
+  .form-group {
+    margin-bottom: 0;
+  }
+}
+
+.login-form--buttons {
+  font-size: modular-scale(1);
+  button + button {
+    margin-left: $small-spacing;
+  }
+
+}
+
 .login-form {
-  background-color: #fff;
-  border-radius: $base-border-radius;
-  width: 100%;
-  max-width: $medium-screen;
-  padding: 2 * $base-spacing;
-  margin-top: 2 * $base-spacing;
-  margin-bottom: 4 * $base-spacing;
-  box-shadow: 0 $base-spacing 2 * $base-spacing rgba(0,0,0,0.12) !important
+  overflow-y: auto;
+  @extend %padded-box;
+  &__inner {
+    max-width: $max-width/2;
+  }
+
+  .login-form--body,
+  .login-form--extras,
+  .login-form--buttons {
+    max-width: 22.5rem;
+  }
+}
+
+.background-image--wrapper {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 50%;
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: 9;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5 * $base-spacing;
+    background-image: linear-gradient(to bottom, transparentize($black, 0.65) 0%, transparentize($black, 1) 100%);
+  }
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  object-fit: cover;
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Opportunity;
+use App\Models\Category;
+use App\Models\Location;
 
 class HomeController extends Controller
 {
@@ -14,7 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -24,7 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-      $recentOpportunities = Opportunity::orderBy('id','desc')->take(5)->get();
-        return view('home', compact('recentOpportunities'));
+      $locations = Location::all()->shuffle()->take(3);
+      $categories = Category::withCount('opportunities')->orderBy('opportunities_count', 'desc')->take(4)->get();
+      return view('home', compact('categories','locations'));
     }
 }

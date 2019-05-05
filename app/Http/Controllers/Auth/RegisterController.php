@@ -46,7 +46,7 @@ class RegisterController extends Controller
     }
 
 
-    public function showRegistrationForm(FormBuilder $formBuilder)
+    public function showRegistrationForm(Request $request,FormBuilder $formBuilder)
     {
         $form = $formBuilder->create('App\Forms\OrganisationRegistrationForm', [
             'method' => 'POST',
@@ -69,7 +69,9 @@ class RegisterController extends Controller
 
          $organisation = Organisation::create($validated);
 
-         $request->session()->flash('status', 'Account created successfully!');
+         $organisation->sendEmailVerificationNotification();
+
+         $request->session()->flash('success', 'Account created successfully! You will receive a verification email shortly.');
 
          $this->guard()->login($organisation);
 

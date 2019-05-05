@@ -1,0 +1,92 @@
+.opportunity-card {
+  border-bottom: $light-border;
+  padding: 2 * $base-spacing 0;
+  &:first-child {
+    border-top: $light-border;
+  }
+}
+
+.opportunity-card--new-badge {
+  float: right;
+  background-color: $green;
+  border-radius: $base-border-radius;
+  color: white;
+  display: inline-block;
+  padding: 0 $small-spacing/2;
+  margin-left: $small-spacing;
+}
+
+.opportunity-card--title {
+  font-size: modular-scale(1);
+  font-weight: 400;
+  margin-bottom: 0;
+  a {
+    text-decoration: none;
+    color: $blue;
+  }
+}
+
+.opportunity-card--organisation {
+  font-size: modular-scale(1);
+  line-height: $heading-line-height;
+}
+
+.opportunity-card--header {
+  margin-bottom: $base-spacing;
+}
+
+.opportunity-card--intro {
+  // color: $dark-gray;
+  line-height: $heading-line-height;
+}
+
+.opportunity-card--footer {
+  // color: $black;
+  color: $dark-gray;
+  // font-size: modular-scale(-1);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: $base-spacing;
+  span {
+    display: inline-block;
+    + span {
+      margin-left: $small-spacing/2;
+    }
+  }
+}
+
+.opportunity-card--hours,
+.opportunity-card--location,
+.opportunity-card--distance {
+  &::before {
+    vertical-align: text-top;
+    content: '';
+    display: inline-block;
+    height: $base-spacing / 1.5;
+    width: $base-spacing / 1.5;
+    margin-right: $small-spacing/3;
+    background-image: url('/images/icons/clock.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right center;
+  }
+}
+
+.opportunity-card--location,
+.opportunity-card--distance {
+  &::before {
+    background-image: url('/images/icons/map-marker.svg');
+  }
+}
+
+.opportunity-card--distance {
+  color: $dark-gray;
+  background-color: $light-gray;
+  border-radius: $base-border-radius;
+  padding: 0 $small-spacing;
+}
+
+.opportunity-card--location + .opportunity-card--distance::before {
+  content: none;
+}

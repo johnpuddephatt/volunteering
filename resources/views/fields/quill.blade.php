@@ -12,7 +12,7 @@
 
     <div id="quill-editor-{{ $name }}"></div>
 
-    <input type="hidden" name="{{ $name }}" id="quill-textarea-{{ $name }}" value="{{ old($name) }}">
+    <input type="hidden" name="{{ $name }}" id="quill-textarea-{{ $name }}" value="{{ old($name) ?? $options['value'] }}">
 
     @if ($options['help_block']['text'] && !$options['is_child'])
         <{!! $options['help_block']['tag'] !!} {!! $options['help_block']['helpBlockAttrs'] !!}>

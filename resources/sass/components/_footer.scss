@@ -1,0 +1,80 @@
+.primary-footer {
+  position: relative;
+  z-index: 9;
+  height: 90vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin-top: 2 * $base-spacing;
+  transition: color 4 * $base-duration ease;
+  * {
+    position: relative;
+    z-index: 1;
+  }
+  &::before {
+    pointer-events: none;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 4 * $base-duration ease;
+    position: absolute;
+    top: -50vh;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(to top, transparentize($blue,0) 30%, transparentize($blue,1) 100%);
+    content: '';
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @media screen and (min-width: $medium-screen) {
+      flex-direction: row;
+    }
+
+  }
+  a {
+    color: white;
+    opacity: .5;
+    transition: opacity $base-duration ease;
+    text-decoration: none;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  &--left {
+    margin-bottom: 2 * $base-spacing;
+    a {
+      display: block;
+    }
+  }
+  &--right {
+    margin-bottom: 2 * $base-spacing;
+    h3 {
+      font-size: modular-scale(0);
+    }
+  }
+}
+
+.footer-brand {
+  font-size: modular-scale(1);
+  text-transform: lowercase;
+  margin-bottom: $small-spacing;
+}
+
+
+.intersectionless-footer .primary-footer {
+  background-color: $blue;
+  color: white;
+}
+
+body.has-visible-footer {
+  background-color: $blue;
+  .primary-footer {
+    color: white;
+    &::before {
+      opacity: 1;
+    }
+
+  }
+}

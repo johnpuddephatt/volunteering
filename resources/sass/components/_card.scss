@@ -1,0 +1,88 @@
+.card {
+  width: 100%;
+  max-width: $card-width;
+  position: relative;
+  z-index: 999;
+  // margin-top: 2 * $base-spacing;
+  // margin-bottom: 4 * $base-spacing;
+  @extend %box;
+}
+
+
+.card-header,
+.card-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  // border-bottom: $light-border;
+  padding: $base-spacing $base-spacing $small-spacing;
+  @media screen and (min-width: $medium-screen) {
+    padding: 2 * $base-spacing 3 * $base-spacing $small-spacing;
+  }
+}
+
+.card-title {
+  margin-bottom: 0;
+  color: $blue;
+  font-size: modular-scale(2);
+  font-weight: 700;
+}
+
+.card-body {
+  padding: $base-spacing $base-spacing 2 * $base-spacing;
+  @media screen and (min-width: $medium-screen) {
+    padding: $base-spacing 3 * $base-spacing 3 * $base-spacing;
+  }
+}
+
+.placeholder {
+  background-color: $light-gray;
+  text-align: center;
+  padding: 2 * $base-spacing;
+  min-height: 12 * $base-spacing;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.card-footer {
+  // border-bottom: none;
+  // border-top: $light-border;
+  padding: $base-spacing 3 * $base-spacing 2 * $base-spacing;
+}
+
+
+.list-group {
+  margin: $base-spacing 0 3 * $base-spacing;
+  border-top: $light-border;
+}
+
+.list-group-item {
+  line-height: 2 * $base-spacing;
+  border-bottom: $light-border;
+  display: flex;
+  flex-direction: row;
+  padding: 0 3 * $base-spacing;
+}
+
+.item-title {
+  margin-right: $small-spacing;
+}
+
+.list-group-buttons {
+  margin-left: auto;
+  a {
+    text-decoration: none;
+    color: $medium-gray;
+    font-size: modular-scale(-1);
+    + a {
+      margin-left: $small-spacing/2;
+    }
+    &:hover {
+      color: shade($action-color, 25%);
+    }
+  }
+}

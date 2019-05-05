@@ -11,9 +11,9 @@
 @if ($showField)
 
     <input type="text" class="{{$options['attr']['class']}}" data-google-address="{&quot;field&quot;: &quot;{{ $name }}&quot;, &quot;full&quot;: true }">
-    <input type="hidden" name="{{ $name }}" value="{{ old($name) }}">
+    <input type="hidden" name="{{ $name }}" value="{{ old($name) ?? json_encode($options['value']) }}">
 
-    {{ $options['value']}}
+
 
     @if ($options['help_block']['text'] && !$options['is_child'])
         <{!! $options['help_block']['tag'] !!} {!! $options['help_block']['helpBlockAttrs'] !!}>
@@ -59,10 +59,14 @@
             // ^^ $field
 
 
+
                 if (outputField.value) {
                     var existingData = JSON.parse(outputField.value);
-                    inputField.value = existingData.value;
+                    if(existingData && existingData.value != 'null') {
+                      inputField.value = existingData.value;
+                    }
                 }
+
 
                 @if(isset($options['country']) && isset($options['radius']))
                     var latLng = new google.maps.LatLng({!!$options['location']!!});
@@ -88,7 +92,6 @@
                 @endif
 
                 autocomplete.addListener('place_changed', function fillInAddress() {
-
                     var place = autocomplete.getPlace();
                     var value = inputField.value;
                     var latlng = place.geometry.location;
@@ -107,10 +110,6 @@
                         outputField.value = "";
                     }
                 });
-
-
-
-
 
             // $('[data-google-address]').each(function () {
             //

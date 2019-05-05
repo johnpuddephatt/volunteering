@@ -1,11 +1,17 @@
 .navbar {
-  height: $navbar-height;
-  line-height: $navbar-height;
+
+  // margin-top: -$navbar-height;
 
   &__primary {
     background-color: $blue;
     color: white;
     text-transform: lowercase;
+    position: relative;
+    // position: fixed;
+    z-index: 999;
+    left: 0;
+    right: 0;
+    top: 0;
 
     a:not(.button) {
       color: white;
@@ -16,22 +22,61 @@
         opacity: 1;
       }
     }
+
+    .dropdown-menu {
+      background-color: white;
+      a {
+        color: $blue;
+      }
+    }
+  }
+  &__home, &__auth-login, &__auth-register {
+    background-color: transparent;
+    color: $blue;
+
+  }
+  &__home {
+    a:not(.button) {
+      color: $blue
+    }
+    svg path {
+      fill: $blue;
+    }
   }
 
   .container {
+    height: $navbar-height;
+    line-height: $navbar-height;
     display: flex;
     flex-direction: row;
+    align-items: center;
+    padding-bottom: 0;
   }
 }
 
 .navbar--brand {
-  font-size: modular-scale(2);
+  font-family: $heading-font-family;
+  font-size: modular-scale(1);
   opacity: 1 !important;
   margin-right: 3 * $base-spacing;
+  font-weight: 400;
+  height: $base-spacing;
+  line-height: $base-spacing;
+  svg {
+    vertical-align: middle;
+    display: inline-block;
+    // margin: .1 * $base-spacing;
+    width: .8 * $base-spacing;
+    height: .8 * $base-spacing;
+  }
 }
 
 .navbar--nav {
-  display: flex;
+  display: none;
+  @media screen and (min-width: $large-screen) {
+    display: flex;
+  }
+
   flex-direction: row;
 
   &__right {
@@ -46,4 +91,21 @@
 
 .navbar--toggler {
   display: none;
+}
+
+.dropdown-menu {
+  display: none;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu{
+  line-height: $navbar-height;
+}
+
+.dropdown-item {
+  padding: 0 $base-spacing;
+  text-align: right;
 }

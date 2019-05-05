@@ -1,0 +1,92 @@
+.home-hero--image {
+  display: none;
+  @media screen and (min-width: $medium-screen) {
+    display: block;
+  }
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  transform: translate3d(0,0,-0.4px) scale(1.4);
+  background-image: url('/images/hero-woman-magic_small.png');
+  background-size: auto 100%;
+  background-position: 30vw bottom;
+  background-repeat: no-repeat;
+  z-index: -9;
+
+}
+
+
+.section__home-hero {
+  height: 100vh;
+  margin-top: -$navbar-height;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  @media screen and (min-width: $medium-screen) {
+    align-items: center;
+  }
+  .container {
+    @media screen and (max-width: $medium-screen) {
+      padding-left: 0;
+      padding-right: 0;
+      padding-bottom: 0;
+    }
+  }
+}
+
+.hero--search-box--container {
+  @media screen and (min-width: $medium-screen) {
+    width: 65%;
+  }
+}
+
+.hero--search-box {
+  position: relative;
+  z-index: 99;
+  max-width: 38em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: $navbar-height/2;
+  @extend %padded-box;
+  @media screen and (max-width: $medium-screen) {
+    background-color: transparent;
+    box-shadow: none !important;
+  }
+  &--title {
+    font-size: modular-scale(4);
+    color: $blue;
+    margin-bottom: 1.5 * $base-spacing;
+  }
+  a {
+    text-decoration: none;
+    border-bottom: $light-border;
+  }
+  form {
+    margin-bottom: 1.5 * $base-spacing;
+    @media screen and (min-width: $medium-screen) {
+      display: flex;
+      flex-direction: row;
+      input {
+        margin: 0;
+        max-width: 10em;
+        font-size: modular-scale(1);
+        &[type='text'] {
+          // border-radius: $base-border-radius 0 0 $base-border-radius;
+          border-right: none;
+        }
+        &[type='submit'] {
+          width: auto;
+        }
+      }
+    }
+    input[type='submit'] {
+      // border-radius: 0 $base-border-radius $base-border-radius 0;
+      text-transform: lowercase;
+      width: 100%;
+
+    }
+  }
+}

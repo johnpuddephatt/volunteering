@@ -13,7 +13,7 @@
     <div class="croppie-wrapper">
         <div style="opacity: 0;" id="croppie"></div>
         <input type="file" id="upload-input"/>
-        <div class="message">Click here to choose an image</div>
+        <button class="message">Click here to choose an image</button>
     </div>
 
     {!! Form::input('hidden', $name, $options['value'], $options['attr']) !!}
@@ -45,14 +45,13 @@
         .croppie-wrapper {
             position: relative;
             min-height: 250px;
-            background-color: whitesmoke;
             padding: 2em;
             margin-bottom: 2em;
         }
 
         .croppie-wrapper [type="file"] {
           position: absolute;
-          z-index: 99;
+          z-index: 9;
           top: 0;
           left: 0;
           right: 0;

@@ -1,36 +1,35 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      @if (session('status'))
-      <div class="alert alert-success" role="alert">
-        {{ session('status') }}
-      </div>
-      @endif
-      <div class="card">
+  <div class="container container__center container__full-height">
+
+      <div class="card opportunity-list">
         <div class="card-header">
-          <h4 class="float-sm-left mt-2 mb-0">My opportunities</h4>
-          <div class="float-sm-right">
-            <a href="{{ route('opportunity.form') }}" class="btn btn-primary">Add new opportunity</a>
-          </div>
+          <h4 class="card-title">My opportunities</h4>
+          <a href="{{ route('opportunity.new') }}" class="button">Add new opportunity</a>
         </div>
         @if(isset($opportunities) && count($opportunities))
-          <ul class="list-group list-group-flush">
+          <ul class="list-group">
             @foreach($opportunities as $opportunity)
-            <li class="list-group-item">{{$opportunity->title}}</li>
+            <li class="list-group-item">
+              <div class="item-title">{{$opportunity->title}}</div>
+              <span class="muted">{{$opportunity->expires_in() }} days remaining</span>
+              <div class="list-group-buttons">
+                <a href="/opportunity/renew/{{$opportunity->hash() }}">Renew</a> <a href="/opportunity/edit/{{$opportunity->hash() }}">Edit</a> <a href="/opportunity/delete/{{$opportunity->hash() }}">Delete</a>
+              </div>
+              </li>
+
             @endforeach
           </ul>
         @else
-          <div class="card-body">
-            <p>No opportunities added yet.</p>
-            <a href="{{ route('opportunity.form') }}" class="btn btn-primary">Add your first</a>
+          <div class="card-body centered">
+            <div class="placeholder">
+              <p>No opportunities added yet.</p>
+              <a href="{{ route('opportunity.new') }}" class="btn btn-primary">Add your first</a>
+            </div>
           </div>
         @endif
       </div>
-    </div>
   </div>
-</div>
 
 @endsection

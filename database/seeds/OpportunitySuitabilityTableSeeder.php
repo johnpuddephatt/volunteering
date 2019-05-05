@@ -16,7 +16,7 @@ class OpportunitySuitabilityTableSeeder extends Seeder
         $opportunity_count = App\Models\Opportunity::count();
         $suitability_count = App\Models\Suitability::count();
 
-        $ratio = 1;  // ratio that get tagged
+        $ratio = 1.5;  // ratio that get tagged
 
         for ($i = 0; $i < ($ratio * $opportunity_count); $i++) {
           DB::table('opportunity_suitability')->insert([

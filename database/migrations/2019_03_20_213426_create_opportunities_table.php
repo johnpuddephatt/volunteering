@@ -23,24 +23,27 @@ class CreateOpportunitiesTable extends Migration
 
             // User
             $table->bigInteger('organisation_id')->unsigned();
-    		$table->foreign('organisation_id')->references('id')->on('organisations')->onDelete('cascade');
+      		$table->foreign('organisation_id')->references('id')->on('organisations')->onDelete('cascade');
 
             //General
-            $table->string('title');
+            $table->string('title',50);
             $table->string('slug')->nullable();
             $table->text('description');
+            $table->string('intro', 120);
 
             $table->integer('places')->nullable();
             $table->integer('minimum_age')->nullable();
             $table->text('expenses')->nullable();
             $table->text('requirements')->nullable();
-            $table->text('skills_needed')->nullable();
-            $table->text('skills_gained')->nullable();
+            $table->jsonb('skills_needed')->nullable();
+            $table->jsonb('skills_gained')->nullable();
 
             // Location
             $table->boolean('from_home')->default(false);
             $table->jsonb('address')->nullable();
-            $table->jsonb('address_ward')->nullable();
+            $table->text('address_ward')->nullable();
+            $table->double('longitude')->nullable();
+            $table->double('latitude')->nullable();
 
             // Contact
             $table->string('phone')->nullable();
@@ -49,8 +52,8 @@ class CreateOpportunitiesTable extends Migration
             // Timing
             $table->string('frequency')->nullable();
             $table->integer('hours')->nullable();
-            $table->datetime('start_date')->nullable();
-            $table->datetime('end_date')->nullable();
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
 
         });
     }

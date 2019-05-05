@@ -7,7 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Backpack\CRUD\CrudTrait;
 
-class Organisation extends Authenticatable
+class Organisation extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
     use CrudTrait;

@@ -1,0 +1,60 @@
+.opportunity-sidebar {
+  @media screen and (min-width: $large-screen) {
+    width: .5 * $card-width;
+  }
+  @extend %box;
+  @extend %padded-box;
+  border-radius: 0 $base-border-radius $base-border-radius 0;
+  background-color: $very-light-blue;
+  margin-top: 2 * $base-spacing;
+  &--photo {
+    margin: (-2 * $base-spacing) (-2 * $base-spacing) 0;
+    width: calc(100% + #{4 * $base-spacing});
+    height: 8 * $base-spacing;
+    object-fit: cover;
+    object-position: center;
+    max-width: none;
+    display: block;
+  }
+  &--logo {
+    border-radius: 50%;
+    border: .5 * $small-spacing solid white;
+    box-shadow: $base-box-shadow;
+    width: 6 * $base-spacing;
+    height: 6 * $base-spacing;
+    margin-top: -5 * $base-spacing;
+    margin-right: -$small-spacing;
+    position: relative;
+    z-index: 9;
+    margin-left: auto;
+    display: block;
+  }
+  &--name {
+    font-size: modular-scale(1);
+    font-family: $base-font-family;
+    margin-top: $base-spacing;
+  }
+  &--info {
+    margin-bottom: $base-spacing;
+  }
+  &--phone,
+  &--email {
+    &::before {
+
+      vertical-align: text-top;
+      content: '';
+      display: inline-block;
+      height: $base-spacing / 1.5;
+      width: $base-spacing / 1.5;
+      margin-right: $small-spacing/2;
+      background-image: url('/images/icons/phone.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center bottom;
+    }
+  }
+  &--email::before {
+    background-image: url('/images/icons/email.svg');
+  }
+
+}

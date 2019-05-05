@@ -1,0 +1,59 @@
+.opportunity-filter {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.badge {
+  background-color: $light-gray;
+  border-radius: $base-border-radius;
+  // color: white;
+  display: inline-block;
+  padding: $small-spacing/2 $small-spacing;
+  form, button {
+    display: inline-block;
+  }
+  .button {
+    vertical-align: middle;
+
+    padding: 0;
+    margin: (-$small-spacing) (-$small-spacing) (-$small-spacing) $small-spacing/2;
+    width: 1.5 * $base-spacing;
+    height: 1.5 * $base-spacing;
+    text-indent: -9999px;
+    background-color: transparent;
+    position: relative;
+    &:hover {
+      background-color: $medium-gray;
+      svg path {
+        fill: $dark-gray;
+      }
+    }
+    svg {
+      position: absolute;
+      top: 30%;
+      width: 40%;
+      height: 40%;
+      left: 30%;
+      right: 0;
+      bottom: 0;
+      text-indent: 0;
+      path {
+        fill: $medium-gray;
+      }
+    }
+    // &::before {
+    //   content: '';
+    //   position: absolute;
+    //   top: 0;
+    //   left: 0;
+    //   right: 0;
+    //   bottom: 0;
+    //   background-image: url('');
+    //   background-repeat: no-repeat;
+    //   background-position: center;
+    //   background-size: 100%;
+    // }
+  }
+}

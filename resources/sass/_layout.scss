@@ -1,5 +1,8 @@
 html {
-  background-color: $viewport-background-color;
+  // background-color: $viewport-background-color;
+  @media screen and (min-width: $medium-screen) {
+    background-image: linear-gradient(to bottom, transparentize($viewport-background-color,0) 0% , transparentize($viewport-background-color,1) 100%);
+  }
   box-sizing: border-box;
 }
 
@@ -15,28 +18,144 @@ html {
 
 body {
   margin: 0;
-  background-color: $light-gray;
+  transition: background-color 4 * $base-duration ease;
 }
 
 main {
-  min-height: calc(100vh - #{ $navbar-height });
+  position: relative;
+
+  &.background__home,
+  &.background__dashboard,
+  &.background__opportunity-index,
+  &.background__opportunity-single,
+  &.background__enquiry-form {
+    transform-style: preserve-3d;
+    &::after {
+      content: '';
+      position: absolute;
+      z-index: -999;
+      top: 0;
+      bottom: -50vh;
+      left: 0;
+      right: 0;
+      background-repeat: no-repeat;
+      @media screen and(min-width: $medium-screen) {
+        will-change: transform;
+        transform: translate3d(0,0,-0.2px) scale(1.2);
+        transform-origin: bottom center;
+      }
+    }
+  }
+
+  &.background__home {
+    &::after {
+      background-image: url('/images/pattern.svg'), url('/images/pattern2.svg');
+      background-position: (-2 * $base-spacing) (-20 * $base-spacing), right (-2 * $base-spacing) bottom (0 * $base-spacing);
+      background-size: 25 * $base-spacing, 20 * $base-spacing;
+      @media screen and(min-width: $medium-screen) {
+        background-image: url('/images/large-pattern.svg'), url('/images/pattern2.svg');
+        background-position: (-2 * $base-spacing) 38vmax, right (-2 * $base-spacing) bottom (0 * $base-spacing);
+        background-size: 57.5vmax, 20 * $base-spacing;
+      }
+      z-index: 9;
+    }
+  }
+  @media screen and (min-width: $medium-screen) {
+    &.background:not(.background__home)::before {
+      content: '';
+      background-image: linear-gradient(to bottom, transparentize($viewport-background-color,0.25) 0% , transparentize($viewport-background-color,1) 100%);
+      position: fixed;
+      z-index: -99;
+      top: 0;
+      height: 50%;
+      left: 0;
+      right: 0;
+    }
+    &.background__opportunity-index {
+      &::after {
+        background-image: url('/images/pattern.svg'), url('/images/pattern2.svg');
+        background-position: left (-2 * $base-spacing) top (10 * $base-spacing), right (-2 * $base-spacing) bottom (-0 * $base-spacing);
+        background-size: 20 * $base-spacing, 15 * $base-spacing;
+      }
+    }
+    &.background__dashboard,
+    &.background__opportunity-single,
+    &.background__enquiry-form {
+      &::after {
+        background-image: url('/images/pattern2.svg');
+        background-position: right (-2 * $base-spacing) bottom (0 * $base-spacing);
+        background-size: 20 * $base-spacing;
+      }
+    }
+  }
+}
+
+#app {
+
+  // Testing out parallax
+  overflow-y:scroll;
+  overflow-x: hidden;
+  margin-top: 0;
+  height: 100vh;
+  -webkit-overflow-scrolling: touch;
+  @media screen and (min-width: $medium-screen) {
+    perspective: 1px;
+  }
 }
 
 .container {
   max-width: $max-width;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
-  padding-left: $base-spacing;
-  padding-right: $base-spacing;
+  padding-left: $small-spacing;
+  padding-right: $small-spacing;
+  padding-bottom: $base-spacing;
 
+  @media screen and (min-width: $medium-screen) {
+    padding-left: $base-spacing;
+    padding-right: $base-spacing;
+    padding-bottom: 2 * $base-spacing;
+  }
+  &__full-screen {
+    height: 100vh;
+    margin-top: -$navbar-height;
+    overflow-y: auto;
+    padding-bottom: 0;
+    overflow-y: auto;
+  }
   &__full-height {
     min-height: calc(100vh - #{ $navbar-height });
   }
+  &__wide {
+    @media screen and (min-width: $large-screen) {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
 
+  }
   &__center {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    padding-top: 2 * $base-spacing;
+    padding-bottom: 2 * $base-spacing;
+  }
+}
+
+%box {
+  @media screen and (min-width: $medium-screen) {
+    background-color: transparentize(#fff,.1);
+    border-radius: $base-border-radius;
+    box-shadow: $base-box-shadow !important;
+  }
+  overflow: hidden;
+}
+
+%padded-box {
+  @media screen and (min-width: $medium-screen) {
+    padding: 2 * $base-spacing;
   }
 }
