@@ -54,13 +54,12 @@
           <div class="opportunity-card--footer--right">
             @if($opportunity->from_home)
               <span class="opportunity-card--location">From home</span>
-            @endif
-            @if($opportunity->address_ward)
+            @elseif($opportunity->address_ward)
               <span class="opportunity-card--location">{{ $opportunity->address_ward }}</span>
-              @endif
-              @if(!empty($filters->postcode) or !empty($filters->location))
+            @endif
+            @if(!empty($filters->postcode) or !empty($filters->location))
               <span class="opportunity-card--distance">{{ round($opportunity->distance, 1) }} miles away</span>
-              @endif
+            @endif
           </div>
         </div>
       </div>

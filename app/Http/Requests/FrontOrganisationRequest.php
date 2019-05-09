@@ -35,6 +35,8 @@ class FrontOrganisationRequest extends FormRequest
             'info' => 'required|max:300',
             'website' => 'nullable',
             'logo' => 'nullable',
+            'photo' => 'nullable',
+
         ];
     }
 

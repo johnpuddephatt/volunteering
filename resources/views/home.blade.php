@@ -25,37 +25,76 @@
 
 </section>
 
-<section class="section section__home-categories">
-  <h2 class="section-title">Search by category</h2>
-  <div class="container">
-    @foreach($categories as $category)
-      <a class="home-category" href="{{ route('opportunity.index', ['category' => $category->slug ] )}}">
-        <img class="home-category--image" src="/images/login-image.jpg" />
-        <div class="home-category--text">
-          Volunteer with
-          {{ $category->label }}
-        </div>
-      </a>
-    @endforeach
+
+@if(count($categories) == 4)
+  <section class="section section__home-categories">
+    <h2 class="section-title">Search by category</h2>
+    <div class="container">
+      @foreach($categories as $category)
+        <a class="home-category" href="{{ route('opportunity.index', ['category' => $category->slug ] )}}">
+          @if($category->image)
+            <img class="home-category--image" src="{{ $category->image }}" />
+          @else
+            <img class="home-category--image" src="//placehold.it/320x240?text=×" />
+          @endif
+          <div class="home-category--text">
+            {{ $category->label }}
+          </div>
+        </a>
+      @endforeach
+    </div>
+  </section>
+@endif
+
+@if(count($locations) == 3)
+  <section class="section section__home-locations">
+    <h2 class="section-title">Search by location</h2>
+    <div class="container">
+      @foreach($locations as $location)
+        <a class="home-location" href="{{ route('opportunity.index', ['location' => $location->slug ] )}}">
+          <div class="home-location--text">
+            {{ $location->label }}
+            @include('icons.arrow')
+          </div>
+        </a>
+      @endforeach
+    </div>
+  </section>
+@endif
+
+<section class="section section__home-casestudies">
+  <div class="case-study--text">
+    <div class="container">
+      <h2 class="case-study--title">Volunteer to show that you care</h2>
+      <p>Hear our stories of volunteering in around Wakefield.</p>
+    </div>
+    @include('icons.arrow')
+  </div>
+  <div class="case-study--image">
+    <img src="/images/home-casestudies.jpg"/>
   </div>
 </section>
 
-<section class="section section__home-locations">
-  <h2 class="section-title">Search by location</h2>
-  <div class="container">
-    @foreach($locations as $location)
-      <a class="home-location" href="{{ route('opportunity.index', ['location' => $location->slug ] )}}">
-        <div class="home-location--text">
-          {{ $location->label }}
-          @include('icons.arrow')
-        </div>
-      </a>
-    @endforeach
-  </div>
-</section>
+@if(count($suitabilities) == 3)
+  <section class="section section__home-suitabilities">
+    <h2 class="section-title">Find an opportunity that suits you</h2>
 
+    <div class="container">
+      @foreach($suitabilities as $suitability)
+        <a class="home-suitability" href="{{ route('opportunity.index', ['suitability' => $suitability->slug ] )}}">
+          <div class="home-suitability--text">
+            @include('icons.arrow')
+            {{ $suitability->label }}
+          </div>
+          @if($suitability->image)
+            <img class="home-suitability--image" src="{{ $suitability->image }}" />
+          @else
+            <img class="home-suitability--image" src="//placehold.it/350x525?text=×" />
+          @endif
+        </a>
+      @endforeach
+    </div>
+  </section>
+@endif
 
-<br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br>
 @endsection

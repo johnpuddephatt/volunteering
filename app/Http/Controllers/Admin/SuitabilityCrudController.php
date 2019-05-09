@@ -33,8 +33,25 @@ class SuitabilityCrudController extends CrudController
         |--------------------------------------------------------------------------
         */
 
-        // TODO: remove setFromDb() and manually define Fields and Columns
-        $this->crud->setFromDb();
+        $labelArray = [
+            'name' => 'label',
+            'type' => 'text',
+        ];
+        $slugArray = [
+            'name' => 'slug',
+            'type' => 'text',
+        ];
+        $imageFieldArray = [
+            'name' => 'image',
+            'label' => 'Image',
+            'type' => 'image',
+            'upload' => true,
+            'crop' => true, // set to true to allow cropping, false to disable
+            'aspect_ratio' => 0.667, // ommit or set to 0 to allow any aspect ratio
+        ];
+
+        $this->crud->addColumns([$labelArray]);
+        $this->crud->addFields([$labelArray,$slugArray,$imageFieldArray]);
 
         // add asterisk for fields that are required in SuitabilityRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');

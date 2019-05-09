@@ -2,18 +2,21 @@
   margin-top: 4 * $base-spacing;
   text-align: center;
   .container {
+    overflow-x: auto;
+    overflow-y: hidden;
     display: flex;
     flex-direction: row;
-    overflow-x: auto;
   }
 }
+
+
 
 .home-location {
   flex: 0 0 75%;
   min-height: 72vw;
   @media screen and (min-width: $medium-screen) {
-    flex: 0 1 33.333%;
-    min-height: 8 * $base-spacing;
+    flex: 0 0 33.333%;
+    min-height: 6 * $base-spacing;
   }
   display: flex;
   flex-direction: column;
@@ -21,6 +24,9 @@
   justify-content: center;
   background-color: $yellow;
   color: $green;
+  &:hover {
+    color: $green;
+  }
   svg path {
     fill: $green;
   }
@@ -28,11 +34,15 @@
   text-decoration: none;
   font-weight: 700;
   font-size: modular-scale(2);
+
   &:nth-child(2) {
     background-color: $pink;
     color: $blue;
     svg path {
       fill: $blue;
+    }
+    &:hover {
+      color: $blue;
     }
   }
   &:nth-child(3) {
@@ -40,6 +50,9 @@
     color: $light-blue;
     svg path {
       fill: $light-blue;
+    }
+    &:hover {
+      color: $light-blue;
     }
   }
   + .home-location {

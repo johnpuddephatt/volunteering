@@ -1,0 +1,63 @@
+.section__home-casestudies {
+  margin-top: 4 * $base-spacing;
+  background-color: $green;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  @media screen and (min-width: $medium-screen) {
+    text-align: left;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.case-study--text {
+  @media screen and (min-width: $medium-screen) {
+    width: 50%;
+    flex: 0 0 50%;
+  }
+  padding-top: 3 * $base-spacing;
+  padding-bottom: 3 * $base-spacing;
+  position: relative;
+  .container {
+    max-width: $max-width/2;
+    padding-bottom: 0;
+    padding: 0 2 * $base-spacing;
+    @media screen and (min-width: $medium-screen) {
+      margin-left: auto;
+      margin-right: 0;
+      padding: 0 2 * $base-spacing 0 $base-spacing;
+    }
+  }
+  .case-study--title {
+    font-size: modular-scale(5);
+  }
+  p {
+    font-size: modular-scale(1);
+  }
+  svg {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform-origin: 50% 50%;
+    transform:  translate(-50%,-50%) rotate(90deg);
+    width: 4 * $base-spacing;
+    height: auto;
+    @media screen and (min-width: $medium-screen) {
+      left: 100%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      width: 5 * $base-spacing;
+    }
+    path {
+      fill: $yellow;
+    }
+  }
+}
+
+.case-study--image {
+  img {
+    display: block;
+  }
+}

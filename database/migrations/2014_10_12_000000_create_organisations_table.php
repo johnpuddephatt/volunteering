@@ -20,7 +20,7 @@ class CreateOrganisationsTable extends Migration
 
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamp('last_login')->nullable();
-            $table->boolean('active')->default(true);
+            $table->boolean('active')->default(false);
 
             $table->string('email')->unique();
             $table->string('password');
@@ -30,6 +30,7 @@ class CreateOrganisationsTable extends Migration
             $table->string('phone');
             $table->string('website')->nullable();
             $table->text('info');
+            $table->string('photo')->nullable();
             $table->string('logo')->nullable();
 
             $table->rememberToken();

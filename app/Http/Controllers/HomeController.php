@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Opportunity;
 use App\Models\Category;
 use App\Models\Location;
+use App\Models\Suitability;
 
 class HomeController extends Controller
 {
@@ -28,6 +29,7 @@ class HomeController extends Controller
     {
       $locations = Location::all()->shuffle()->take(3);
       $categories = Category::withCount('opportunities')->orderBy('opportunities_count', 'desc')->take(4)->get();
-      return view('home', compact('categories','locations'));
+      $suitabilities = Suitability::withCount('opportunities')->orderBy('opportunities_count', 'desc')->take(3)->get();
+      return view('home', compact('categories','locations','suitabilities'));
     }
 }

@@ -4,7 +4,7 @@
   <div class="container container__center container__full-screen">
     <div class="card">
       <div class="card-header">
-        <h2 class="card-title">{{ __('Verify Your Email Address') }}</h2>
+        <h2 class="card-title">{{ __('Your account needs verifying') }}</h2>
       </div>
 
       <div class="card-body">
@@ -16,8 +16,24 @@
           </div>
         @endif
 
-        {{ __('Before proceeding, please check your email for a verification link.') }}
-        {{ __('If you did not receive the email') }}, <a href="{{ route('verification.resend') }}">{{ __('click here to request another') }}</a>.
+        <h2>ONE. Verify your email address</h2>
+        @if(Auth::User()->email_verified_at)
+          TICK! Your email is verified
+        @else
+          <p>Your email address is not verified.
+          <p>{{ __('Before proceeding, please check your email for a verification link.') }}</p>
+          <p>{{ __('If you did not receive the email') }}, <a href="{{ route('verification.resend') }}">{{ __('click here to request another') }}</a>.</p>
+        @endif
+
+        <h2>TWO. Wait for your account to be approved</h2>
+        @if(Auth::User()->active)
+          TICK! Your account is activated
+        @else
+          <p><strong>Not approved</strong></p>
+          <p>To ensure this website is only used for its intended purpose, accounts must by manually approved by Nova Wakefield.</p>
+          <p>Please allow up to two working days for this to happen.</p>
+        @endif
+
       </div>
   </div>
 

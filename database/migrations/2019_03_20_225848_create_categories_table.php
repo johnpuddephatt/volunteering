@@ -17,6 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->bigIncrements('id');
             $table->string('slug');
             $table->string('label');
+            $table->string('image')->nullable();
         });
     }
 

@@ -96,6 +96,16 @@ class OrganisationCrudController extends CrudController
             'aspect_ratio' => 1, // ommit or set to 0 to allow any aspect ratio
         ];
 
+        $photoFieldArray = [
+            'name' => 'photo',
+            'label' => 'Photo',
+            'type' => 'image',
+            'tab' => 'Organisation',
+            'upload' => true,
+            'crop' => true, // set to true to allow cropping, false to disable
+            'aspect_ratio' => 2, // ommit or set to 0 to allow any aspect ratio
+        ];
+
         $accountCreatedArray = [
             'name' => 'created_at',
             'label' => 'Date account created',
@@ -148,7 +158,7 @@ class OrganisationCrudController extends CrudController
         ];
 
         $this->crud->addColumns([$nameArray, $contactNameArray, $countColumnArray, $activeColumnArray, $emailVerifiedColumnArray, $lastLoginArray]);
-        $this->crud->addFields([$nameArray, $infoArray, $logoFieldArray, $contactNameArray, $contactRoleArray, $contactEmailArray, $contactPhoneArray, $contactWebsiteArray, $activeFieldArray, $accountCreatedArray, $lastLoginArray]);
+        $this->crud->addFields([$nameArray, $infoArray, $logoFieldArray, $photoFieldArray, $contactNameArray, $contactRoleArray, $contactEmailArray, $contactPhoneArray, $contactWebsiteArray, $activeFieldArray, $accountCreatedArray, $lastLoginArray]);
 
         // add asterisk for fields that are required in OpportunityRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');

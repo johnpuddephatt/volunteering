@@ -32,6 +32,7 @@ main {
     transform-style: preserve-3d;
     &::after {
       content: '';
+      pointer-events: none;
       position: absolute;
       z-index: -999;
       top: 0;

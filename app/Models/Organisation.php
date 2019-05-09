@@ -22,7 +22,7 @@ class Organisation extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'user_id','name','contact_name', 'contact_role', 'email', 'password', 'phone', 'info', 'website', 'logo', 'active'
+        'user_id','name','contact_name', 'contact_role', 'email', 'password', 'phone', 'info', 'website', 'logo', 'photo', 'active'
     ];
 
     /**
@@ -66,25 +66,34 @@ class Organisation extends Authenticatable implements MustVerifyEmail
         $disk = "public";
         $destination_path = "logos";
 
-        // if the image was erased
         if ($value==null) {
-            // delete the image from disk
             \Storage::disk($disk)->delete($this->{$attribute_name});
-
-            // set null in the database column
             $this->attributes[$attribute_name] = null;
         }
 
-        // if a base64 was sent, store it in the db
-        if (starts_with($value, 'data:image'))
-        {
-            // 0. Make the image
+        if (starts_with($value, 'data:image')) {
             $image = \Image::make($value)->resize(200, 200)->encode('jpg', 90);
-            // 1. Generate a filename.
             $filename = md5($value.time()).'.jpg';
-            // 2. Store the image on disk.
             \Storage::disk($disk)->put($destination_path.'/'.$filename, $image->stream());
-            // 3. Save the path to the database
+            $this->attributes[$attribute_name] = 'storage/' . $destination_path.'/'.$filename;
+        }
+    }
+
+    public function setPhotoAttribute($value)
+    {
+        $attribute_name = "photo";
+        $disk = "public";
+        $destination_path = "photos";
+
+        if ($value==null) {
+            \Storage::disk($disk)->delete($this->{$attribute_name});
+            $this->attributes[$attribute_name] = null;
+        }
+
+        if (starts_with($value, 'data:image')) {
+            $image = \Image::make($value)->resize(200, 200)->encode('jpg', 90);
+            $filename = md5($value.time()).'.jpg';
+            \Storage::disk($disk)->put($destination_path.'/'.$filename, $image->stream());
             $this->attributes[$attribute_name] = 'storage/' . $destination_path.'/'.$filename;
         }
     }

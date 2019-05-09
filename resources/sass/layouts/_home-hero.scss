@@ -54,6 +54,7 @@
   @media screen and (max-width: $medium-screen) {
     background-color: transparent;
     box-shadow: none !important;
+    padding: $small-spacing;
   }
   &--title {
     font-size: modular-scale(4);
@@ -65,10 +66,16 @@
     border-bottom: $light-border;
   }
   form {
-    margin-bottom: 1.5 * $base-spacing;
+    margin-bottom: $small-spacing;
+    input[type='submit'] {
+      // border-radius: 0 $base-border-radius $base-border-radius 0;
+      text-transform: lowercase;
+      width: 100%;
+    }
     @media screen and (min-width: $medium-screen) {
       display: flex;
       flex-direction: row;
+      margin-bottom: 1.5 * $base-spacing;
       input {
         margin: 0;
         max-width: 10em;
@@ -81,12 +88,6 @@
           width: auto;
         }
       }
-    }
-    input[type='submit'] {
-      // border-radius: 0 $base-border-radius $base-border-radius 0;
-      text-transform: lowercase;
-      width: 100%;
-
     }
   }
 }

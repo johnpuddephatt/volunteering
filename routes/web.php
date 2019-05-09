@@ -18,10 +18,10 @@ Route::post('/registration', 'Auth\RegisterController@showRegistrationForm')->na
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/dashboard', 'OrganisationController@dashboard')->name('dashboard')->middleware('auth');
 
-Route::group(['middleware' => ['auth','verified']], function () {
 
+Route::group(['middleware' => ['auth','verified','activated']], function () {
+    Route::get('/dashboard', 'OrganisationController@dashboard')->name('dashboard');
     Route::get('/opportunity/create', 'OpportunityController@new')->name('opportunity.new');
     Route::post('/opportunity/create', 'OpportunityController@store')->name('opportunity.store');
 
