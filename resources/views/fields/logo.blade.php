@@ -9,12 +9,14 @@
 @endif
 
 @if ($showField)
-
-    <div class="croppie-wrapper">
-        <div style="opacity: 0;" id="croppie"></div>
-        <input type="file" id="upload-input"/>
-        <button class="message">Click here to choose an image</button>
+  <div class="croppie-wrapper">
+    <div style="visibility: hidden;" id="croppie"></div>
+    <div class="croppie-input-wrapper">
+      <input type="file" id="upload-input"/>
+      <button tabindex="-1" class="message">Click here to choose an image</button>
     </div>
+  </div>
+
 
     {!! Form::input('hidden', $name, $options['value'], $options['attr']) !!}
 
@@ -49,6 +51,11 @@
             margin-bottom: 2em;
         }
 
+        .croppie-wrapper.image-loaded [type="file"] {
+          position: relative;
+          min-height: 50px;
+        }
+
         .croppie-wrapper [type="file"] {
           position: absolute;
           z-index: 9;
@@ -58,6 +65,25 @@
           bottom: 0;
           opacity: 0;
         }
+
+        .croppie-wrapper [type="file"]:focus + button {
+          outline: 3px solid #2763c399;
+          outline-offset: 2px;
+        }
+
+        .croppie-wrapper.image-loaded .croppie-input-wrapper {
+          position: relative;
+        }
+
+        .cr-viewport:focus {
+          outline: 3px solid #2763c3;
+          outline-offset: -5px;
+        }
+
+      .cr-slider:focus::-webkit-slider-thumb { box-shadow: 0px 0px 0px 4px #2763c3; }
+      .cr-slider:focus::-moz-range-thumb { box-shadow: 0px 0px 0px 4px #2763c3; }
+      .cr-slider:focus::-ms-thumb { box-shadow: 0px 0px 0px 4px #2763c3; }
+
 
       .croppie-wrapper .message {
         position: absolute;
@@ -77,11 +103,11 @@
                 var fileUpload = document.querySelector('[type="file"]');
                 var fileUploadMessage = document.querySelector('.message');
 
-
+                var croppieWrapper = document.querySelector('.croppie-wrapper');
                 var croppieContainer = document.querySelector('#croppie');
                 c = new Croppie(croppieContainer, {
-                    enforceBoundary: true,
-                    boundary: { width: 200, height: 200 },
+                    // enforceBoundary: true,
+                    boundary: { width: 250, height: 250 },
                     viewport: { width: 200, height: 200, type: 'square' }
                 });
 
@@ -89,9 +115,10 @@
                     c.bind({
                         url: result.value,
                     }).then(function(){
-                        croppieContainer.style.opacity = 1;
-                        fileUpload.style.display = 'none';
-                        fileUploadMessage.style.display = 'none';
+                        croppieContainer.style.visibility = 'visible';
+                        croppieWrapper.classList.add('image-loaded');
+                        // fileUpload.style.display = 'none';
+                        // fileUploadMessage.style.display = 'none';
                     });
                 }
 
@@ -102,9 +129,10 @@
                             c.bind({
                                 url: e.target.result,
                             }).then(function(){
-                                croppieContainer.style.opacity = 1;
-                                fileUpload.style.display = 'none';
-                                fileUploadMessage.style.display = 'none';
+                                croppieContainer.style.visibility = 'visible';
+                                croppieWrapper.classList.add('image-loaded');
+                                // fileUpload.style.display = 'none';
+                                // fileUploadMessage.style.display = 'none';
                                 c.result().then(function(response){
                                     result.value = response;
                                 });

@@ -37,7 +37,8 @@ h6 {
 .page-title {
   color: $blue;
   font-size: modular-scale(4);
-  margin-top: 3 * $base-spacing
+  margin-top: 3 * $base-spacing;
+  margin-bottom: $base-spacing;
 }
 .page-subtitle {
   font-size: modular-scale(3);

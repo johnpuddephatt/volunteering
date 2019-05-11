@@ -1,6 +1,6 @@
 html {
   // background-color: $viewport-background-color;
-  @media screen and (min-width: $medium-screen) {
+  @media screen and (min-width: $large-screen) {
     background-image: linear-gradient(to bottom, transparentize($viewport-background-color,0) 0% , transparentize($viewport-background-color,1) 100%);
   }
   box-sizing: border-box;
@@ -25,11 +25,13 @@ main {
   position: relative;
 
   &.background__home,
-  &.background__dashboard,
+  &.background__organisation-dashboard,
   &.background__opportunity-index,
   &.background__opportunity-single,
   &.background__enquiry-form {
-    transform-style: preserve-3d;
+    @media screen and (min-width: $large-screen) {
+      transform-style: preserve-3d;
+    }
     &::after {
       content: '';
       pointer-events: none;
@@ -53,12 +55,12 @@ main {
       background-image: url('/images/pattern.svg'), url('/images/pattern2.svg');
       background-position: (-2 * $base-spacing) (-20 * $base-spacing), right (-2 * $base-spacing) bottom (0 * $base-spacing);
       background-size: 25 * $base-spacing, 20 * $base-spacing;
-      @media screen and(min-width: $medium-screen) {
+      @media screen and (min-width: $medium-screen) {
         background-image: url('/images/large-pattern.svg'), url('/images/pattern2.svg');
         background-position: (-2 * $base-spacing) 38vmax, right (-2 * $base-spacing) bottom (0 * $base-spacing);
         background-size: 57.5vmax, 20 * $base-spacing;
+        z-index: 9;
       }
-      z-index: 9;
     }
   }
   @media screen and (min-width: $medium-screen) {
@@ -79,7 +81,7 @@ main {
         background-size: 20 * $base-spacing, 15 * $base-spacing;
       }
     }
-    &.background__dashboard,
+    &.background__organisation-dashboard,
     &.background__opportunity-single,
     &.background__enquiry-form {
       &::after {
@@ -109,8 +111,8 @@ main {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  padding-left: $small-spacing;
-  padding-right: $small-spacing;
+  padding-left: $base-spacing;
+  padding-right: $base-spacing;
   padding-bottom: $base-spacing;
 
   @media screen and (min-width: $medium-screen) {
@@ -155,7 +157,14 @@ main {
   overflow: hidden;
 }
 
+%heavily-padded-box {
+  @media screen and (min-width: $medium-screen) {
+    padding: 3 * $base-spacing;
+  }
+}
+
 %padded-box {
+  padding: 2 * $base-spacing $base-spacing;
   @media screen and (min-width: $medium-screen) {
     padding: 2 * $base-spacing;
   }

@@ -5,15 +5,29 @@
   .container {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
     @media screen and (min-width: $large-screen) {
-      flex-wrap: nowrap;
+      overflow: auto;
     }
+    @media screen and (max-width: $large-screen) {
+      &::after {
+        content: '';
+        display: block;
+        width: $base-spacing;
+        flex: 0 0 $base-spacing;
+      }
+    }
+
   }
 }
 
 .home-suitability {
-  flex: 0 1 33%;
+  flex: 0 0 75%;
+  @media screen and (min-width: $large-screen) {
+    flex: 0 1 33%;
+  }
+
   text-decoration: none;
   display: flex;
   flex-direction: column;

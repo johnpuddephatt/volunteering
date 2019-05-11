@@ -65,8 +65,8 @@
 <section class="section section__home-casestudies">
   <div class="case-study--text">
     <div class="container">
-      <h2 class="case-study--title">Volunteer to show that you care</h2>
-      <p>Hear our stories of volunteering in around Wakefield.</p>
+      <h2 class="case-study--title">Volunteer to show you care</h2>
+      <p>Every year thousands of people across Wakefield give something back by volunteering.</p>
     </div>
     @include('icons.arrow')
   </div>

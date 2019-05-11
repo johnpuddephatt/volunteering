@@ -21,4 +21,7 @@ Route::group([
     CRUD::resource('location','LocationCrudController');
 
     CRUD::resource('organisation','OrganisationCrudController');
+    Route::get('organisation/{id}/activate','OrganisationCrudController@activation');
+    Route::post('organisation/{id}/activate','OrganisationCrudController@activate');
+    Route::post('organisation/{id}/deactivate','OrganisationCrudController@deactivate');
 }); // this should be the absolute last line of this file

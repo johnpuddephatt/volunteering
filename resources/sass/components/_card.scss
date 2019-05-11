@@ -16,7 +16,7 @@
   justify-content: space-between;
   align-items: center;
   // border-bottom: $light-border;
-  padding: $base-spacing $base-spacing $small-spacing;
+  padding: $base-spacing 0 $small-spacing;
   @media screen and (min-width: $medium-screen) {
     padding: 2 * $base-spacing 3 * $base-spacing $small-spacing;
   }
@@ -30,7 +30,7 @@
 }
 
 .card-body {
-  padding: $base-spacing $base-spacing 2 * $base-spacing;
+  padding: $base-spacing 0 2 * $base-spacing;
   @media screen and (min-width: $medium-screen) {
     padding: $base-spacing 3 * $base-spacing 3 * $base-spacing;
   }

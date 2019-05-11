@@ -43,7 +43,8 @@
 @endif
 
 @push('scripts')
-    <script src="//cdn.quilljs.com/2.0.0-dev.2/quill.js"></script>
+    {{-- <script src="//cdn.quilljs.com/2.0.0-dev.2/quill.js"></script> --}}
+    <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
 
     <script>
     document.addEventListener('DOMContentLoaded', function(){
@@ -56,6 +57,27 @@
           toolbar: {
             container: [{!! $options['toolbar'] !!}],
             handlers: {}
+          },
+          keyboard: {
+            bindings: {
+              tab: {
+                key: 9,
+                handler: function() {
+                  // do nothing
+                  return true;
+
+                }
+              },
+              // 'remove tab': {
+              //   key: 9,
+              //   shiftKey: true,
+              //   collapsed: true,
+              //   prefix: /\t$/,
+              //   handler: function() {
+              //     // do nothing
+              //   }
+              // }
+            }
           }
         },
       });
@@ -78,7 +100,8 @@
 
   });
     </script>
-    <link href="//cdn.quilljs.com/2.0.0-dev.2/quill.snow.css" rel="stylesheet">
+    {{-- <link href="//cdn.quilljs.com/2.0.0-dev.2/quill.snow.css" rel="stylesheet"> --}}
+    <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <style>
       .ql-editor {
           position: relative;

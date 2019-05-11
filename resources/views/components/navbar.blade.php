@@ -9,31 +9,35 @@
 
     @if(!in_array($view_name, ['auth-login', 'auth-register']))
     <!-- Left Side Of Navbar -->
-    <ul class="navbar--nav">
+    {{-- <ul class="navbar--nav">
       <li class="nav-item">
         <a class="nav-link" href="#">About</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Contact</a>
       </li>
-    </ul>
+    </ul> --}}
 
       <!-- Right Side Of Navbar -->
       <ul class="navbar--nav navbar--nav__right">
           <!-- Authentication Links -->
           @guest
             <li class="nav-item">
-              <a class="button button__inverted nav-button" href="{{ route('dashboard') }}">Add an opportunity</a>
+              <a class="button button__inverted nav-button" href="{{ route('organisation.dashboard') }}">Add an opportunity</a>
             </li>
           @else
 
-            <li class="nav-item dropdown">
               {{-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                 {{ Auth::user()->name }} <span class="caret"></span>
               </a> --}}
 
               {{-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"> --}}
-              @if($view_name == 'dashboard')
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('organisation.account') }}">Account</a>
+              </li>
+              @if(in_array($view_name,['organisation-dashboard','auth-verify']))
+                <li class="nav-item">
+
                 <a class="button button__inverted {{--dropdown-item--}}" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">
@@ -45,8 +49,9 @@
                 {{-- </div> --}}
               </li>
               @else
+
                 <li class="nav-item">
-                  <a class="button button__inverted nav-link" href="{{ route('dashboard') }}">Dashboard</a>
+                  <a class="button button__inverted nav-link" href="{{ route('organisation.dashboard') }}">Dashboard</a>
                 </li>
               @endif
 

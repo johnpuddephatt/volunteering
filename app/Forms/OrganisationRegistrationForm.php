@@ -23,14 +23,14 @@ class OrganisationRegistrationForm extends Form
             ])
             ->add('email', 'email', [
               'label' => 'Contact email',
-              'value' => $_REQUEST['email'] ?? '',
+              'value' => $_REQUEST['email'] ?? null,
               'wrapper' => ['class' => 'form-group__half-width'],
               'help_block' => [
                 'text' => 'Use this email address to sign in to the site',
                ]
             ])
             ->add('password', 'password', [
-              'value' => $_REQUEST['password'] ?? '',
+              'value' => $_REQUEST['password'] ?? null,
               'wrapper' => ['class' => 'form-group__half-width'],
             ])
             ->add('contact_role', 'text', [

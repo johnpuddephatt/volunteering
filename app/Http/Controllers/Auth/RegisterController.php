@@ -11,7 +11,6 @@ use Kris\LaravelFormBuilder\FormBuilder;
 use Illuminate\Http\Request;
 use App\Http\Requests\FrontOrganisationRequest;
 
-
 class RegisterController extends Controller
 {
     /*
@@ -70,6 +69,7 @@ class RegisterController extends Controller
          $organisation = Organisation::create($validated);
 
          $organisation->sendEmailVerificationNotification();
+         $organisation->notifyAdminOfAccountCreation($organisation);
 
          $request->session()->flash('success', 'Account created successfully! You will receive a verification email shortly.');
 

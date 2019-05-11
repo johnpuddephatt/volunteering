@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class FrontOrganisationRequest extends FormRequest
 {
@@ -25,10 +26,8 @@ class FrontOrganisationRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules =  [
             'name' => 'required|max:100',
-            'password' => 'required',
-            'email' => 'required|email|unique:organisations',
             'contact_name' => 'required',
             'contact_role' => 'required',
             'phone' => 'required',
@@ -38,6 +37,11 @@ class FrontOrganisationRequest extends FormRequest
             'photo' => 'nullable',
 
         ];
+        if(\Auth::guest()) {
+          $rules['password'] = 'required';
+          $rules['email'] = 'email|required';
+        }
+        return $rules;
     }
 
     /**

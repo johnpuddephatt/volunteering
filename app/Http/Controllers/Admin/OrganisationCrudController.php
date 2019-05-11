@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Http\Request;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use GuzzleHttp\Client;
-
+use App\Models\Organisation;
 // VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\OrganisationRequest as StoreRequest;
 use App\Http\Requests\OrganisationRequest as UpdateRequest;
@@ -128,12 +129,12 @@ class OrganisationCrudController extends CrudController
             ]
         ];
 
-        $activeFieldArray = [
-            'name' => 'active',
-            'label' => 'Account enabled?',
-            'type' => 'checkbox',
-            'tab' => 'Account settings'
-        ];
+        // $activeFieldArray = [
+        //     'name' => 'active',
+        //     'label' => 'Account activated?',
+        //     'type' => 'checkbox',
+        //     'tab' => 'Account settings',
+        // ];
 
 
         $countColumnArray = [
@@ -147,7 +148,7 @@ class OrganisationCrudController extends CrudController
 
         $activeColumnArray = [
             'name' => 'active',
-            'label' => "Account enabled?",
+            'label' => "Account activated?",
             'type' => 'check',
         ];
 
@@ -158,7 +159,9 @@ class OrganisationCrudController extends CrudController
         ];
 
         $this->crud->addColumns([$nameArray, $contactNameArray, $countColumnArray, $activeColumnArray, $emailVerifiedColumnArray, $lastLoginArray]);
-        $this->crud->addFields([$nameArray, $infoArray, $logoFieldArray, $photoFieldArray, $contactNameArray, $contactRoleArray, $contactEmailArray, $contactPhoneArray, $contactWebsiteArray, $activeFieldArray, $accountCreatedArray, $lastLoginArray]);
+        $this->crud->addFields([$nameArray, $infoArray, $logoFieldArray, $photoFieldArray, $contactNameArray, $contactRoleArray, $contactEmailArray, $contactPhoneArray, $contactWebsiteArray, $accountCreatedArray, $lastLoginArray]);
+
+        $this->crud->addButtonFromView('line', 'renew', 'activate', 'beginning');
 
         // add asterisk for fields that are required in OpportunityRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
@@ -181,6 +184,29 @@ class OrganisationCrudController extends CrudController
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;
+    }
+
+    public function activation($id) {
+      $organisation = Organisation::find($id);
+      return view('organisation.activation', compact('organisation'));
+    }
+
+    public function activate($id, Request $request) {
+      $organisation = Organisation::find($id);
+
+      $organisation->activate();
+      \Alert::success('Success. Organisation activated')->flash();
+
+      return redirect()->route('crud.organisation.index');
+    }
+
+    public function deactivate($id, Request $request) {
+      $organisation = Organisation::find($id);
+
+      $organisation->deactivate();
+      \Alert::success('Organisation deactivated')->flash();
+
+      return redirect()->route('crud.organisation.index');
     }
 
 }

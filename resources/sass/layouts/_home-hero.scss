@@ -54,7 +54,7 @@
   @media screen and (max-width: $medium-screen) {
     background-color: transparent;
     box-shadow: none !important;
-    padding: $small-spacing;
+    padding: $base-spacing;
   }
   &--title {
     font-size: modular-scale(4);

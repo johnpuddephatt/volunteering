@@ -16,6 +16,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   </head>
   <body>
+    {{-- <button id="record-screen" style="width:1em;height: 1em; position:fixed; z-index:9999;padding:0;top: 0; left: 0;">o</button> --}}
     <div id="app">
 
       @include('components.navbar')

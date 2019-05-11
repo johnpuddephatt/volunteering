@@ -3,7 +3,7 @@
 @section('content')
   <div class="container container__center">
     <div class="card">
-        {!! form_start($form, ['class'=>'opportunity-form']) !!}
+        {!! form_start($form, ['class'=>'opportunity-form do-not-submit-on-return']) !!}
           <div class="card-header">
             <h2 class="card-title">Add a new opportunity</h2>
           </div>

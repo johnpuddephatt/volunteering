@@ -1,15 +1,17 @@
 .login-wrapper {
   // margin-left: 50%;
-  width: 50%;
-  height: 100vh;
-  overflow-y: auto;
-  position: fixed;
-  top: 0;
-  left: 50%;
-  z-index: 9;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  @media screen and (min-width: $large-screen) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    height: 100vh;
+    overflow-y: auto;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    z-index: 9;
+  }
 }
 
 .login-form--title {
@@ -27,6 +29,8 @@
   label, a {
     color: $dark-gray !important;
     font-weight: 400 !important;
+    text-decoration: none;
+    margin-bottom: 0;
     -webkit-font-smoothing: subpixel-antialiased !important;
   }
   .form-group {
@@ -57,21 +61,25 @@
 }
 
 .background-image--wrapper {
-  position: fixed;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 50%;
-  &::before {
-    content: '';
-    position: absolute;
-    z-index: 9;
+  display: none;
+  @media screen and (min-width: $large-screen) {
+    display: block;
+    position: fixed;
+    z-index: -1;
     top: 0;
     left: 0;
-    right: 0;
-    height: 5 * $base-spacing;
-    background-image: linear-gradient(to bottom, transparentize($black, 0.65) 0%, transparentize($black, 1) 100%);
+    bottom: 0;
+    width: 50%;
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: 9;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5 * $base-spacing;
+      background-image: linear-gradient(to bottom, transparentize($black, 0.65) 0%, transparentize($black, 1) 100%);
+    }
   }
 }
 
@@ -82,5 +90,11 @@
   right: 0;
   bottom: 0;
   height: 100%;
+  width: 100%;
   object-fit: cover;
+}
+
+
+.verification-item {
+  margin: $base-spacing 0 2 * $base-spacing;
 }

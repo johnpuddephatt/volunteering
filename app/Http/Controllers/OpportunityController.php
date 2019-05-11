@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
 use App\Http\Requests\FrontOpportunityRequest;
+
 use App\Models\Opportunity;
 use App\Models\Category;
 use App\Models\Location;
+use App\Models\Suitability;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Auth;
@@ -54,13 +57,12 @@ class OpportunityController extends Controller
     {
         $form = $formBuilder->create('App\Forms\OpportunityCreationForm', [
             'method' => 'POST',
-            'url' => route('opportunity.store')
+            'url' => route('opportunity.store'),
         ]);
         return view('opportunity.form', compact('form'));
     }
 
     public function edit(Request $request, FormBuilder $formBuilder, $hash) {
-        //@todo copy in postcodes.io lookup... (???)
         $id = Hashids::decode($hash)[0];
         $opportunity = Opportunity::findOrFail($id);
 
@@ -107,6 +109,7 @@ class OpportunityController extends Controller
     }
 
     public function postcode(Request $request) {
+
       if($request->postcode) {
         $postcode = $request->postcode;
         $client = new Client(['http_errors' => false]);
@@ -114,7 +117,12 @@ class OpportunityController extends Controller
         if($response->getStatusCode() == 200) {
           $response_body = $response->getBody();
           $response_json = json_decode($response_body, true);
-          return redirect()->route('opportunity.index',['lat'=>$response_json['result']['latitude'],'long'=>$response_json['result']['longitude'],'postcode'=>$response_json['result']['postcode']]);
+          $new_filters = ['lat'=>$response_json['result']['latitude'],'long'=>$response_json['result']['longitude'],'postcode'=>$response_json['result']['postcode']];
+          if($request->filters) {
+            $old_filters = json_decode($request->filters, true);
+            $merged_filters = array_merge($old_filters, $new_filters);
+          }
+          return redirect()->route('opportunity.index',$merged_filters ?? $new_filters);
         }
         else {
           $request->session()->flash('error', 'Postcode not found!');
@@ -123,7 +131,7 @@ class OpportunityController extends Controller
       }
       else {
         $request->session()->flash('success', 'Postcode cleared!');
-        return redirect()->route('opportunity.index');
+        return redirect()->back();
       }
     }
 
@@ -160,9 +168,24 @@ class OpportunityController extends Controller
         $filters->category = $category->label;
       }
 
+      if(Input::get('suitability')) {
+        $suitability_slug = Input::get('suitability',false);
+        $suitability = Suitability::where('slug', $suitability_slug)->firstOrFail();
+        $query = $query->whereHas('suitabilities', function ($query) use ($suitability_slug)  {
+            $query->where('slug', $suitability_slug);
+        });
+
+        $filters->suitability = $suitability->label;
+      }
+
       $query->orderBy('validated_at','desc');
       $opportunities = $query->paginate(config('volunteering.opportunities_per_page'));
-      return view('opportunity.index', compact('opportunities','filters'));
+
+      $categories = Category::has('opportunities')->withCount('opportunities')->get();
+      $suitabilities = Suitability::has('opportunities')->withCount('opportunities')->get();
+      $locations = Location::all();
+
+      return view('opportunity.index', compact('opportunities','filters','categories','suitabilities','locations'));
     }
 
     // public function reset(Request $request){

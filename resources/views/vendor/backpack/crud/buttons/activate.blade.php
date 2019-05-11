@@ -1,13 +1,16 @@
 @if ($crud->hasAccess('update'))
-<a href="{{ url($crud->route.'/'.$entry->getKey().'/renew') }} " onclick="return renew(this)" class="btn btn-xs btn-default"><i class="fa fa-refresh"></i> Renew</a>
+
+@if($entry->active)
+  <a href="{{ url($crud->route.'/'.$entry->getKey().'/deactivate') }} " onclick="return renew(this)" class="btn btn-xs btn-default"><i class="fa fa-window-close"></i>Deactivate</a>
+@else
+  <a href="{{ url($crud->route.'/'.$entry->getKey().'/activate') }} " onclick="return renew(this)" class="btn btn-xs btn-default"><i class="fa fa-check-circle"></i>Activate</a>
+@endif
 
 <script>
     function renew(button) {
-
+      var label = button.innerText;
       var button = $(button);
       var route = button.attr('href');
-      var expiryStatus = document.querySelector('.expiry-status');
-
       $.ajax({
           url: route,
           type: 'POST',
@@ -15,19 +18,16 @@
               // Show an alert with the result
               new PNotify({
                   title: "Success",
-                  text: "Opportunity renewed for 30 days",
+                  text: "Organisation account " + label + "d",
                   type: "success"
               });
               crud.table.ajax.reload();
-              if(expiryStatus) {
-                  expiryStatus.innerHTML = 'This entry will expire in 30 days.'
-              }
           },
           error: function(result) {
               // Show an alert with the result
               new PNotify({
                   title: "Error",
-                  text: "Opportunity could not be renewed",
+                  text: "Organisation could not be activated",
                   type: "warning"
               });
           }

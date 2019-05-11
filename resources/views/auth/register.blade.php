@@ -5,12 +5,12 @@
     <img src="/images/register-image.jpg" class="background-image">
   </div>
   <div class="login-wrapper">
-    {!! form_start($form, ['class'=>'login-form']) !!}
-    <div class="login-form--inner">
-      <h2 class="login-form--title">Register to add your opportunities</h2>
+    {!! form_start($form, ['class'=>'login-form do-not-submit-on-return']) !!}
+      <div class="login-form--inner">
+        <h2 class="login-form--title">Register to add your opportunities</h2>
 
         @foreach ($errors->all() as $message)
-          {{ $message }}
+          <div class="alert alert__warning">{{ $message }}</div>
         @endforeach
         <fieldset> <!--Location-->
           <h3 class="fieldset-heading">Account details</h3>

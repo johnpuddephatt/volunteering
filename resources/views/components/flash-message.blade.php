@@ -1,6 +1,6 @@
 @if ($message = Session::get('success'))
-<div class="alert alert__success alert-block fixed autodismiss">
-  <div class="alert--inner">
+<div class="alert--wrapper fixed autodismiss">
+  <div class="alert alert__success">
     <strong>{{ $message }}</strong>
   </div>
 </div>
@@ -8,8 +8,8 @@
 
 
 @if ($message = Session::get('error'))
-<div class="alert alert__danger alert-block fixed">
-  <div class="alert--inner">
+<div class="alert--wrapper fixed">
+  <div class="alert alert__danger">
   	<button type="button" class="close" data-dismiss="alert">×</button>
     <strong>{{ $message }}</strong>
   </div>
@@ -18,8 +18,8 @@
 
 
 @if ($message = Session::get('warning'))
-<div class="alert alert__warning alert-block">
-  <div class="alert--inner">
+<div class="alert--wrapper">
+  <div class="alert alert__warning">
   	<strong>{{ $message }}</strong>
   </div>
 </div>
@@ -27,16 +27,16 @@
 
 
 @if ($message = Session::get('info'))
-  <div class="alert alert__info alert-block fixed autodismiss">
-  <div class="alert--inner">
+  <div class="alert--wrapper  autodismiss">
+  <div class="alert alert__info">
   	<strong>{{ $message }}</strong>
   </div>
 </div>
 @endif
 
 @if ($errors->any())
-<div class="alert alert__danger">
-  <div class="alert--inner">
+<div class="alert--wrapper">
+  <div class="alert alert__danger">
   	Please check the form below for errors
   </div>
 </div>

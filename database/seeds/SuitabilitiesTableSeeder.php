@@ -9,7 +9,7 @@ class SuitabilitiesTableSeeder extends Seeder
 
         $data = array(
             array('label' => 'First-time volunteers', 'slug' => 'first-time'),
-            array('label' => 'People who are nervous/shy', 'slug' => 'shy'),
+            array('label' => 'People who are shy', 'slug' => 'shy'),
             array('label' => 'Under-18s', 'slug' => 'under-18s'),
             array('label' => 'People with limited mobility', 'slug' => 'limited-mobility'),
             array('label' => 'Friends volunteering together', 'slug' => 'friends'),

@@ -14,22 +14,25 @@
 
 Auth::routes(['verify' => true]);
 
-Route::post('/registration', 'Auth\RegisterController@showRegistrationForm')->name('registration');
+Route::get('/registration', 'Auth\RegisterController@showRegistrationForm')->name('registration.get');
+Route::post('/registration', 'Auth\RegisterController@showRegistrationForm')->name('registration.post');
+
+Route::post('/register', 'Auth\RegisterController@register')->name('register');
 
 Route::get('/', 'HomeController@index')->name('home');
 
 
 
 Route::group(['middleware' => ['auth','verified','activated']], function () {
-    Route::get('/dashboard', 'OrganisationController@dashboard')->name('dashboard');
+    Route::get('/dashboard', 'OrganisationController@dashboard')->name('organisation.dashboard');
+    Route::get('/account', 'OrganisationController@account')->name('organisation.account');
+    Route::post('/account', 'OrganisationController@update')->name('organisation.update');
+
     Route::get('/opportunity/create', 'OpportunityController@new')->name('opportunity.new');
     Route::post('/opportunity/create', 'OpportunityController@store')->name('opportunity.store');
-
     Route::get('/opportunity/edit/{hashid}', 'OpportunityController@edit')->name('opportunity.edit');
     Route::post('/opportunity/edit/{hashid}', 'OpportunityController@update')->name('opportunity.update');
-
     Route::get('/opportunity/renew/{hashid}', 'OpportunityController@renew')->name('opportunity.renew');
-
     Route::get('/opportunity/delete/{hashid}', 'OpportunityController@delete')->name('opportunity.delete');
 });
 

@@ -81,3 +81,60 @@ if(closeButton) {
     alert.parentNode.removeChild(alert);
   });
 }
+
+
+// Prevent form submit on enter
+
+function stopReturnKey(evt) {
+  if (evt.keyCode == 13) {
+    if(evt.target.type == "text" || evt.target.type == "email" || evt.target.type == "password")  {
+      return false;
+    }
+  }
+}
+
+var formsThatDontSubmitOnEnter = document.querySelector('.do-not-submit-on-return');
+if(formsThatDontSubmitOnEnter) {
+  for(var i = 0; i < formsThatDontSubmitOnEnter.length; i++) {
+    formsThatDontSubmitOnEnter[i].onkeydown = stopReturnKey;
+  }
+}
+
+
+var filterHeadings = document.querySelectorAll('.filter-heading');
+if(filterHeadings) {
+  for(var i = 0; i < filterHeadings.length; i++) {
+    filterHeadings[i].addEventListener('click',function(e){
+      if(e.target.nextElementSibling.classList.contains('expanded')) {
+        e.target.nextElementSibling.classList.remove('expanded')
+      }
+      else {
+        var currentPanel = document.querySelector('.expanded');
+        if(currentPanel) currentPanel.classList.remove('expanded');
+        e.target.nextElementSibling.classList.add('expanded');
+      }
+    });
+  }
+}
+
+
+function smoothScroll(distance,duration) {
+  let app = document.querySelector('#app');
+  let i = 0;
+  let frameRate = 16;
+  let frames = duration/16;
+  let distancePerFrame = distance/frames;
+  setInterval(function(){
+    i = i + distancePerFrame;
+    if(i<distance) {
+      app.scroll(0,i);
+    }
+  },frameRate);
+};
+
+let recordButton = document.querySelector('#record-screen');
+if(recordButton) {
+  recordButton.addEventListener('click',function(){
+    smoothScroll(1000,4000);
+  });
+}

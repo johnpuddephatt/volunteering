@@ -1,13 +1,28 @@
 .opportunity-single {
   @extend %box;
   @extend %padded-box;
+  @media screen and (max-width: $large-screen) {
+    padding: $small-spacing 0;
+
+  }
   @media screen and (min-width: $large-screen) {
     width: $card-width;
   }
   margin-top: 2 * $base-spacing;
   &--enquire-button {
-    float: right;
-    margin-top: -$small-spacing;
+    @media screen and (max-width: $large-screen) {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 99;
+    }
+    @media screen and (min-width: $large-screen) {
+      float: right;
+      margin-top: -$small-spacing/2;
+      margin-left: $small-spacing;
+    }
+    display: block;
   }
   &--title {
     font-size: modular-scale(2);
@@ -24,8 +39,10 @@
     margin-bottom: 2 * $base-spacing;
   }
   &--key-features {
-    display: flex;
-    flex-direction: row;
+    @media screen and (min-width: $medium-screen) {
+      display: flex;
+      flex-direction: row;
+    }
     margin-bottom: $base-spacing;
     color: $dark-gray;
     padding-bottom: $base-spacing;
@@ -33,9 +50,14 @@
 
     span {
       flex: 0 1 auto;
-      + span {
-        margin-left: $base-spacing;
+      display: block;
+      @media screen and (min-width: $medium-screen) {
+        display: inline;
+        + span {
+          margin-left: $base-spacing;
+        }
       }
+
     }
   }
   &--hours,

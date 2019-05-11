@@ -1,0 +1,200 @@
+.opportunity-index--wrapper {
+  @media screen and (min-width: $medium-screen) {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.opportunity-index--sidebar {
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 5 * $base-duration linear;
+  @media screen and (min-width: $large-screen) {
+    max-height: none;
+    width: .5 * $card-width;
+  }
+  @extend %box;
+  background-color: transparentize($very-light-blue,.03);
+}
+
+label[for="sidebar-trigger"] {
+  margin-left: auto;
+  display: block;
+  font-size: modular-scale(-1);
+  @media screen and (min-width: $large-screen) {
+    display: none;
+  }
+}
+.opportunity-index--sidebar--trigger {
+  display: none;
+}
+.opportunity-index--sidebar--trigger:checked + .opportunity-index--sidebar {
+  max-height: 100vh;
+}
+
+.filter-section {
+  padding: 0 $base-spacing;
+  transition: opacity 4 * $base-duration, max-height 10 * $base-duration ease 0s;
+  max-height: 0px;
+  opacity: 0;
+  overflow: hidden;
+  &.expanded, &:focus-within {
+    opacity: 1;
+    max-height: 15 * $base-spacing;
+    transition: opacity 4 * $base-duration 5 * $base-duration, max-height 10 * $base-duration ease 5 * $base-duration;
+  }
+  &:last-child {
+    border-bottom: none;
+  }
+  .badge {
+    display: block;
+    margin-bottom: $small-spacing;
+  }
+}
+
+.filter-postcode-form {
+  display: flex;
+  flex-direction: row;
+  margin: $small-spacing 0;
+  input {
+    margin-bottom: 0;
+    &[type="text"] {
+      border-right: none;
+    }
+  }
+}
+
+.filter-heading {
+  display: block;
+  border-top: $base-border;
+  margin-top: -1px;
+  width: 100%;
+  text-align: left;
+  background-color: transparent;
+  color: $base-font-color;
+  -webkit-font-smoothing: subpixel-antialiased;
+  padding: $base-spacing;
+  font-family: $base-font-family;
+  font-size: modular-scale(1);
+  font-weight: 400;
+  outline-offset: -3px !important;
+}
+
+.filter-link {
+  display: block;
+  text-decoration: none;
+  line-height: $base-spacing;
+  padding: $small-spacing 0;
+  &:first-child {
+    margin-top: $small-spacing;
+  }
+  &:last-child {
+    margin-bottom: $small-spacing;
+  }
+
+}
+
+.opportunity-card {
+  border-bottom: $light-border;
+  padding: 2 * $base-spacing 0;
+  &:first-child {
+    border-top: $light-border;
+  }
+}
+
+.opportunity-card--new-badge {
+  float: right;
+  background-color: $green;
+  border-radius: $base-border-radius;
+  color: white;
+  display: inline-block;
+  padding: 0 $small-spacing/2;
+  margin-left: $small-spacing;
+}
+
+.opportunity-card--title {
+  font-size: modular-scale(1);
+  font-weight: 400;
+  margin-bottom: 0;
+  a {
+    text-decoration: none;
+    color: $blue;
+  }
+}
+
+.opportunity-card--organisation {
+  font-size: modular-scale(1);
+  line-height: $heading-line-height;
+}
+
+.opportunity-card--header {
+  margin-bottom: $base-spacing;
+}
+
+.opportunity-card--intro {
+  // color: $dark-gray;
+  line-height: $heading-line-height;
+}
+
+.opportunity-card--footer {
+  // color: $black;
+  color: $dark-gray;
+  // font-size: modular-scale(-1);
+  @media screen and (min-width: $medium-screen) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    line-height: $heading-line-height;
+  }
+
+  margin-top: $base-spacing;
+
+  span {
+    display: inline-block;
+    + span {
+      margin-left: $small-spacing/2;
+    }
+  }
+}
+
+.opportunity-card--footer--left {
+  flex: 1 0 auto;
+  padding-right: $small-spacing;
+}
+
+.opportunity-card--hours,
+.opportunity-card--location,
+.opportunity-card--distance {
+  padding-left: $base-spacing / 1.5;
+  &::before {
+    vertical-align: text-top;
+    content: '';
+    display: inline-block;
+    height: $base-spacing / 1.5;
+    width: $base-spacing / 1.5;
+    margin-left: -$base-spacing / 1.5;
+    margin-right: $small-spacing/3;
+    background-image: url('/images/icons/clock.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right center;
+  }
+}
+
+.opportunity-card--location,
+.opportunity-card--distance {
+  &::before {
+    background-image: url('/images/icons/map-marker.svg');
+  }
+}
+
+.opportunity-card--distance {
+  color: $dark-gray;
+  background-color: $light-gray;
+  border-radius: $base-border-radius;
+  padding: 0 $small-spacing;
+}
+
+.opportunity-card--location + .opportunity-card--distance::before {
+  content: none;
+}
