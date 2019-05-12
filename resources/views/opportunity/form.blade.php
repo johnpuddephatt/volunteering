@@ -44,11 +44,16 @@
 
             <fieldset> <!-- Tags and categories -->
               <h3 class="fieldset-heading">Who it’s for</h3>
-              {!! form_row($form->requirements) !!}
-              {!! form_row($form->skills_needed) !!}
-              {!! form_row($form->skills_gained) !!}
+              <p>These questions help us show people vacancies relevant to them.</p>
               {!! form_row($form->suitabilities) !!}
               {!! form_row($form->accessibilities) !!}
+              {!! form_row($form->requirements) !!}
+            </fieldset>
+
+            <fieldset> <!-- Tags and categories -->
+              <h3 class="fieldset-heading">Skills</h3>
+              {!! form_row($form->skills_needed) !!}
+              {!! form_row($form->skills_gained) !!}
             </fieldset>
           </div>
           <div class="card-footer">

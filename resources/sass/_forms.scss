@@ -128,8 +128,10 @@ select {
 
 .form-group {
   margin-bottom: $base-spacing;
+  clear: both;
   &__half-width {
     width: 47.5%;
+    clear: none;
     float: left;
     overflow: hidden;
     + .form-group__half-width {

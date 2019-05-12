@@ -20,13 +20,16 @@ class OrganisationRegistrationForm extends Form
             ])
             ->add('contact_name', 'text', [
               'wrapper' => ['class' => 'form-group__half-width'],
+              'help_block' => [
+                'text' => 'Your name',
+               ],
             ])
             ->add('email', 'email', [
               'label' => 'Contact email',
               'value' => $_REQUEST['email'] ?? null,
               'wrapper' => ['class' => 'form-group__half-width'],
               'help_block' => [
-                'text' => 'Use this email address to sign in to the site',
+                'text' => 'You’ll use this email address to sign in to the site',
                ]
             ])
             ->add('password', 'password', [
@@ -35,11 +38,14 @@ class OrganisationRegistrationForm extends Form
             ])
             ->add('contact_role', 'text', [
               'wrapper' => ['class' => 'form-group__half-width'],
+              'help_block' => [
+                'text' => 'Your job title.',
+               ],
             ])
             ->add('phone', 'text', [
               'wrapper' => ['class' => 'form-group__half-width'],
               'help_block' => [
-                'text' => 'Optional. Displayed on website if provided.',
+                'text' => 'Optional. Displayed on listings if provided.',
                ],
             ])
             ->add('website', 'text', [

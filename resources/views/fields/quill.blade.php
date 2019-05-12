@@ -9,10 +9,9 @@
 @endif
 
 @if ($showField)
+    <input type="hidden" name="{{ $name }}" id="quill-textarea-{{ $name }}" value="{{ old($name) ?? $options['value'] }}">
 
     <div id="quill-editor-{{ $name }}"></div>
-
-    <input type="hidden" name="{{ $name }}" id="quill-textarea-{{ $name }}" value="{{ old($name) ?? $options['value'] }}">
 
     @if ($options['help_block']['text'] && !$options['is_child'])
         <{!! $options['help_block']['tag'] !!} {!! $options['help_block']['helpBlockAttrs'] !!}>
@@ -21,13 +20,6 @@
     @endif
 
 @endif
-
-@if ($options['help_block']['text'] && !$options['is_child'])
-    <{{$options['help_block']['tag']}} {{$options['help_block']['helpBlockAttrs']}}>
-        {{ $options['help_block']['text'] }}
-    </{{ $options['help_block']['tag'] }}>
-@endif
-
 
 @if($showError && isset($errors) && $errors->hasBag($errorBag))
     @foreach ($errors->getBag($errorBag)->get($nameKey) as $err)
@@ -103,12 +95,22 @@
     {{-- <link href="//cdn.quilljs.com/2.0.0-dev.2/quill.snow.css" rel="stylesheet"> --}}
     <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <style>
+
+      .ql-container {
+        margin-bottom: 1em;
+      }
+
+      .ql-container:focus-within + .help-block {
+        color: #222;
+      }
+
       .ql-editor {
           position: relative;
           min-height: 15em;
           font-size: 1.2em;
           line-height: 1.8;
           background-color: white;
+          margin-bottom: .5em;
       }
       .ql-editor h2 {
         margin-bottom: .75em;

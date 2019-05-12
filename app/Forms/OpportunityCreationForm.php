@@ -19,20 +19,32 @@ class OpportunityCreationForm extends Form
             ->add('title', 'text', [
               'attr' => [
                 'class' => 'input__large'
-              ]
+              ],
+              'help_block' => [
+                'text' => 'Sum up the role. Don’t include your organisation’s name.',
+               ],
             ])
             ->add('intro', 'textarea', [
               'attr' => ['rows' => '5'],
+              'help_block' => [
+                'text' => 'A short line to catch people’s eye and make your opportunity sound appealing. Try starting with “We’re looking for someone...” or “Could you help...”',
+               ],
             ])
             ->add('description', 'quill', [
                 'attr' => [
                     'class' => 'form-group',
                     'id' => 'quill-text-area-' . $this->name
                 ],
+                'help_block' => [
+                  'text' => 'Explain the responsibilities of the role and the difference it will make.',
+                 ],
                 'toolbar' => "[{ header: [1, 2, false] }],['bold', 'italic'],['link'],[{ list: 'ordered' }, { list: 'bullet' }]"
             ])
             ->add('places', 'number', [
               'wrapper' => ['class' => 'form-group__half-width'],
+              'help_block' => [
+                'text' => 'The number of volunteers you’re looking for.'
+               ],
             ])
             ->add('address', 'address', [
                 'country' => '["uk"]',
@@ -51,8 +63,16 @@ class OpportunityCreationForm extends Form
             ->add('from_home', 'checkbox', [
                 'checked' => false
             ])
-            ->add('phone', 'text')
-            ->add('email', 'text')
+            ->add('phone', 'text', [
+              'help_block' => [
+                'text' => 'Displayed publicly on the listing if provided.',
+               ],
+            ])
+            ->add('email', 'text', [
+              'help_block' => [
+                'text' => 'Displayed publicly on the listing if provided.',
+               ],
+            ])
 
             ->add('frequency', 'select', [
                 'choices' => ['one-off' => 'One-off', 'Fixed period' => 'Fixed period', 'Ongoing' => 'Ongoing']
@@ -63,7 +83,11 @@ class OpportunityCreationForm extends Form
             ->add('end_date', 'date', [
               'wrapper' => ['class' => 'form-group__half-width'],
             ])
-            ->add('hours', 'number')
+            ->add('hours', 'number', [
+              'help_block' => [
+                'text' => 'An estimate of the number of hours per week. Will state ‘flexible’ if left blank.',
+              ]
+            ])
 
             ->add('requirements', 'choice', [
                 'choices' => array_combine(config('volunteering.requirements'),config('volunteering.requirements')),
@@ -71,6 +95,9 @@ class OpportunityCreationForm extends Form
                 'multiple' => true,
                 'attr' => [
                     'class' => 'choices-input-amendable'
+                ],
+                'help_block' => [
+                  'text' => 'Choose from the list or add your own, pressing enter to add it to the list.'
                 ]
             ])
             ->add('skills_needed', 'choice', [
@@ -79,6 +106,9 @@ class OpportunityCreationForm extends Form
                 'multiple' => true,
                 'attr' => [
                     'class' => 'choices-input-amendable'
+                ],
+                'help_block' => [
+                  'text' => 'Choose from the list or add your own, pressing enter to add it to the list.'
                 ]
             ])
             ->add('skills_gained', 'choice', [
@@ -87,6 +117,9 @@ class OpportunityCreationForm extends Form
                 'multiple' => true,
                 'attr' => [
                     'class' => 'choices-input-amendable'
+                ],
+                'help_block' => [
+                  'text' => 'Choose from the list or add your own, pressing enter to add it to the list.'
                 ]
             ])
             ->add('categories', 'entity', [
@@ -96,7 +129,10 @@ class OpportunityCreationForm extends Form
                 'multiple' => true,
                 'attr' => [
                     'class' => 'choices-input-fixed'
-                ]
+                ],
+                'help_block' => [
+                  'text' => 'Choose at least one category.',
+                 ],
              ])
             ->add('suitabilities', 'entity', [
                 'class' => 'App\Models\Suitability',
@@ -105,6 +141,9 @@ class OpportunityCreationForm extends Form
                 'multiple' => true,
                 'attr' => [
                     'class' => 'choices-input-fixed'
+                ],
+                'help_block' => [
+                  'text' => 'Choose from the list.'
                 ]
             ])
             ->add('accessibilities', 'entity', [
@@ -112,8 +151,12 @@ class OpportunityCreationForm extends Form
                 'property' => 'label',
                 'expanded' => false,
                 'multiple' => true,
+                'label' => 'Accessibility features',
                 'attr' => [
                     'class' => 'choices-input-fixed'
+                ],
+                'help_block' => [
+                  'text' => 'Choose from the list.'
                 ]
             ])
             ->add('submit', 'submit', [
