@@ -1,5 +1,8 @@
 require('intersection-observer');
+window.smoothScroll = require('./smoothscroll.min');
+
 // require('./bootstrap');
+require('./scroller');
 
 
 // const geoLocationButton = document.querySelector('.geolocation-button');

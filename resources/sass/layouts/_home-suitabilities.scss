@@ -25,7 +25,7 @@
 .home-suitability {
   flex: 0 0 75%;
   @media screen and (min-width: $large-screen) {
-    flex: 0 1 33%;
+    flex: 0 0 calc(33.333% - #{.6667 * $base-spacing});
   }
 
   text-decoration: none;
@@ -53,7 +53,29 @@
     color: $yellow;
   }
 
-  &:nth-child(2) {
+  &:nth-child(4n - 3) {
+    background-color: $pink;
+    color: $dark-green;
+    &:hover {
+      color: $dark-green;
+    }
+    svg path {
+      fill: $pink;
+    }
+  }
+
+  &:nth-child(4n - 2) {
+    background-color: $yellow;
+    color: $green;
+    &:hover {
+      color: $green;
+    }
+    svg path {
+      fill: $yellow;
+    }
+  }
+
+  &:nth-child(4n - 1) {
     background-color: $blue;
     color: $light-blue;
     &:hover {
@@ -63,16 +85,7 @@
       fill: $blue;
     }
   }
-  &:nth-child(3) {
-    background-color: $pink;
-    color: $green;
-    &:hover {
-      color: $green;
-    }
-    svg path {
-      fill: $pink;
-    }
-  }
+
 }
 
 .home-suitability--image {

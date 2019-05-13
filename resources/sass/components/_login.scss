@@ -48,7 +48,7 @@
 
 .login-form {
   overflow-y: auto;
-  @extend %padded-box;
+  @extend %heavily-padded-box;
   &__inner {
     max-width: $max-width/2;
   }
@@ -97,4 +97,7 @@
 
 .verification-item {
   margin: $base-spacing 0 2 * $base-spacing;
+  &:last-child {
+    margin-bottom: 0;
+  }
 }

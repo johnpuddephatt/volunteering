@@ -21,12 +21,13 @@ Route::post('/register', 'Auth\RegisterController@register')->name('register');
 
 Route::get('/', 'HomeController@index')->name('home');
 
-
+Route::group(['middleware' => ['auth']], function () {
+  Route::get('/account', 'OrganisationController@account')->name('organisation.account');
+  Route::post('/account', 'OrganisationController@update')->name('organisation.update');
+});
 
 Route::group(['middleware' => ['auth','verified','activated']], function () {
     Route::get('/dashboard', 'OrganisationController@dashboard')->name('organisation.dashboard');
-    Route::get('/account', 'OrganisationController@account')->name('organisation.account');
-    Route::post('/account', 'OrganisationController@update')->name('organisation.update');
 
     Route::get('/opportunity/create', 'OpportunityController@new')->name('opportunity.new');
     Route::post('/opportunity/create', 'OpportunityController@store')->name('opportunity.store');

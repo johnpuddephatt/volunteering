@@ -18,7 +18,8 @@
     vertical-align: middle;
     outline-offset: -3px !important;
     padding: 0;
-    margin: (-$small-spacing) (-$small-spacing) (-$small-spacing) 0;
+    float: right;
+    margin: (-$small-spacing/2) (-$small-spacing) (-$small-spacing) $small-spacing/2;
     width: 1.5 * $base-spacing;
     height: 1.5 * $base-spacing;
     text-indent: -9999px;

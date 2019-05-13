@@ -8,14 +8,14 @@ class SuitabilitiesTableSeeder extends Seeder
         DB::table('suitabilities')->delete();
 
         $data = array(
-            array('label' => 'First-time volunteers', 'slug' => 'first-time'),
-            array('label' => 'People who are shy', 'slug' => 'shy'),
-            array('label' => 'Under-18s', 'slug' => 'under-18s'),
-            array('label' => 'People with limited mobility', 'slug' => 'limited-mobility'),
-            array('label' => 'Friends volunteering together', 'slug' => 'friends'),
-            array('label' => 'People seeking work', 'slug' => 'seeking-work'),
-            array('label' => 'Older people', 'slug' => 'older-people'),
-            array('label' => 'People who like being outdoors', 'slug' => 'outdoors'),
+            array('label' => 'People new to volunteering', 'slug' => 'first-time', 'image' => 'images/seeding/suitabilities/first-time.jpg'),
+            array('label' => 'People who are shy', 'slug' => 'shy', 'image' => 'images/seeding/suitabilities/nervous-shy.jpg'),
+            array('label' => 'People under 18', 'slug' => 'under-18s', 'image' => 'images/seeding/suitabilities/under-18s.jpg'),
+            array('label' => 'People with limited mobility', 'slug' => 'limited-mobility', 'image' => 'images/seeding/suitabilities/limited-mobility.jpg'),
+            array('label' => 'People volunteering together', 'slug' => 'friends', 'image' => 'images/seeding/suitabilities/friends-together.jpg'),
+            array('label' => 'People seeking work', 'slug' => 'seeking-work', 'image' => 'images/seeding/suitabilities/seeking-work.jpg'),
+            array('label' => 'People who are older', 'slug' => 'older-people', 'image' => 'images/seeding/suitabilities/older-people.jpg'),
+            array('label' => 'People who like being outdoors', 'slug' => 'outdoors', 'image' => 'images/seeding/suitabilities/outdoors.jpg'),
         );
 
         DB::table('suitabilities')->insert($data);

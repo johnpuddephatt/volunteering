@@ -29,7 +29,8 @@ main {
   &.background__opportunity-index,
   &.background__opportunity-single,
   &.background__enquiry-form,
-  &.background__auth-verify {
+  &.background__auth-verify,
+  &.background__organisation-profile {
     @media screen and (min-width: $large-screen) {
       transform-style: preserve-3d;
     }
@@ -54,8 +55,8 @@ main {
   &.background__home {
     &::after {
       background-image: url('/images/pattern.svg'), url('/images/pattern2.svg');
-      background-position: (-2 * $base-spacing) (-20 * $base-spacing), right (-2 * $base-spacing) bottom (0 * $base-spacing);
-      background-size: 25 * $base-spacing, 20 * $base-spacing;
+      background-position: 7 * $base-spacing (-6 * $base-spacing), right (-2 * $base-spacing) bottom 0;
+      background-size: 12 * $base-spacing, 10 * $base-spacing;
       @media screen and (min-width: $medium-screen) {
         background-image: url('/images/large-pattern.svg'), url('/images/pattern2.svg');
         background-position: (-2 * $base-spacing) 38vmax, right (-2 * $base-spacing) bottom (0 * $base-spacing);
@@ -84,6 +85,7 @@ main {
     }
     &.background__organisation-dashboard,
     &.background__auth-verify,
+    &.background__organisation-profile,
     &.background__opportunity-single,
     &.background__enquiry-form {
       &::after {

@@ -30,10 +30,15 @@
       }
     }
   }
-  &__home, &__auth-login, &__auth-register {
+  &__home {
     background-color: transparent;
-    color: $blue;
-
+    color: $blue
+  }
+  &__auth-login, &__auth-register {
+    @media screen and (min-width: $large-screen) {
+      background-color: transparent;
+      color: $blue;
+    }
   }
   &__home {
     a:not(.button) {
