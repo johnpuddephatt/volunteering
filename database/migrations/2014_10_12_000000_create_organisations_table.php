@@ -22,7 +22,7 @@ class CreateOrganisationsTable extends Migration
             $table->timestamp('last_login')->nullable();
             $table->boolean('active')->default(false);
 
-            $table->string('email')->unique();
+            $table->string('email',150)->unique();
             $table->string('password');
             $table->string('name');
             $table->string('contact_name');
