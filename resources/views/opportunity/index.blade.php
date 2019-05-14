@@ -72,7 +72,7 @@
       <h2 class="card-title">Opportunities</h2>
 
       @if( $filters != new stdClass() )
-        <span>Showing {{ $opportunities->total() }} of {{ $total_opportunities }} opportunities</span>
+        {{-- <span>Showing {{ $opportunities->total() }} of {{ $total_opportunities }} opportunities</span> --}}
       @else
         Viewing all {{ $total_opportunities }} opportunities
       @endif
@@ -143,7 +143,7 @@
     @endforelse
   </div>
   <div class="card-footer">
-    {{ $opportunities->links() }}
+    {{-- {{ $opportunities->links() }} --}}
   </div>
 </div>
 </div>

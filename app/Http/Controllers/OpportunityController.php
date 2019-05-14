@@ -50,7 +50,7 @@ class OpportunityController extends Controller
 
         $request->session()->flash('status', 'Opportunity created successfully!');
 
-        return redirect()->route('dashboard');
+        return redirect()->route('organisation.dashboard');
     }
 
     public function new(FormBuilder $formBuilder)
@@ -154,7 +154,8 @@ class OpportunityController extends Controller
       if(Input::get('location')) {
         $location_slug = Input::get('location',false);
         $location = Location::where('slug', $location_slug)->first();
-        $query = $query->distance($location->address['latlng']['lat'], $location->address['latlng']['lng'])->having('distance', '>', 0)->orderBy('distance', 'ASC');
+        $query = $query->distance($location->address['latlng']['lat'], $location->address['latlng']['lng']);
+        // ->having('distance', '>', 0)->orderBy('distance', 'ASC');
         $filters->location = $location->label;
       }
 
@@ -180,7 +181,6 @@ class OpportunityController extends Controller
 
       $query->orderBy('validated_at','desc');
       $opportunities = $query->paginate(config('volunteering.opportunities_per_page'));
-
       $categories = Category::has('opportunities')->withCount('opportunities')->get();
       $suitabilities = Suitability::has('opportunities')->withCount('opportunities')->get();
       $locations = Location::all();
