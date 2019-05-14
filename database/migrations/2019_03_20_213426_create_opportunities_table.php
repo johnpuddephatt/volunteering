@@ -35,12 +35,12 @@ class CreateOpportunitiesTable extends Migration
             $table->integer('minimum_age')->nullable();
             $table->text('expenses')->nullable();
             $table->text('requirements')->nullable();
-            $table->json('skills_needed');
-            $table->json('skills_gained');
+            $table->jsonb('skills_needed')->nullable();
+            $table->jsonb('skills_gained')->nullable();
 
             // Location
-            $table->boolean('from_home');
-            $table->json('address');
+            $table->boolean('from_home')->default(false);
+            $table->jsonb('address')->nullable();
             $table->text('address_ward')->nullable();
             $table->double('longitude')->nullable();
             $table->double('latitude')->nullable();
