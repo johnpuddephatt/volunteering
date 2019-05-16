@@ -41,8 +41,10 @@ main {
       z-index: -999;
       top: 0;
       bottom: -50vh;
+      height: 150vh;
       left: 0;
       right: 0;
+      width: 100%;
       background-repeat: no-repeat;
       @media screen and(min-width: $medium-screen) {
         will-change: transform;
@@ -73,6 +75,7 @@ main {
       z-index: -99;
       top: 0;
       height: 50%;
+      width: 100%;
       left: 0;
       right: 0;
     }
