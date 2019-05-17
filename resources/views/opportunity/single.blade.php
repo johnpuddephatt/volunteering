@@ -18,7 +18,9 @@
 
       <div class="opportunity-single--description">{!! $opportunity->description !!}</div>
 
-      <div class="opportunity-single--deadline">Deadline: {{ date("D jS F", strtotime($opportunity->deadline)) }}</div>
+      @if($opportunity->deadline)
+        <div class="opportunity-single--deadline">Deadline: {{ date("D jS F", strtotime($opportunity->deadline)) }}</div>
+      @endif
 
       <div class="opportunity-single--other-features">
 
