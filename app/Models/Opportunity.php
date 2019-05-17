@@ -84,6 +84,11 @@ class Opportunity extends Model
 
      static::saved(function(){
        \Cache::clear('opportunity_count');
+       \Cache::clear('index_suitabilities');
+       \Cache::clear('index_categories');
+       \Cache::clear('index_organisations');
+       \Cache::clear('home_categories');
+       \Cache::clear('home_suitabilities');
      });
 
 
