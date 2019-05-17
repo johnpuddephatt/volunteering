@@ -56,5 +56,8 @@
   &--email::before {
     background-image: url('/images/icons/email.svg');
   }
+  &--email {
+    margin-bottom: $base-spacing;
+  }
 
 }

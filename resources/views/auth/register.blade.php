@@ -30,6 +30,9 @@
           {!! form_row($form->contact_name) !!}
           {!! form_row($form->contact_role) !!}
         </fieldset>
+        <div class="alert alert__info">
+          By clicking register below you are agreeing to adhere to our <a href="/terms/">terms and conditions</a>. Breaching these terms may result in account temporary or permanent suspension of your account.
+        </div>
         {!! form_row($form->submit) !!}
       </div>
     {!! form_end($form, false) !!}

@@ -19,6 +19,7 @@
               {!! form_row($form->places) !!}
               {!! form_row($form->minimum_age) !!}
               {!! form_row($form->expenses) !!}
+              {!! form_row($form->deadline) !!}
             </fieldset>
 
             <fieldset> <!--Location-->
@@ -39,7 +40,6 @@
               {!! form_row($form->start_date) !!}
               {!! form_row($form->end_date) !!}
               {!! form_row($form->hours) !!}
-
             </fieldset>
 
             <fieldset> <!-- Tags and categories -->
@@ -55,6 +55,10 @@
               {!! form_row($form->skills_needed) !!}
               {!! form_row($form->skills_gained) !!}
             </fieldset>
+
+            <div class="alert alert__info">
+              Opportunities must adhere to our <a href="/terms/">terms and conditions</a>. Anything considered in breach of these terms may be removed without warning.
+            </div>
           </div>
           <div class="card-footer">
             {!! form_row($form->submit) !!}
@@ -66,4 +70,27 @@
 
 @push('scripts')
 <script src="/js/choices.js"></script>
+<script>
+  const fromHomeInput = document.querySelector('#from_home');
+  const addressInput =  document.querySelector('input[data-google-address]');
+  const addressOutput =  document.querySelector('input[name="address"]');
+  fromHomeInput.addEventListener('change', function(){
+    hideAddressfield(fromHomeInput);
+  });
+
+  document.addEventListener('DOMContentLoaded', function(){
+    hideAddressfield(fromHomeInput);
+  });
+
+  function hideAddressfield(checkbox) {
+    if(checkbox.checked) {
+      addressInput.value = '';
+      addressOutput.value = '';
+      addressInput.parentNode.style.display = 'none';
+    }
+    else {
+      addressInput.parentNode.style.display = 'block';
+    }
+  }
+</script>
 @endpush

@@ -27,8 +27,8 @@ class EnquiryCreationForm extends Form
 
         $this
             ->add('name', 'text')
-            ->add('phone', 'text')
             ->add('email', 'text')
+            ->add('phone', 'text')
             ->add('message', 'textarea', [
               'attr' => ['rows' => '5'],
             ])

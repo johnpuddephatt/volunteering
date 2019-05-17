@@ -242,6 +242,21 @@ class OpportunityCrudController extends CrudController
             'tab' => 'Times'
         ];
 
+        $deadlineHeading = [   // CustomHTML
+            'name' => 'deadlineHeading',
+            'type' => 'custom_html',
+            'value' => '<h4>Deadline</h4>',
+            'tab' => 'Times'
+        ];
+        $deadlineFieldArray = [
+            'name' => 'deadline', // a unique name for this field
+            'label' => 'Deadline',
+            'type' => 'date',
+            'tab' => 'Times'
+        ];
+
+
+
         // Categorisation tab
 
 
@@ -329,7 +344,7 @@ class OpportunityCrudController extends CrudController
             }
         ];
 
-        $this->crud->addFields([$titleArray, $introFieldArray, $descriptionArray, $expensesFieldArray, $placesArray, $statusHeading, $activeFieldArray, $renewFieldArray, $organisationFieldArray, $locationHeading, $addressFieldArray, $contactHeading, $emailFieldArray, $phoneFieldArray, $fromHomeFieldArray, $hoursHeading, $frequencyFieldArray, $hoursFieldArray, $dateHeading, $startDateFieldArray, $endDateFieldArray, $categoriesFieldArray, $skillsNeededFieldArray, $skillsGainedFieldArray, $requirementsFieldArray, $suitabilitiesFieldArray, $accessibilityFieldArray]);
+        $this->crud->addFields([$titleArray, $introFieldArray, $descriptionArray, $expensesFieldArray, $placesArray, $statusHeading, $activeFieldArray, $renewFieldArray, $organisationFieldArray, $locationHeading, $addressFieldArray, $contactHeading, $emailFieldArray, $phoneFieldArray, $fromHomeFieldArray, $hoursHeading, $frequencyFieldArray, $hoursFieldArray, $dateHeading, $startDateFieldArray, $endDateFieldArray, $deadlineHeading, $deadlineFieldArray, $categoriesFieldArray, $skillsNeededFieldArray, $skillsGainedFieldArray, $requirementsFieldArray, $suitabilitiesFieldArray, $accessibilityFieldArray]);
         $this->crud->addColumns([$organisationColumnArray, $titleArray, $expiryColumnArray]);
 
         $this->crud->addButtonFromView('line', 'renew', 'renew', 'beginning');

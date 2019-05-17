@@ -16,6 +16,7 @@ class SuitabilitiesTableSeeder extends Seeder
             array('label' => 'People seeking work', 'slug' => 'seeking-work', 'image' => 'images/seeding/suitabilities/seeking-work.jpg'),
             array('label' => 'People who are older', 'slug' => 'older-people', 'image' => 'images/seeding/suitabilities/older-people.jpg'),
             array('label' => 'People who like being outdoors', 'slug' => 'outdoors', 'image' => 'images/seeding/suitabilities/outdoors.jpg'),
+            array('label' => 'People working on their wellbeing', 'slug' => 'wellbeing', 'image' => 'images/seeding/suitabilities/mental-wellbeing.jpg'),
         );
 
         DB::table('suitabilities')->insert($data);

@@ -1,7 +1,9 @@
 .opportunity-index--wrapper {
+  width: 100%;
   @media screen and (min-width: $large-screen) {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     .card {
       flex: 0 1 $card-width;
     }
@@ -12,20 +14,35 @@
   max-height: 0px;
   overflow: hidden;
   transition: max-height 5 * $base-duration linear;
+  position: fixed;
+  bottom: 2 * $base-spacing;
+  left: 0;
+  right: 0;
+  z-index: 99999;
+  background-color: #fff;
   @media screen and (min-width: $large-screen) {
+    position: static;
     max-height: none;
     width: .35 * $card-width;
     flex: 0 1 .35 * $card-width;
+    background-color: transparentize(#fff, .1);
   }
   @extend %box;
-  background-color: transparentize(#fff, .1);
   border-right: $light-border;
 
 }
 
 label[for="sidebar-trigger"] {
-  margin-left: auto;
-  float: right;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-bottom: 0;
+  background-color: white;
+  border-top: $light-border;
+  z-index: 9999;
+  color: $base-font-color;
+  font-weight: 400;
   @media screen and (min-width: $large-screen) {
     display: none;
   }
@@ -35,6 +52,8 @@ label[for="sidebar-trigger"] {
 }
 .opportunity-index--sidebar--trigger:checked + .opportunity-index--sidebar {
   max-height: 100vh;
+  border-top: $light-border;
+
 }
 
 .filter-section {
@@ -46,6 +65,7 @@ label[for="sidebar-trigger"] {
   &.expanded, &:focus-within {
     opacity: 1;
     max-height: 15 * $base-spacing;
+    overflow-y: auto;
     transition: opacity 4 * $base-duration 5 * $base-duration, max-height 10 * $base-duration ease 5 * $base-duration;
   }
   &:last-child {

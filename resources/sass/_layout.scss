@@ -35,13 +35,14 @@ main {
       transform-style: preserve-3d;
     }
     &::after {
+      display: block;
       content: '';
       pointer-events: none;
       position: absolute;
       z-index: -999;
       top: 0;
       bottom: -50vh;
-      height: 150vh;
+      min-height: 100%;
       left: 0;
       right: 0;
       width: 100%;
@@ -62,6 +63,7 @@ main {
       @media screen and (min-width: $medium-screen) {
         background-image: url('/images/large-pattern.svg'), url('/images/pattern2.svg');
         background-position: (-2 * $base-spacing) 38vmax, right (-2 * $base-spacing) bottom (0 * $base-spacing);
+        // background-size: 20 * $base-spacing; // IE11
         background-size: 57.5vmax, 20 * $base-spacing;
         z-index: 9;
       }

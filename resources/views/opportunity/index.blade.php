@@ -33,7 +33,7 @@
           <a class="filter-link" href="{{ Request()->fullUrlWithQuery(['location' => $location->slug ]) }}">{{ $location->label }}</a>
         @endforeach
       @endif
-    </div>
+      </div>
 
       <button class="filter-heading">Categories
         <svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false" style="height: 1em; width: 1em; display: block; fill: currentcolor;"><path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" fill-rule="evenodd"></path></svg>
@@ -48,7 +48,23 @@
           <a class="filter-link" href="{{ Request()->fullUrlWithQuery(['category' => $category->slug ]) }}">{{ $category->label }} ({{ $category->opportunities_count }})</a>
         @endforeach
       @endif
-    </div>
+      </div>
+
+      <button class="filter-heading">Organisation
+        <svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false" style="height: 1em; width: 1em; display: block; fill: currentcolor;"><path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" fill-rule="evenodd"></path></svg>
+      </button>
+      <div tabindex="-1" class="filter-section">
+      @if (!empty($filters->organisation))
+        <span class="badge">{{ $filters->organisation }}
+            <a class="button" href="?{{ http_build_query(Request()->except('organisation')) }}">Clear <svg xmlns="http://www.w3.org/2000/svg" width="6.2" height="6.3" viewBox="0 0 6.2 6.3"><path fill="#fff" d="M.7 0l2.4 2.5L5.5 0l.7.7-2.4 2.5 2.4 2.5-.7.6-2.4-2.5L.7 6.3 0 5.6l2.4-2.5L0 .7.7 0z"/></svg></a>
+        </span>
+      @else
+        @foreach($organisations as $organisation)
+          <a class="filter-link" href="{{ Request()->fullUrlWithQuery(['organisation' => $organisation->slug ]) }}">{{ $organisation->name }} ({{ $organisation->opportunities_count }})</a>
+        @endforeach
+      @endif
+      </div>
+
       <button class="filter-heading">Suitable for
         <svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false" style="height: 1em; width: 1em; display: block; fill: currentcolor;"><path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" fill-rule="evenodd"></path></svg>
       </button>
@@ -72,7 +88,7 @@
       <h2 class="card-title">Opportunities</h2>
 
       @if( $filters != new stdClass() )
-        {{-- <span>Showing {{ $opportunities->total() }} of {{ $total_opportunities }} opportunities</span> --}}
+        <span>Showing {{ $opportunities->total() }} of {{ $total_opportunities }} opportunities</span>
       @else
         Viewing all {{ $total_opportunities }} opportunities
       @endif
@@ -102,6 +118,11 @@
           @if (!empty($filters->suitability))
             <span class="badge">{{ $filters->suitability }}
                 <a class="button" href="?{{ http_build_query(Arr::except(Request()->all(), ['suitability'])) }}">Clear <svg xmlns="http://www.w3.org/2000/svg" width="6.2" height="6.3" viewBox="0 0 6.2 6.3"><path fill="#fff" d="M.7 0l2.4 2.5L5.5 0l.7.7-2.4 2.5 2.4 2.5-.7.6-2.4-2.5L.7 6.3 0 5.6l2.4-2.5L0 .7.7 0z"/></svg></a>
+            </span>
+          @endif
+          @if (!empty($filters->organisation))
+            <span class="badge">{{ $filters->organisation }}
+                <a class="button" href="?{{ http_build_query(Arr::except(Request()->all(), ['organisation'])) }}">Clear <svg xmlns="http://www.w3.org/2000/svg" width="6.2" height="6.3" viewBox="0 0 6.2 6.3"><path fill="#fff" d="M.7 0l2.4 2.5L5.5 0l.7.7-2.4 2.5 2.4 2.5-.7.6-2.4-2.5L.7 6.3 0 5.6l2.4-2.5L0 .7.7 0z"/></svg></a>
             </span>
           @endif
 
@@ -144,6 +165,7 @@
   </div>
   <div class="card-footer">
     {{-- {{ $opportunities->links() }} --}}
+    {{ $opportunities->appends(request()->input())->links() }}
   </div>
 </div>
 </div>

@@ -46,7 +46,9 @@ class FrontOpportunityRequest extends FormRequest
             'frequency' => 'nullable',
             'hours' => 'nullable',
             'start_date' => 'nullable',
-            'end_date' => 'nullable'
+            'end_date' => 'nullable',
+            'deadline' => 'nullable'
+
         ];
     }
 

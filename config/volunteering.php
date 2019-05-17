@@ -2,7 +2,8 @@
 
 return [
 
-    'opportunities_per_page' => 5,
+    'opportunities_per_page' => 2,
+    'opportunity_valid_for' => 30,
     'max_distance' => 10,
     'max_days_for_new' => 7,
     'skills' => [

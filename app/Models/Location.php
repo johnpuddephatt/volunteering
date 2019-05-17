@@ -37,6 +37,12 @@ class Location extends Model
       static::saving(function($model) {
         $model->slug = str_slug($model->label);
       });
+
+      static::saved(function(){
+        \Cache::clear('home_locations');
+        \Cache::clear('index_locations');
+      });
+
     }
     /*
     |--------------------------------------------------------------------------

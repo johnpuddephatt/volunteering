@@ -66,6 +66,10 @@
           opacity: 0;
         }
 
+        .cr-viewport.cr-vp-square {
+          border-radius: 50%;
+        }
+
         .croppie-wrapper [type="file"]:focus + button {
           outline: 3px solid #2763c399;
           outline-offset: 2px;

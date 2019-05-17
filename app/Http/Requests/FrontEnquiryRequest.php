@@ -25,13 +25,14 @@ class FrontEnquiryRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'opportunity_id' => 'required|integer',
-            'name' => 'required|max:100',
-            'email' => 'required|email|max:100',
-            'phone' => 'nullable|max:100',
-            'message' => 'max:500'
+        $rules =  [
+          'opportunity_id' => 'required|integer',
+          'name' => 'required|max:100',
+          'email' => 'nullable|email|max:100',
+          'phone' => 'required_without:email|max:100',
+          'message' => 'required|max:500'
         ];
+        return $rules;
     }
 
     /**
@@ -57,7 +58,9 @@ class FrontEnquiryRequest extends FormRequest
     public function messages()
     {
         return [
-            //
+            'phone.required_without' => 'You must provide either an email address or phone number',
+            'name.required' => 'You must provide your name',
+            'message.required' => 'You must enter a message',
         ];
     }
 }

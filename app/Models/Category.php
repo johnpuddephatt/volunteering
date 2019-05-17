@@ -28,7 +28,15 @@ class Category extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
+    protected static function boot()
+    {
+      parent::boot();
 
+      static::saved(function(){
+        \Cache::clear('home_categories');
+        \Cache::clear('index_categories');
+      });
+    }
     /*
     |--------------------------------------------------------------------------
     | RELATIONS

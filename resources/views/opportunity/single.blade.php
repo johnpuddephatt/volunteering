@@ -12,13 +12,13 @@
         <span class="opportunity-single--hours">{{ $opportunity->hours ? $opportunity->hours . ' hrs / week' : 'Flexible hours' }}</span>
         <span class="opportunity-single--dates">{{ $opportunity->date_range() }}</span>
         @if($opportunity->address_ward && isset($opportunity->address['value']))
-          <span class="opportunity-single--location">{{ $opportunity->address_ward }} <a target="_blank" href="https://maps.google.com/?q={{ urlencode($opportunity->address['value']) }}">view on map</a></span>
+          <span class="opportunity-single--location">{{ $opportunity->address_ward }} <a target="_blank" href="https://maps.google.com/?q={{ urlencode($opportunity->address['value']) }}">view map</a></span>
         @endif
       </div>
 
       <div class="opportunity-single--description">{!! $opportunity->description !!}</div>
 
-
+      <div class="opportunity-single--deadline">Deadline: {{ date("D jS F", strtotime($opportunity->deadline)) }}</div>
 
       <div class="opportunity-single--other-features">
 
@@ -91,6 +91,7 @@
       @if($opportunity->organisation->email)
         <div class="opportunity-sidebar--email"><a href="mailto:{{ $opportunity->organisation->email }}">{{ $opportunity->organisation->email }}</a></div>
       @endif
+      <a href="{{ route('opportunity.index') }}?{{ http_build_query(['organisation' => $opportunity->organisation->slug]) }}">View more from this organisation</a>
     </div>
 </div>
 @endsection

@@ -50,6 +50,7 @@ class CreateOpportunitiesTable extends Migration
             $table->string('email')->nullable();
 
             // Timing
+            $table->date('deadline')->nullable();
             $table->string('frequency')->nullable();
             $table->integer('hours')->nullable();
             $table->date('start_date')->nullable();

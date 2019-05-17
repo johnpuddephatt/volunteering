@@ -60,9 +60,7 @@ class OpportunityCreationForm extends Form
               'text' => 'Provide information about what expenses you will cover.',
              ],
             ])
-            ->add('from_home', 'checkbox', [
-                'checked' => false
-            ])
+            ->add('from_home', 'checkbox')
             ->add('phone', 'text', [
               'help_block' => [
                 'text' => 'Displayed publicly on the listing if provided.',
@@ -83,6 +81,7 @@ class OpportunityCreationForm extends Form
             ->add('end_date', 'date', [
               'wrapper' => ['class' => 'form-group__half-width'],
             ])
+            ->add('deadline', 'date')
             ->add('hours', 'number', [
               'help_block' => [
                 'text' => 'An estimate of the number of hours per week. Will state ‘flexible’ if left blank.',

@@ -17,6 +17,7 @@ class OrganisationsTableSeeder extends Seeder
 
         DB::table('organisations')->insert([
           'name' => 'St George’s Community Centre',
+          'slug' => 'st-georges-community-centre',
           'email' => 'info@stgeorgeslupset.org.uk',
           'password' => Hash::make('password'),
           'email_verified_at' => now(),
@@ -32,6 +33,7 @@ class OrganisationsTableSeeder extends Seeder
 
         DB::table('organisations')->insert([
           'name' => 'Elliot’s Footprint',
+          'slug' => 'elliots-footprint',
           'email' => 'volunteer@elliotsfootprint.org',
           'password' => Hash::make('password'),
           'email_verified_at' => now(),

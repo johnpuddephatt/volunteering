@@ -28,7 +28,15 @@ class Suitability extends Model
     | FUNCTIONS
     |--------------------------------------------------------------------------
     */
+    protected static function boot()
+    {
+      parent::boot();
 
+      static::saved(function(){
+        \Cache::clear('home_suitabilities');
+        \Cache::clear('index_suitabilities');
+      });
+    }
     /*
     |--------------------------------------------------------------------------
     | RELATIONS

@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Backpack\CRUD\CrudTrait;
 use Mail;
+
 use App\Models\Admin;
 use App\Mail\NewOrganisationNotification;
 use App\Mail\OrganisationActivationNotification;
@@ -24,7 +25,7 @@ class Organisation extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'user_id','name','contact_name', 'contact_role', 'email', 'password', 'phone', 'info', 'website', 'logo', 'photo', 'active'
+        'user_id','name','slug','contact_name', 'contact_role', 'email', 'password', 'phone', 'info', 'website', 'logo', 'photo', 'active'
     ];
 
     /**
@@ -45,6 +46,8 @@ class Organisation extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+
+
     /*
     |--------------------------------------------------------------------------
     | RELATIONS
@@ -58,9 +61,20 @@ class Organisation extends Authenticatable implements MustVerifyEmail
 
     /*
     |--------------------------------------------------------------------------
-    | RELATIONS
+    | FUNCTIONS
     |--------------------------------------------------------------------------
     */
+
+    protected static function boot()
+    {
+      parent::boot();
+      static::saving(function($model) {
+        $model->slug = str_slug($model->name);
+      });
+      static::saved(function(){
+        \Cache::clear('index_organisations');
+      });
+    }
 
     public function setLogoAttribute($value)
     {

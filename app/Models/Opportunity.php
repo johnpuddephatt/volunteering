@@ -30,7 +30,7 @@ class Opportunity extends Model
     // public $timestamps = false;
     // protected $guarded = ['id'];
     protected $fillable = [
-        'organisation_id','active', 'title', 'slug', 'intro', 'description', 'expenses', 'places', 'minimum_age', 'skills_gained', 'requirements', 'skills_needed', 'from_home', 'address', 'address_ward', 'latitude', 'longitude', 'phone', 'email', 'frequency', 'hours', 'start_date', 'end_date'
+        'organisation_id','active', 'title', 'slug', 'intro', 'description', 'expenses', 'places', 'minimum_age', 'skills_gained', 'requirements', 'skills_needed', 'from_home', 'address', 'address_ward', 'latitude', 'longitude', 'phone', 'email', 'frequency', 'hours', 'start_date', 'end_date', 'deadline'
     ];
     protected $with = ['organisation','categories','accessibilities','suitabilities'];
     // protected $hidden = [];
@@ -60,11 +60,12 @@ class Opportunity extends Model
     {
       parent::boot();
       static::addGlobalScope('active', function (Builder $builder) {
-        $builder->where('validated_at', '>=', Carbon::now()->subDays(30));
+        $builder->where('validated_at', '>=', Carbon::now()->subDays(config('volunteering.opportunity_valid_for')));
       });
 
       static::saving(function($model) {
         $model->slug = str_slug($model->title);
+
         if($model->address) {
           $dirty_address = $model->address;
 
@@ -79,7 +80,12 @@ class Opportunity extends Model
           }
         }
 
-      });
+     });
+
+     static::saved(function(){
+       \Cache::clear('opportunity_count');
+     });
+
 
     }
 

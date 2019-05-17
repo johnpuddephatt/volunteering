@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
 use App\Http\Requests\FrontOpportunityRequest;
 
+use App\Models\Organisation;
 use App\Models\Opportunity;
 use App\Models\Category;
 use App\Models\Location;
 use App\Models\Suitability;
 
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Auth;
@@ -84,7 +86,7 @@ class OpportunityController extends Controller
       $opportunity->syncRelations($validated);
       $request->session()->flash('success', 'Opportunity updated!');
 
-      return redirect()->route('dashboard');
+      return redirect()->route('organisation.dashboard');
     }
 
 
@@ -159,6 +161,15 @@ class OpportunityController extends Controller
         $filters->location = $location->label;
       }
 
+      if(Input::get('organisation')) {
+        $organisation_slug = Input::get('organisation',false);
+        $organisation = organisation::where('slug', $organisation_slug)->first();
+        $query = $query->whereHas('organisation', function ($query) use ($organisation_slug)  {
+            $query->where('slug', $organisation_slug);
+        });
+        $filters->organisation = $organisation->name;
+      }
+
       if(Input::get('category')) {
         $category_slug = Input::get('category',false);
         $category = Category::where('slug', $category_slug)->first();
@@ -179,20 +190,25 @@ class OpportunityController extends Controller
         $filters->suitability = $suitability->label;
       }
 
-      $query->orderBy('validated_at','desc');
-      $opportunities = $query->paginate(config('volunteering.opportunities_per_page'));
-      $categories = Category::has('opportunities')->withCount('opportunities')->get();
-      $suitabilities = Suitability::has('opportunities')->withCount('opportunities')->get();
-      $locations = Location::all();
+      $opportunities = $query->orderBy('validated_at','desc')->paginate(config('volunteering.opportunities_per_page'));
 
-      return view('opportunity.index', compact('opportunities','filters','categories','suitabilities','locations'));
+      $categories = Cache::rememberForever('index_categories', function () {
+        return Category::has('opportunities')->withCount('opportunities')->get();
+      });
+
+      $organisations = Cache::rememberForever('index_organisations', function () {
+        return Organisation::has('opportunities')->withCount('opportunities')->get();
+      });
+
+      $suitabilities = Cache::rememberForever('index_suitabilities', function () {
+        return Suitability::has('opportunities')->withCount('opportunities')->get();
+      });
+
+      $locations = Cache::rememberForever('index_locations', function () {
+        return Location::all();
+      });
+
+      return view('opportunity.index', compact('opportunities','filters','organisations','categories','suitabilities','locations'));
     }
-
-    // public function reset(Request $request){
-      // $request->session()->forget('postcode');
-      // $request->session()->forget('latitude');
-      // $request->session()->forget('longitude');
-      // return redirect()->action('OpportunityController@index');
-    // }
 
 }

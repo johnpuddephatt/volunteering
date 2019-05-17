@@ -54,7 +54,7 @@
       @media screen and (min-width: $medium-screen) {
         display: inline;
         + span {
-          margin-left: $base-spacing;
+          margin-left: $small-spacing;
         }
       }
 
@@ -73,6 +73,9 @@
       background-image: url('/images/icons/clock.svg');
       background-repeat: no-repeat;
       background-size: contain;
+    }
+    a {
+      white-space: nowrap;
     }
   }
   &--location::before {

@@ -12,7 +12,7 @@
       </div>
       <div class="card-body">
         @foreach ($errors->all() as $message)
-          {{ $message }}
+          <div class="alert alert__warning">{{ $message }}</div>
         @endforeach
         {!! form($form, ['class'=>'opportunity-form']) !!}
 
