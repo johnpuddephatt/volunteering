@@ -37,11 +37,13 @@
   &--info {
     margin-bottom: $base-spacing;
   }
-  &--phone,
   &--email {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+  &--phone,
+  &--email {
     &::before {
 
       vertical-align: text-top;
