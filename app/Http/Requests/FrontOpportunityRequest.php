@@ -27,7 +27,7 @@ class FrontOpportunityRequest extends FormRequest
     {
         return [
             'title' => 'required|max:50',
-            'description' => 'required|max:1000',
+            'description' => 'required|max:1500',
             'intro' => 'required|max:100',
             'places' => 'nullable',
             'minimum_age' => 'nullable',
