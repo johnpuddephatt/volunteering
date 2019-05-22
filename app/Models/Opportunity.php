@@ -128,7 +128,7 @@ class Opportunity extends Model
     }
 
     public function date_range() {
-      if($this->start_date == $this->end_date) {
+      if($this->start_date && ($this->start_date == $this->end_date)) {
         return date("D jS M", strtotime($this->start_date));
       }
       elseif($this->start_date && $this->end_date) {
