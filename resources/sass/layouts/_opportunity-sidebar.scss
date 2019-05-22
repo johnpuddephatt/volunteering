@@ -39,6 +39,9 @@
   }
   &--phone,
   &--email {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     &::before {
 
       vertical-align: text-top;
