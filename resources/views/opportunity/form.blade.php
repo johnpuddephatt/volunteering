@@ -9,7 +9,7 @@
           </div>
           <div class="card-body">
             @foreach ($errors->all() as $message)
-              {{ $message }}
+              <div class="alert alert__warning">{{ $message }}</div>
             @endforeach
             <fieldset> <!---->
               {!! form_row($form->title) !!}
