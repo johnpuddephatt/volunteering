@@ -123,6 +123,7 @@ class OpportunityController extends Controller
           if($request->filters) {
             $old_filters = json_decode($request->filters, true);
             $merged_filters = array_merge($old_filters, $new_filters);
+            unset($merged_filters['page']);
           }
           return redirect()->route('opportunity.index',$merged_filters ?? $new_filters);
         }
@@ -155,7 +156,7 @@ class OpportunityController extends Controller
 
       if(Input::get('location')) {
         $location_slug = Input::get('location',false);
-        $location = Location::where('slug', $location_slug)->first();
+        $location = Location::where('slug', $location_slug)->firstOrFail();
         $query = $query->distance($location->address['latlng']['lat'], $location->address['latlng']['lng']);
         // ->having('distance', '>', 0)->orderBy('distance', 'ASC');
         $filters->location = $location->label;
@@ -163,7 +164,7 @@ class OpportunityController extends Controller
 
       if(Input::get('organisation')) {
         $organisation_slug = Input::get('organisation',false);
-        $organisation = organisation::where('slug', $organisation_slug)->first();
+        $organisation = organisation::where('slug', $organisation_slug)->firstOrFail();
         $query = $query->whereHas('organisation', function ($query) use ($organisation_slug)  {
             $query->where('slug', $organisation_slug);
         });
@@ -172,7 +173,7 @@ class OpportunityController extends Controller
 
       if(Input::get('category')) {
         $category_slug = Input::get('category',false);
-        $category = Category::where('slug', $category_slug)->first();
+        $category = Category::where('slug', $category_slug)->firstOrFail();
         $query = $query->whereHas('categories', function ($query) use ($category_slug)  {
             $query->where('slug', $category_slug);
         });
