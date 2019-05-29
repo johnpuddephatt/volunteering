@@ -22,7 +22,7 @@
         @if($opportunity->expenses)
           <div class="opportunity-single--expenses">
             <h3>Expenses</h3>
-            {{ nl2br($opportunity->expenses) }}
+            {!! nl2br(htmlspecialchars($opportunity->expenses)) !!}
           </div>
         @endif
       </div>
