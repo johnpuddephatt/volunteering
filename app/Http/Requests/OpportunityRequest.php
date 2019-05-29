@@ -29,7 +29,7 @@ class OpportunityRequest extends FormRequest
             'title' => 'required|max:50',
             'intro' => 'required|max:100',
             'description' => 'required',
-            'categories' => 'required'
+            // 'categories' => 'required'
         ];
 
     }
