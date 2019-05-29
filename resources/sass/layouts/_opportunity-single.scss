@@ -107,7 +107,7 @@
     margin: 0 (-$small-spacing/2);
     line-height: $heading-line-height;
     div {
-      flex: 0 1 33.333%;
+      flex: 0 1 calc(33.333% - #{2 * $small-spacing/1.5 });
       margin: $small-spacing $small-spacing/1.5;
       color: $dark-gray;
       font-size: modular-scale(-1);
