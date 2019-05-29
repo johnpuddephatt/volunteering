@@ -104,7 +104,7 @@ class OrganisationCrudController extends CrudController
             'tab' => 'Organisation',
             'upload' => true,
             'crop' => true, // set to true to allow cropping, false to disable
-            'aspect_ratio' => 2, // ommit or set to 0 to allow any aspect ratio
+            'aspect_ratio' => 1.75, // ommit or set to 0 to allow any aspect ratio
         ];
 
         $accountCreatedArray = [
