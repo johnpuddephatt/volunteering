@@ -27,6 +27,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "date-input-polyfill": "^2.14.0",
         "intersection-observer": "^0.6.0"
     }
 }

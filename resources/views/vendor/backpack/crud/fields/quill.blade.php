@@ -31,7 +31,10 @@
 @if ($crud->checkIfFieldIsFirstOfItsType($field, $fields))
     {{-- FIELD CSS - will be loaded in the after_styles section --}}
     @push('crud_fields_styles')
-      <link href="//cdn.quilljs.com/2.0.0-dev.2/quill.snow.css" rel="stylesheet">
+      {{-- <link href="//cdn.quilljs.com/2.0.0-dev.2/quill.snow.css" rel="stylesheet"> --}}
+      <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
+
       <style>
         .ql-editor {
             position: relative;
@@ -53,7 +56,9 @@
 
     {{-- FIELD JS - will be loaded in the after_scripts section --}}
     @push('crud_fields_scripts')
-      <script src="//cdn.quilljs.com/2.0.0-dev.2/quill.js"></script>
+      {{-- <script src="//cdn.quilljs.com/2.0.0-dev.2/quill.js"></script> --}}
+      <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+
     @endpush
 
 @endif

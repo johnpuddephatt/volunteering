@@ -3,6 +3,7 @@ window.smoothScroll = require('./smoothscroll.min');
 
 // require('./bootstrap');
 require('./scroller');
+require('date-input-polyfill');
 
 
 // const geoLocationButton = document.querySelector('.geolocation-button');

@@ -27,7 +27,7 @@ class FrontOrganisationRequest extends FormRequest
     public function rules()
     {
         $rules =  [
-            'name' => 'required|max:100',
+            'name' => 'required|unique:organisations|max:100',
             'contact_name' => 'required',
             'contact_role' => 'required',
             'phone' => 'required',
@@ -39,7 +39,7 @@ class FrontOrganisationRequest extends FormRequest
         ];
         if(\Auth::guest()) {
           $rules['password'] = 'required';
-          $rules['email'] = 'email|required';
+          $rules['email'] = 'email|unique:organisations|required';
         }
         return $rules;
     }
@@ -68,7 +68,8 @@ class FrontOrganisationRequest extends FormRequest
     public function messages()
     {
         return [
-            //
+          'name.unique' => 'This organisation name has already been taken.',
+          'email.unique' => 'This email address has already been taken.'
         ];
     }
 }

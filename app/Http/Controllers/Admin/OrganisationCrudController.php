@@ -158,7 +158,7 @@ class OrganisationCrudController extends CrudController
             'type' => 'check',
         ];
 
-        $this->crud->addColumns([$nameArray, $contactNameArray, $countColumnArray, $activeColumnArray, $emailVerifiedColumnArray, $lastLoginArray]);
+        $this->crud->addColumns([$nameArray, $activeColumnArray, $emailVerifiedColumnArray, $countColumnArray]);
         $this->crud->addFields([$nameArray, $infoArray, $logoFieldArray, $photoFieldArray, $contactNameArray, $contactRoleArray, $contactEmailArray, $contactPhoneArray, $contactWebsiteArray, $accountCreatedArray, $lastLoginArray]);
 
         $this->crud->addButtonFromView('line', 'renew', 'activate', 'beginning');
