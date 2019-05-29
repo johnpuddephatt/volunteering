@@ -88,8 +88,11 @@
     </div>
     <div class="opportunity-sidebar">
 
-      <img class="opportunity-sidebar--photo" src="/images/organisation-photo-placeholder.jpg" />
-
+      @if($opportunity->organisation->photo)
+        <img class="opportunity-sidebar--photo" src="/{{ $opportunity->organisation->photo }}" />
+      @else
+        <img class="opportunity-sidebar--photo" src="/images/organisation-photo-placeholder.jpg" />
+      @endif
       @if($opportunity->organisation->logo)
         <img class="opportunity-sidebar--logo" src="/{{$opportunity->organisation->logo }}" />
       @endif

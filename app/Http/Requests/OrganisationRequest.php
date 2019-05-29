@@ -30,7 +30,7 @@ class OrganisationRequest extends FormRequest
             'email' => 'required|email',
             'contact_name' => 'required',
             'contact_role' => 'required',
-            'phone' => 'required|numeric',
+            'phone' => 'required',
             'info' => 'required|max:300'
         ];
     }
