@@ -97,7 +97,10 @@ class OpportunityCrudController extends CrudController
             'name' => 'expenses',
             'label' => 'Expenses',
             'type' => 'textarea',
-            'tab' => 'About'
+            'tab' => 'About',
+            'attributes' => [
+              'rows' => 5
+            ],
         ];
 
         $placesArray = [
