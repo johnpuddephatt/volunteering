@@ -38,7 +38,7 @@ class OpportunityCreationForm extends Form
                 'help_block' => [
                   'text' => 'Explain the responsibilities of the role and the difference it will make.',
                  ],
-                'toolbar' => "[{ header: [1, 2, false] }],['bold', 'italic'],['link'],[{ list: 'ordered' }, { list: 'bullet' }]"
+                'toolbar' => "[{ header: [2, 3, false] }],['bold', 'italic'],['link'],[{ list: 'ordered' }, { list: 'bullet' }]"
             ])
             ->add('places', 'number', [
               'wrapper' => ['class' => 'form-group__half-width'],

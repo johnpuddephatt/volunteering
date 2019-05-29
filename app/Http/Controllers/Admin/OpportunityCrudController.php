@@ -82,7 +82,7 @@ class OpportunityCrudController extends CrudController
         $descriptionArray = [
             'name' => 'description',
             'type' => 'quill',
-            'toolbar' => "[{ header: [1, 2, false] }],['bold', 'italic'],['link'],[{ list: 'ordered' }, { list: 'bullet' }]",
+            'toolbar' => "[{ header: [2, 3, false] }],['bold', 'italic'],['link'],[{ list: 'ordered' }, { list: 'bullet' }]",
             'tab' => 'About'
         ];
 
