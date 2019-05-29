@@ -107,7 +107,7 @@ class Organisation extends Authenticatable implements MustVerifyEmail
         }
 
         if (starts_with($value, 'data:image')) {
-            $image = \Image::make($value)->resize(200, 200)->encode('jpg', 90);
+            $image = \Image::make($value)->resize(335, 192)->encode('jpg', 90);
             $filename = md5($value.time()).'.jpg';
             \Storage::disk($disk)->put($destination_path.'/'.$filename, $image->stream());
             $this->attributes[$attribute_name] = 'storage/' . $destination_path.'/'.$filename;
