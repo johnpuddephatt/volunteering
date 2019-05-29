@@ -16,10 +16,19 @@
         @endif
       </div>
 
-      <div class="opportunity-single--description">{!! $opportunity->description !!}</div>
+      <div class="opportunity-single--description">
+        {!! $opportunity->description !!}
+
+        @if($opportunity->expenses)
+          <div class="opportunity-single--expenses">
+            <h3>Expenses</h3>
+            {{ nl2br($opportunity->expenses) }}
+          </div>
+        @endif
+      </div>
 
       @if($opportunity->deadline)
-        <div class="opportunity-single--deadline">Deadline: {{ date("D jS F", strtotime($opportunity->deadline)) }}</div>
+        <div class="opportunity-single--deadline alert alert__info">Deadline: <strong>{{ date("D jS F", strtotime($opportunity->deadline)) }}</strong></div>
       @endif
 
       <div class="opportunity-single--other-features">
@@ -93,7 +102,7 @@
       @if($opportunity->organisation->email)
         <div class="opportunity-sidebar--email"><a href="mailto:{{ $opportunity->organisation->email }}">{{ $opportunity->organisation->email }}</a></div>
       @endif
-      <a href="{{ route('opportunity.index') }}?{{ http_build_query(['organisation' => $opportunity->organisation->slug]) }}">View more from this organisation</a>
+      <a class="button button__inverted" href="{{ route('opportunity.index') }}?{{ http_build_query(['organisation' => $opportunity->organisation->slug]) }}">See all with this organisation</a>
     </div>
 </div>
 @endsection

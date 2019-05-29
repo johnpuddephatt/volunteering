@@ -37,6 +37,12 @@
   }
   &--description {
     margin-bottom: 2 * $base-spacing;
+    h2, h3 {
+      font-family: $base-font-family;
+      font-weight: 700;
+      margin-top: 1.5 * $base-spacing;
+      margin-bottom: $small-spacing;
+    }
     ul, ol {
       padding-left: 2em;
     }
@@ -53,7 +59,7 @@
       display: flex;
       flex-direction: row;
     }
-    margin-bottom: $base-spacing;
+    margin-bottom: 1.5 * $base-spacing;
     color: $dark-gray;
     padding-bottom: $base-spacing;
     border-bottom: $light-border;
@@ -94,7 +100,6 @@
   &--dates::before {
     background-image: url('/images/icons/calendar.svg');
   }
-
   &--other-features {
     display: flex;
     flex-direction: row;
@@ -102,7 +107,7 @@
     margin: 0 (-$small-spacing/2);
     line-height: $heading-line-height;
     div {
-      flex: 1 1 25%;
+      flex: 0 1 33.333%;
       margin: $small-spacing $small-spacing/1.5;
       color: $dark-gray;
       font-size: modular-scale(-1);
