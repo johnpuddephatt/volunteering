@@ -37,10 +37,12 @@
   }
   &--description {
     margin-bottom: 2 * $base-spacing;
+    ul, ol {
+      padding-left: 2em;
+    }
     li {
       list-style-type: disc;
-      list-style-position: inside;
-      padding-left: 1em;
+      list-style-position: outside;
     }
     li[data-list="ordered"] {
       list-style-type: decimal;
