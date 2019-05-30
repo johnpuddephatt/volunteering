@@ -1,35 +1,33 @@
 .navbar {
 
   // margin-top: -$navbar-height;
+  background-color: $blue;
+  color: white;
+  text-transform: lowercase;
+  position: relative;
+  // position: fixed;
+  z-index: 999;
+  left: 0;
+  right: 0;
+  top: 0;
 
-  &__primary {
-    background-color: $blue;
+  a:not(.button) {
     color: white;
-    text-transform: lowercase;
-    position: relative;
-    // position: fixed;
-    z-index: 999;
-    left: 0;
-    right: 0;
-    top: 0;
-
-    a:not(.button) {
-      color: white;
-      opacity: .9;
-      text-decoration: none;
-      transition: opacity $base-duration $base-timing;
-      &:hover {
-        opacity: 1;
-      }
-    }
-
-    .dropdown-menu {
-      background-color: white;
-      a {
-        color: $blue;
-      }
+    opacity: .9;
+    text-decoration: none;
+    transition: opacity $base-duration $base-timing;
+    &:hover {
+      opacity: 1;
     }
   }
+
+  .dropdown-menu {
+    background-color: white;
+    a {
+      color: $blue;
+    }
+  }
+
   &__home {
     background-color: transparent;
     color: $blue
@@ -50,12 +48,21 @@
   }
 
   .container {
-    height: $navbar-height;
-    line-height: $navbar-height;
     display: flex;
     flex-direction: row;
     align-items: center;
     padding-bottom: 0;
+  }
+
+  &__primary {
+    height: $navbar-height;
+    line-height: $navbar-height;
+  }
+
+  &__secondary {
+    background-color: $green;
+    height: 2 * $base-spacing;
+    line-height: 2 * $base-spacing;
   }
 }
 
@@ -91,7 +98,11 @@
 }
 
 .nav-item + .nav-item {
-  margin-left: $base-spacing;
+  margin-left: $small-spacing;
+}
+.nav-link {
+  padding-left: $small-spacing;
+  padding-right: $small-spacing;
 }
 
 .navbar--toggler {

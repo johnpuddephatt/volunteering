@@ -1,3 +1,21 @@
+@auth('admins')
+  <nav class="navbar navbar__secondary">
+    <div class="container">
+      You’re signed in as an adminstrator.
+      <ul class="navbar--nav navbar--nav__right">
+        @if($view_name == 'opportunity-single')
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('crud.opportunity.edit', ['opportunity' => $opportunity->id]) }}">Edit this opportunity</a>
+          </li>
+        @endif
+        <li class="nav-item">
+          <a class="button button__inverted nav-button" href="{{ route('backpack') }}">Admin area</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+@endauth
+
 <nav class="navbar navbar__primary navbar__{{ $view_name }}">
   <div class="container">
     <a class="navbar--brand" href="{{ url('/') }}">
@@ -21,11 +39,14 @@
       <!-- Right Side Of Navbar -->
       <ul class="navbar--nav navbar--nav__right">
           <!-- Authentication Links -->
-          @guest
+
+
+          @guest('web')
             <li class="nav-item">
               <a class="button button__inverted nav-button" href="{{ route('organisation.dashboard') }}">Add an opportunity</a>
             </li>
-          @else
+          @endguest
+          @auth('web')
 
               {{-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                 {{ Auth::user()->name }} <span class="caret"></span>
@@ -56,7 +77,7 @@
               @endif
 
 
-          @endguest
+          @endauth
       </ul>
       @endif
   </div>

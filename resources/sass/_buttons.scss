@@ -53,6 +53,12 @@ $_button-background-color-hover: shade($action-color, 20%);
       color: $blue;
     }
   }
+  &__secondary {
+    background-color: $green;
+    &:hover {
+      background-color: shade($green, 20%);
+    }
+  }
   &__ghost {
     background-color: transparent;
     border: .1em solid $blue;
