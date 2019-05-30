@@ -30,7 +30,7 @@ class FrontOrganisationRequest extends FormRequest
             'name' => 'required|unique:organisations|max:100',
             'contact_name' => 'required',
             'contact_role' => 'required',
-            'phone' => 'required',
+            'phone' => 'nullable',
             'info' => 'required|max:300',
             'website' => 'nullable',
             'logo' => 'nullable',
