@@ -55,8 +55,10 @@
   }
 
   &__primary {
-    height: $navbar-height;
-    line-height: $navbar-height;
+    .container {
+      height: $navbar-height;
+      line-height: $navbar-height;
+    }
   }
 
   &__secondary {
