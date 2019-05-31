@@ -11,13 +11,17 @@
   background-color: $light-gray;
   color: $dark-gray;
   border-radius: $base-border-radius;
-  height: 2 * $base-spacing;
-  // width: 2 * $base-spacing;
-  padding: 0 $base-spacing;
-  line-height: 2 * $base-spacing;
+  height: $base-spacing;
+  padding: 0 $small-spacing;
+  line-height: $base-spacing;
   text-align: center;
   text-decoration: none;
   transition: all $base-duration ease;
+  @media screen and (min-width: $medium-screen) {
+    height: 2 * $base-spacing;
+    line-height: 2 * $base-spacing;
+    padding: 0 $base-spacing;
+  }
 }
 
 a.page-link:hover {
