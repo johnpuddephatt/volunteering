@@ -11,9 +11,9 @@
   background-color: $light-gray;
   color: $dark-gray;
   border-radius: $base-border-radius;
-  height: $base-spacing;
+  height: 1.5 * $base-spacing;
   padding: 0 $small-spacing;
-  line-height: $base-spacing;
+  line-height: 1.5 * $base-spacing;
   text-align: center;
   text-decoration: none;
   transition: all $base-duration ease;
