@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Opportunity;
 
+use App\Mail\NewEnquiryNotification;
+
 class Enquiry extends Model
 {
 
