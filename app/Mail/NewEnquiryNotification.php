@@ -2,7 +2,7 @@
 
 namespace App\Mail;
 
-use App\Models\Organisation;
+use App\Models\Enquiry;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -13,16 +13,16 @@ class NewEnquiryNotification extends Mailable
 
   use Queueable, SerializesModels;
 
-  public $organisation;
+  public $enquiry;
 
   /**
    * Create a new message instance.
    *
    * @return void
    */
-   public function __construct(Organisation $organisation)
+   public function __construct(Enquiry $enquiry)
    {
-       $this->organisation = $organisation;
+       $this->enquiry = $enquiry;
    }
 
 
