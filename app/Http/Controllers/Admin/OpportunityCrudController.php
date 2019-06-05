@@ -29,7 +29,7 @@ class OpportunityCrudController extends CrudController
         $this->crud->setModel('App\Models\Opportunity');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/opportunity');
         $this->crud->setEntityNameStrings('opportunity', 'opportunities');
-
+        $this->crud->orderBy('id', 'DESC');
 
         /*
         |--------------------------------------------------------------------------
@@ -351,6 +351,7 @@ class OpportunityCrudController extends CrudController
         $this->crud->addColumns([$organisationColumnArray, $titleArray, $expiryColumnArray]);
 
         $this->crud->addButtonFromView('line', 'renew', 'renew', 'beginning');
+        $this->crud->addButtonFromView('line', 'view', 'view', 'beginning');
 
         // add asterisk for fields that are required in OpportunityRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');

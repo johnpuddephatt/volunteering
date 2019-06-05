@@ -69,7 +69,7 @@ class RegisterController extends Controller
          $organisation = Organisation::create($validated);
 
          $organisation->sendEmailVerificationNotification();
-         $organisation->notifyAdminOfAccountCreation($organisation);
+         $organisation->notifyAdminOfAccountCreation();
 
          $request->session()->flash('success', 'Account created successfully! You will receive a verification email shortly.');
 

@@ -23,7 +23,7 @@
 }
 
 .home-suitability {
-  flex: 0 0 75%;
+  flex: 0 0 100%;
   @media screen and (min-width: $large-screen) {
     flex: 0 0 calc(33.333% - #{.6667 * $base-spacing});
   }

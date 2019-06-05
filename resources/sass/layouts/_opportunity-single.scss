@@ -19,7 +19,7 @@
     }
     @media screen and (min-width: $large-screen) {
       float: right;
-      margin-top: -$small-spacing/2;
+      margin-top: -$small-spacing/1.5;
       margin-left: $small-spacing;
     }
     display: block;
@@ -59,6 +59,7 @@
     @media screen and (min-width: $medium-screen) {
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
     }
     margin-bottom: 1.5 * $base-spacing;
     color: $dark-gray;
@@ -70,8 +71,9 @@
       display: block;
       @media screen and (min-width: $medium-screen) {
         display: inline;
-        + span {
-          margin-left: $small-spacing;
+        margin-right: $small-spacing;
+        &:last-child {
+          margin-right: 0;
         }
       }
 

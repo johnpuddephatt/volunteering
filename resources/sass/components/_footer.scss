@@ -60,6 +60,10 @@
   font-size: modular-scale(1);
   text-transform: lowercase;
   margin-bottom: $small-spacing;
+  svg {
+    width: 1em;
+    height: auto;
+  }
 }
 
 

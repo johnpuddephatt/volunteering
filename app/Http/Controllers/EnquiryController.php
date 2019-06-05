@@ -32,6 +32,8 @@ class EnquiryController extends Controller
       $enquiry = new Enquiry($validated);
       $enquiry->save();
 
+      $enquiry->sendEnquiryNotification();
+
       $request->session()->flash('success', 'Enquiry sent!');
 
       return redirect('/opportunities');

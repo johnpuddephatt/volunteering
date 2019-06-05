@@ -3,7 +3,7 @@
 @section('content')
   <div class="container container__wide container__full">
     <div class="opportunity-single">
-      <a class="button opportunity-single--enquire-button" href="{{ route('enquiry.new', ['opportunity_id' => $opportunity->id ])}}" >Enquire</a>
+      <a class="button button__secondary opportunity-single--enquire-button" href="{{ route('enquiry.new', ['opportunity_id' => $opportunity->id ])}}" >Enquire</a>
 
       <h2 class="opportunity-single--title">{{ $opportunity->title}}</h2>
       <div class="opportunity-single--intro">{{ $opportunity->intro }}</div>
@@ -105,7 +105,7 @@
       @if($opportunity->organisation->email)
         <div class="opportunity-sidebar--email"><a href="mailto:{{ $opportunity->organisation->email }}">{{ $opportunity->organisation->email }}</a></div>
       @endif
-      <a class="button button__inverted" href="{{ route('opportunity.index') }}?{{ http_build_query(['organisation' => $opportunity->organisation->slug]) }}">See all with this organisation</a>
+      <a class="button button__inverted" href="{{ route('opportunity.index') }}?{{ http_build_query(['organisation' => $opportunity->organisation->slug]) }}">See all opportunities with this organisation</a>
     </div>
 </div>
 @endsection

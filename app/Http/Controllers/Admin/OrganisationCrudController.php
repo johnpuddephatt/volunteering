@@ -28,6 +28,8 @@ class OrganisationCrudController extends CrudController
         $this->crud->setModel('App\Models\Organisation');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/organisation');
         $this->crud->setEntityNameStrings('organisation', 'organisations');
+        $this->crud->orderBy('id', 'DESC');
+
 
         /*
         |--------------------------------------------------------------------------

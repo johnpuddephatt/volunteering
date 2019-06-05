@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Opportunity;
 
 class Enquiry extends Model
 {
@@ -13,8 +14,14 @@ class Enquiry extends Model
     // protected $guarded = ['id'];
     protected $fillable = ['opportunity_id','name','phone','email','message'];
 
-    public function organisation()
+    public function opportunity()
     {
       return $this->belongsTo('App\Models\Opportunity');
+    }
+
+    public function sendEnquiryNotification() {
+      $email = new NewEnquiryNotification($this);
+      $recipient = Opportunity::findOrFail($this->opportunity_id)->organisation;
+      Mail::to($recipient)->send($email);
     }
 }

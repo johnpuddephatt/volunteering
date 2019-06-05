@@ -79,6 +79,13 @@ class Opportunity extends Model
             $model->address_ward = $model->getWardData($dirty_address['postal_code']);
           }
         }
+        // Sanitize description
+        if($model->description) {
+          $model->description = strip_tags($model->description, "<h2><h3><p><a><ul><ol><li><b><i>");
+          $model->description = str_replace("<p></p>","",$model->description);
+          $model->description = str_replace("<p>&nbsp;</p>","",$model->description);
+        }
+
 
      });
 

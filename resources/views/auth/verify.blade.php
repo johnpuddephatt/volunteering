@@ -19,7 +19,8 @@
         @if(!Auth::User()->email_verified_at)
           <div class="verification-item">
             <h2>Your email address needs verifying</h2>
-            <p>First, check your email for a verification link. If you can’t find it, or didn’t receive it, you can <a href="{{ route('verification.resend') }}">click here to request another</a>.</p>
+            <p>First, check your email (including your junk folder) for a verification link.</p>
+            <p>This link is valid for 72 hours. If you can’t find it, or the link has expired you can <a class="button" href="{{ route('verification.resend') }}">request another</a>.</p>
           </div>
         @endif
 

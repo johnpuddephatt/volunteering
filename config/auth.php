@@ -110,4 +110,17 @@ return [
         ],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Verifying emails
+    |--------------------------------------------------------------------------
+    |
+    | Expiry time is the number of minutes that the email verification link is valid for.
+    |
+    */
+
+    'verification' => [
+      'expire' => 4320 // 72 hours
+    ]
+
 ];

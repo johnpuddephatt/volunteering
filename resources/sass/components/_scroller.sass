@@ -47,27 +47,27 @@
     // margin-right: -1 * $base-spacing
     margin-left: 0
     margin-right: 0
-  &::before, &::after
-    content: ''
-    display: block
-    position: absolute
-    pointer-events: none
-    user-select: none
-    z-index: 98
-    top: $small-spacing
-    left: 0
-    bottom: 5 * $base-spacing
-    width: $base-spacing
-    @media screen and(min-width: $medium-screen)
-      width: 2 * $base-spacing
-    // @media screen and(min-width: $large-screen)
-    //   width: 3 * $base-spacing
-
-    background: linear-gradient(to left,transparentize($light-gray, 1), transparentize($light-gray, 0))
-  &::after
-    right: 0
-    left: auto
-    background: linear-gradient(to right,transparentize($light-gray, 1), transparentize($light-gray, 0))
+  // &::before, &::after
+  //   content: ''
+  //   display: block
+  //   position: absolute
+  //   pointer-events: none
+  //   user-select: none
+  //   z-index: 98
+  //   top: $small-spacing
+  //   left: 0
+  //   bottom: 5 * $base-spacing
+  //   width: $base-spacing
+  //   @media screen and(min-width: $medium-screen)
+  //     width: 2 * $base-spacing
+  //   // @media screen and(min-width: $large-screen)
+  //   //   width: 3 * $base-spacing
+  //
+  //   background: linear-gradient(to left,transparentize($light-gray, 1), transparentize($light-gray, 0))
+  // &::after
+  //   right: 0
+  //   left: auto
+  //   background: linear-gradient(to right,transparentize($light-gray, 1), transparentize($light-gray, 0))
 .scroller-inner
   overflow-x: scroll
   overflow-y: hidden

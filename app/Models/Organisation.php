@@ -114,8 +114,8 @@ class Organisation extends Authenticatable implements MustVerifyEmail
         }
     }
 
-    public function notifyAdminOfAccountCreation($organisation) {
-      $email = new NewOrganisationNotification($organisation);
+    public function notifyAdminOfAccountCreation() {
+      $email = new NewOrganisationNotification($this);
       $admins = Admin::all();
       Mail::to($admins)->send($email);
     }

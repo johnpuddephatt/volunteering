@@ -13,14 +13,14 @@ $_button-background-color-hover: shade($action-color, 20%);
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   font-weight: 700;
-  line-height: 1;
+  line-height: $heading-line-height;
   padding: $small-spacing $base-spacing;
   text-align: center;
   text-decoration: none;
   transition: background-color $base-duration $base-timing;
   user-select: none;
   vertical-align: middle;
-  white-space: nowrap;
+  // white-space: nowrap;
 
   &:hover {
     background-color: $_button-background-color-hover;

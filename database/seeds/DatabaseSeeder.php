@@ -22,12 +22,12 @@ class DatabaseSeeder extends Seeder
         $this->call(CategoriesTableSeeder::class);
         $this->call(SuitabilitiesTableSeeder::class);
 
-        // $this->call(OrganisationsTableSeeder::class);
+        $this->call(OrganisationsTableSeeder::class);
 
-        // $this->call(OpportunitiesTableSeeder::class);
-        // $this->call(CategoryOpportunityTableSeeder::class);
-        // $this->call(OpportunitySuitabilityTableSeeder::class);
-        // $this->call(AccessibilityOpportunityTableSeeder::class);
+        $this->call(OpportunitiesTableSeeder::class);
+        $this->call(CategoryOpportunityTableSeeder::class);
+        $this->call(OpportunitySuitabilityTableSeeder::class);
+        $this->call(AccessibilityOpportunityTableSeeder::class);
 
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');

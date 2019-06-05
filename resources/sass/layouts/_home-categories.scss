@@ -19,12 +19,13 @@
 }
 
 .home-category {
-  flex: 1 0 40%;
+  flex: 1 0 80%;
   margin-bottom: $base-spacing;
+  margin-left: $base-spacing;
+
   @media screen and (min-width: $large-screen) {
     flex: 0 0 calc(25% - #{1.25 * $base-spacing});
     margin-bottom: 0;
-    margin-left: $base-spacing;
     // margin-right: $small-spacing;
   }
   // &:nth-child(2n) {

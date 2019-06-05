@@ -4,7 +4,7 @@
 <div class="container container__wide container__center">
 
 <div class="opportunity-index--wrapper">
-  <label class="button" for="sidebar-trigger">Filter</label>
+  <label class="button" for="sidebar-trigger">Filter opportunities</label>
   <input id="sidebar-trigger" type="checkbox" class="opportunity-index--sidebar--trigger">
   @include('opportunity.filter')
   <div class="card">
