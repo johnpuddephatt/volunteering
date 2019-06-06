@@ -33,6 +33,6 @@ class NewEnquiryNotification extends Mailable
    */
   public function build()
     {
-      return $this->replyTo($enquiry->email)->subject('New enquiry received')->markdown('emails.newenquiry');
+      return $this->replyTo($this->enquiry['email'])->subject('New enquiry received')->markdown('emails.newenquiry');
     }
 }
