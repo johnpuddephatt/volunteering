@@ -25,6 +25,6 @@ class Enquiry extends Model
     public function sendEnquiryNotification() {
       $email = new NewEnquiryNotification($this);
       $recipient = Opportunity::findOrFail($this->opportunity_id)->organisation;
-      Mail::to($recipient)->reply_to($this->email)->send($email);
+      Mail::to($recipient)->send($email);
     }
 }
