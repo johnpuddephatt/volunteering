@@ -338,17 +338,26 @@ class OpportunityCrudController extends CrudController
             }
         ];
 
-        $organisationColumnArray = [
-            'name' => 'organisation',
-            'label' => "Organisation",
-            'type' => 'closure',
-            'function' => function($entry) {
-                return $entry->organisation->name;
-            }
+        // $organisationColumnArray = [
+        //     'name' => 'organisation',
+        //     'label' => "Organisation",
+        //     'type' => 'closure',
+        //     'function' => function($entry) {
+        //         return $entry->organisation->name;
+        //     }
+        // ];
+
+        $titleColumn = [
+          'name' => 'title',
+          'label' => 'Opportunity',
+          'type' => 'closure',
+          'function' => function($entry) {
+            return '<strong>' . $entry->title . '</strong><div class="small text-muted">' . $entry->organisation->name . '</div>';
+          }
         ];
 
         $this->crud->addFields([$titleArray, $introFieldArray, $descriptionArray, $expensesFieldArray, $placesArray, $statusHeading, $activeFieldArray, $renewFieldArray, $organisationFieldArray, $locationHeading, $addressFieldArray, $contactHeading, $emailFieldArray, $phoneFieldArray, $fromHomeFieldArray, $hoursHeading, $frequencyFieldArray, $hoursFieldArray, $dateHeading, $startDateFieldArray, $endDateFieldArray, $deadlineHeading, $deadlineFieldArray, $categoriesFieldArray, $skillsNeededFieldArray, $skillsGainedFieldArray, $requirementsFieldArray, $suitabilitiesFieldArray, $accessibilityFieldArray]);
-        $this->crud->addColumns([$organisationColumnArray, $titleArray, $expiryColumnArray]);
+        $this->crud->addColumns([$titleColumn, $expiryColumnArray]);
 
         $this->crud->addButtonFromView('line', 'renew', 'renew', 'beginning');
         $this->crud->addButtonFromView('line', 'view', 'view', 'beginning');
