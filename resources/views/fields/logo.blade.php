@@ -12,8 +12,9 @@
   <div class="croppie-wrapper">
     <div style="visibility: hidden;" id="croppie"></div>
     <div class="croppie-input-wrapper">
-      <input type="file" id="upload-input"/>
+      <input type="file" accept="image/*" id="upload-input"/>
       <button tabindex="-1" class="message">Click here to choose an image</button>
+      <small>Images must be in JPEG, PNG or GIF format and will be cropped to a circle. <a href="mailto:{{ config('volunteering.admin_email')}}">Contact us</a> if you're having difficult uploading your logo.</small>
     </div>
   </div>
 
@@ -49,6 +50,7 @@
             min-height: 250px;
             padding: 2em;
             margin-bottom: 2em;
+            text-align: center;
         }
 
         .croppie-wrapper.image-loaded [type="file"] {
@@ -64,6 +66,15 @@
           right: 0;
           bottom: 0;
           opacity: 0;
+        }
+
+        .croppie-wrapper small {
+          position: relative;
+          z-index: 99;
+        }
+
+        .croppie-wrapper.image-loaded small {
+          display: none;
         }
 
         .cr-viewport.cr-vp-square {
@@ -112,7 +123,7 @@
                 c = new Croppie(croppieContainer, {
                     // enforceBoundary: true,
                     boundary: { width: 250, height: 250 },
-                    viewport: { width: 200, height: 200, type: 'square' }
+                    viewport: { width: 250, height: 250, type: 'square' }
                 });
 
                 if(result.value) {

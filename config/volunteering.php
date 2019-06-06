@@ -1,7 +1,7 @@
 <?php
 
 return [
-
+    'admin_email' => env('ADMIN_EMAIL', 'info@volunteerwakefield.org'),
     'opportunities_per_page' => 6,
     'opportunity_valid_for' => 30,
     'max_distance' => 10,
