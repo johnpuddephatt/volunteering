@@ -29,7 +29,7 @@ class CreateOrganisationsTable extends Migration
 
             $table->string('contact_name');
             $table->string('contact_role');
-            $table->string('phone');
+            $table->string('phone')->nullable();
             $table->string('website')->nullable();
             $table->text('info');
             $table->string('photo')->nullable();

@@ -23,7 +23,7 @@ class CreateOpportunitiesTable extends Migration
 
             // User
             $table->bigInteger('organisation_id')->unsigned();
-      		$table->foreign('organisation_id')->references('id')->on('organisations')->onDelete('cascade');
+            $table->foreign('organisation_id')->references('id')->on('organisations')->onDelete('cascade');
 
             //General
             $table->string('title',50);
