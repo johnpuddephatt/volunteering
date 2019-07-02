@@ -15,11 +15,11 @@ Start posting opportunities
 
 Your account has been activated, but you still need to verify your email address before you can post opportunities.
 
-Either click on the verify link within the email we've sent you, or head to the verification page to resend the email.
+Either click on the verify link within the email we've sent you, or request a new verification email.
 
 @component('mail::button', ['url' => url('email/verify') ])
 
-Resend your verification email
+Request a new verification email
 
 @endcomponent
 

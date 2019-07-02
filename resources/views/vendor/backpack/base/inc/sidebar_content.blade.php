@@ -8,7 +8,7 @@
     </span>
   </a>
   <ul class="treeview-menu">
-      <li><a href="{{ backpack_url('opportunity') }}"><i class="fa fa-list-ul"></i> <span>Opportunities</span></a></li>
+      <li><a href="{{ backpack_url('opportunity') }}?show=active"><i class="fa fa-list-ul"></i> <span>Opportunities</span></a></li>
       <li><a href="{{ backpack_url('category') }}"><i class="fa fa-tag"></i> <span>Categories</span></a></li>
       <li><a href="{{ backpack_url('suitability') }}"><i class="fa fa-exchange"></i> <span>Suitabilities</span></a></li>
       <li><a href="{{ backpack_url('accessibility') }}"><i class="fa fa-deaf"></i> <span>Accessibilities</span></a></li>

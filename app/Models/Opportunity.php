@@ -203,6 +203,12 @@ class Opportunity extends Model
     public function scopeExpired($query) {
         $query->where('validated_at', '<', Carbon::now()->subDays(config('volunteering.opportunity_valid_for')));
     }
+
+    public function scopeActive($query) {
+        $query->where('validated_at', '>=', Carbon::now()->subDays(config('volunteering.opportunity_valid_for')));
+    }
+
+
     /*
     |--------------------------------------------------------------------------
     | ACCESORS

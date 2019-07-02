@@ -36,6 +36,8 @@ class OpportunityCrudController extends CrudController
         | Filters & Scopes
         |--------------------------------------------------------------------------
         */
+        $this->crud->query = $this->crud->query->withoutGlobalScopes();
+        $this->crud->model->clearGlobalScopes();
 
         $this->crud->addFilter([ // dropdown filter
           'name' => 'show',
@@ -51,7 +53,7 @@ class OpportunityCrudController extends CrudController
                 $this->crud->model->clearGlobalScopes();
             }
             if($value == 'active') {
-                // do nothing
+              $this->crud->addClause('active');
             }
             if($value == 'expired') {
                 $this->crud->query = $this->crud->query->withoutGlobalScopes();
@@ -391,6 +393,12 @@ class OpportunityCrudController extends CrudController
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;
     }
+
+    // public function index()
+    //   {
+    //     $this->crud->addClause('active');
+    //      return parent::index();
+    //   }
 
     public function renew($id) {
         $opportunity = Opportunity::find($id);
