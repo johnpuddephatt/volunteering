@@ -130,19 +130,19 @@ class Opportunity extends Model
     public function expires_in() {
       $validated_at = new Carbon($this->validated_at);
       $now = Carbon::now();
-      $remaining = 30 - $validated_at->diffInDays($now);
+      $remaining = config('volunteering.max_days_for_new') - $validated_at->diffInDays($now);
       return ($remaining > 0) ? $remaining : false;
     }
 
     public function date_range() {
       if($this->start_date && ($this->start_date == $this->end_date)) {
-        return date("D jS M", strtotime($this->start_date));
+        return date("D jS M Y", strtotime($this->start_date));
       }
       elseif($this->start_date && $this->end_date) {
         return date("D jS M", strtotime($this->start_date)) . ' – ' . date("D jS M", strtotime($this->end_date));
       }
       elseif($this->start_date) {
-        return 'From ' . date("D jS M", strtotime($this->start_date));
+        return 'From ' . date("D jS M Y", strtotime($this->start_date));
       }
       else {
         return 'Flexible';

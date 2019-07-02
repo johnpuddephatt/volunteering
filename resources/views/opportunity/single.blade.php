@@ -28,7 +28,7 @@
       </div>
 
       @if($opportunity->deadline)
-        <div class="opportunity-single--deadline alert alert__info">Deadline: <strong>{{ date("D jS F", strtotime($opportunity->deadline)) }}</strong></div>
+        <div class="opportunity-single--deadline alert alert__info">Deadline: <strong>{{ date("D jS F, Y", strtotime($opportunity->deadline)) }}</strong></div>
       @endif
 
       <div class="opportunity-single--other-features">
