@@ -130,7 +130,7 @@ class Opportunity extends Model
     public function expires_in() {
       $validated_at = new Carbon($this->validated_at);
       $now = Carbon::now();
-      $remaining = config('volunteering.max_days_for_new') - $validated_at->diffInDays($now);
+      $remaining = config('volunteering.opportunity_valid_for') - $validated_at->diffInDays($now);
       return ($remaining > 0) ? $remaining : false;
     }
 
