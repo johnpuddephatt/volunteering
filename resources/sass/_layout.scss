@@ -167,6 +167,7 @@ main {
 }
 
 %heavily-padded-box {
+  padding: 2 * $base-spacing $base-spacing;
   @media screen and (min-width: $medium-screen) {
     padding: 3 * $base-spacing;
   }

@@ -1,0 +1,10 @@
+.page {
+  @extend %box;
+  @extend %heavily-padded-box;
+  margin-top: 2 * $base-spacing;
+}
+
+.page-content {
+  margin-top: 2 * $base-spacing;
+  margin-bottom: 2 * $base-spacing;
+}

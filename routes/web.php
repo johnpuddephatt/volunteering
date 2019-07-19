@@ -45,6 +45,8 @@ Route::get('/opportunities/{slug}', 'OpportunityController@single')->name('oppor
 Route::get('/enquire', 'EnquiryController@new')->name('enquiry.new');
 Route::post('/enquire', 'EnquiryController@store')->name('enquiry.store');
 
+Route::get('{page}/{subs?}', ['uses' => 'PageController@index'])
+    ->where(['page' => '^(((?=(?!admin))(?=(?!\/)).))*$', 'subs' => '.*']);
 
 // Route::get('/search', 'OpportunityController@index')    # shows all results
 // Route::get('/search/location/{lat}/{long}/', 'OpportunityController@locationSearch');
