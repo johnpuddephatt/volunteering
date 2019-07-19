@@ -20,24 +20,26 @@ trait PageTemplates
     | - page slug
     */
 
-    private function services()
+    private function standard()
     {
-        $this->crud->addField([   // CustomHTML
-                        'name' => 'metas_separator',
-                        'type' => 'custom_html',
-                        'value' => '<br><h2>'.trans('backpack::pagemanager.metas').'</h2><hr>',
-                    ]);
+        // $this->crud->addField([   // CustomHTML
+        //                 'name' => 'metas_separator',
+        //                 'type' => 'custom_html',
+        //                 'value' => '<br><h2>'.trans('backpack::pagemanager.metas').'</h2><hr>',
+        //             ]);
         $this->crud->addField([
                         'name' => 'meta_title',
                         'label' => trans('backpack::pagemanager.meta_title'),
                         'fake' => true,
                         'store_in' => 'extras',
+                        'tab' => 'Meta'
                     ]);
         $this->crud->addField([
                         'name' => 'meta_description',
                         'label' => trans('backpack::pagemanager.meta_description'),
                         'fake' => true,
                         'store_in' => 'extras',
+                        'tab' => 'Meta'
                     ]);
         $this->crud->addField([
                         'name' => 'meta_keywords',
@@ -45,27 +47,21 @@ trait PageTemplates
                         'label' => trans('backpack::pagemanager.meta_keywords'),
                         'fake' => true,
                         'store_in' => 'extras',
+                        'tab' => 'Meta'
                     ]);
-        $this->crud->addField([   // CustomHTML
-                        'name' => 'content_separator',
-                        'type' => 'custom_html',
-                        'value' => '<br><h2>'.trans('backpack::pagemanager.content').'</h2><hr>',
-                    ]);
+        // $this->crud->addField([   // CustomHTML
+        //                 'name' => 'content_separator',
+        //                 'type' => 'custom_html',
+        //                 'value' => '<br><h2>'.trans('backpack::pagemanager.content').'</h2><hr>',
+        //             ]);
         $this->crud->addField([
                         'name' => 'content',
                         'label' => trans('backpack::pagemanager.content'),
-                        'type' => 'wysiwyg',
+                        'type' => 'quill',
+                        'toolbar' => "[{ header: [2, 3, false] }],['bold', 'italic'],['link'],[{ list: 'ordered' }, { list: 'bullet' }]",
                         'placeholder' => trans('backpack::pagemanager.content_placeholder'),
+                        'tab' => 'Content'
                     ]);
     }
 
-    private function about_us()
-    {
-        $this->crud->addField([
-                        'name' => 'content',
-                        'label' => trans('backpack::pagemanager.content'),
-                        'type' => 'wysiwyg',
-                        'placeholder' => trans('backpack::pagemanager.content_placeholder'),
-                    ]);
-    }
 }
