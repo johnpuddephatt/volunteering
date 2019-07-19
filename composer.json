@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.1.3",
         "backpack/crud": "^3.6",
+        "backpack/pagemanager": "^1.1",
         "fideloper/proxy": "^4.0",
         "justbetter/laravel-pagination-with-havings": "^1.1",
         "kris/laravel-form-builder": "^1.20",

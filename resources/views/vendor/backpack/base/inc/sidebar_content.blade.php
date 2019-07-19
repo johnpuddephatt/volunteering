@@ -16,4 +16,5 @@
   </ul>
 </li>
 
-<li><a href="{{ backpack_url('organisation') }}"><i class="fa fa-users"></i> <span>Organisations</span></a></li
+<li><a href="{{ backpack_url('organisation') }}"><i class="fa fa-users"></i> <span>Organisations</span></a></li>
+<li><a href="{{ url(config('backpack.base.route_prefix').'/page') }}"><i class="fa fa-file-o"></i> <span>Pages</span></a></li>
