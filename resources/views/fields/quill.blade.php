@@ -84,6 +84,20 @@
         textarea_{{ $name }}.value = editorContent_{{ $name }}.innerHTML;
       });
 
+      @if(isset($options['limit']))
+        var quill_counter_{{ $name }} = document.createElement('div');
+        var maxlength = {{$options['limit']}};
+        quill_counter_{{ $name }}.className = 'badge badge-small badge-info form-counter';
+        quill_counter_{{ $name }}.innerHTML = (maxlength - quill_{{ $name }}.getLength()) + ' characters left';
+        editorContent_{{ $name }}.parentNode.parentNode.prepend(quill_counter_{{ $name }});
+        quill_{{ $name }}.on('text-change', function (delta, old, source) {
+          quill_counter_{{ $name }}.innerHTML = (maxlength - quill_{{ $name }}.getLength()) + ' characters left';
+          if (quill_{{ $name }}.getLength() > maxlength) {
+            quill_{{ $name }}.deleteText(maxlength, quill_{{ $name }}.getLength());
+          }
+        });
+      @endif
+
       editorContent_{{ $name }}.closest('form').addEventListener('submit', function(){
           textarea_{{ $name }}.value = editorContent_{{ $name }}.innerHTML;
       });

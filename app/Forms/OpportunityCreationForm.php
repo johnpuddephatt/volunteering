@@ -25,7 +25,10 @@ class OpportunityCreationForm extends Form
                ],
             ])
             ->add('intro', 'textarea', [
-              'attr' => ['rows' => '5'],
+              'attr' => [
+                'rows' => '5',
+                'maxlength' => '100'
+              ],
               'help_block' => [
                 'text' => 'A short line to catch people’s eye and make your opportunity sound appealing. Try starting with “We’re looking for someone...” or “Could you help...”',
                ],
@@ -33,12 +36,14 @@ class OpportunityCreationForm extends Form
             ->add('description', 'quill', [
                 'attr' => [
                     'class' => 'form-group',
-                    'id' => 'quill-text-area-' . $this->name
+                    'id' => 'quill-text-area-' . $this->name,
                 ],
+                'limit' => 1500,
                 'help_block' => [
-                  'text' => 'Explain the responsibilities of the role and the difference it will make.',
+                  'text' => 'Explain role responsibilities and the difference it will make.',
                  ],
-                'toolbar' => "[{ header: [2, 3, false] }],['bold', 'italic'],['link'],[{ list: 'ordered' }, { list: 'bullet' }]"
+                'toolbar' => "[{ header: [2, 3, false] }],['bold', 'italic'],['link'],[{ list: 'ordered' }, { list: 'bullet' }]",
+
             ])
             ->add('places', 'number', [
               'wrapper' => ['class' => 'form-group__half-width'],
@@ -76,12 +81,30 @@ class OpportunityCreationForm extends Form
                 'choices' => ['one-off' => 'One-off', 'Fixed period' => 'Fixed period', 'Ongoing' => 'Ongoing']
             ])
             ->add('start_date', 'date', [
+              'attr' => [
+                'pattern' => '[0-9]{4}-[0-9]{2}-[0-9]{2}',
+                'placeholder' => 'YYYY-MM-DD'
+              ],
               'wrapper' => ['class' => 'form-group__half-width'],
+              'help_block' => [
+                'text' => 'Optional, but must be a valid date if provided.',
+              ]
             ])
             ->add('end_date', 'date', [
+              'attr' => [
+                'pattern' => '[0-9]{4}-[0-9]{2}-[0-9]{2}',
+                'placeholder' => 'YYYY-MM-DD'
+              ],
               'wrapper' => ['class' => 'form-group__half-width'],
+              'help_block' => [
+                'text' => 'Optional, but must be a valid date if provided.',
+              ]
             ])
-            ->add('deadline', 'date')
+            ->add('deadline', 'date', [
+              'help_block' => [
+                'text' => 'Opportunities will expire after ' . config('volunteering.opportunity_valid_for') . ' days, or on the deadline you provide, whichever is sooner. You can renew your opportunity at any time.',
+               ],
+            ])
             ->add('hours', 'number', [
               'help_block' => [
                 'text' => 'An estimate of the number of hours per week. Will state ‘flexible’ if left blank.',

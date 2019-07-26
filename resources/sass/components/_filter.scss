@@ -11,6 +11,14 @@
   // color: white;
   display: inline-block;
   padding: $small-spacing/2 $small-spacing;
+  &-info {
+    background-color: $blue;
+    color: white;
+  }
+  &-small {
+    padding: 0 $small-spacing/2;
+    border-radius: 1em;
+  }
   form, button {
     display: inline-block;
   }

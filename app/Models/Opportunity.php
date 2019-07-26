@@ -60,7 +60,11 @@ class Opportunity extends Model
     {
       parent::boot();
       static::addGlobalScope('active', function (Builder $builder) {
-        $builder->where('validated_at', '>=', Carbon::now()->subDays(config('volunteering.opportunity_valid_for')));
+        $builder->where('validated_at', '>=', Carbon::now()->subDays(config('volunteering.opportunity_valid_for')))
+                ->where(function ($query) {
+                  $query->where('deadline', '>', Carbon::now())
+                  ->orWhereNull('deadline');
+                });
       });
 
       static::saving(function($model) {
@@ -205,7 +209,11 @@ class Opportunity extends Model
     }
 
     public function scopeActive($query) {
-        $query->where('validated_at', '>=', Carbon::now()->subDays(config('volunteering.opportunity_valid_for')));
+        $query->where('validated_at', '>=', Carbon::now()->subDays(config('volunteering.opportunity_valid_for')))
+              ->where(function ($query) {
+                $query->where('deadline', '>', Carbon::now())
+                ->orWhereNull('deadline');
+              });
     }
 
 

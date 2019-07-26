@@ -136,9 +136,25 @@ function smoothScroll(distance,duration) {
   },frameRate);
 };
 
-let recordButton = document.querySelector('#record-screen');
-if(recordButton) {
-  recordButton.addEventListener('click',function(){
-    smoothScroll(1000,4000);
-  });
-}
+// let recordButton = document.querySelector('#record-screen');
+// if(recordButton) {
+//   recordButton.addEventListener('click',function(){
+//     smoothScroll(1000,4000);
+//   });
+// }
+
+var limitedTextareas = document.getElementsByTagName('textarea');
+ var counter = [];
+ for (var i = 0, len = limitedTextareas.length; i < len; i++) {
+   if(limitedTextareas[i].hasAttribute('maxlength')) {
+     counter[i] = document.createElement('div');
+     var textarea = limitedTextareas[i];
+     var maxlength = textarea.getAttribute('maxlength');
+     counter[i].className = 'badge badge-info badge-small form-counter';
+     counter[i].innerHTML = (maxlength - textarea.value.length) + ' characters left';
+     textarea.parentNode.prepend(counter[i]);
+     textarea.addEventListener("keyup", function(e){
+       e.target.parentNode.querySelector('.form-counter').innerHTML = (e.target.getAttribute('maxlength') - e.target.value.length) + ' characters left';
+     });
+   }
+ }
