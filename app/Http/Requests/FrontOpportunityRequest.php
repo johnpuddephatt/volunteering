@@ -77,7 +77,8 @@ class FrontOpportunityRequest extends FormRequest
         return [
             //
             'end_date.date' => 'End date is optional but if provided must be a valid date in the format YYYY-MM-DD.',
-            'start_date.date' => 'Start date is optional but if provided must be a valid date in the format YYYY-MM-DD.'
+            'start_date.date' => 'Start date is optional but if provided must be a valid date in the format YYYY-MM-DD.',
+            'description.max' => 'Description may be no more than 1200 characters.'
         ];
     }
 }

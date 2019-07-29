@@ -38,7 +38,7 @@ class OpportunityCreationForm extends Form
                     'class' => 'form-group',
                     'id' => 'quill-text-area-' . $this->name,
                 ],
-                'limit' => 1500,
+                'limit' => 1200,
                 'help_block' => [
                   'text' => 'Explain role responsibilities and the difference it will make.',
                  ],
