@@ -54,7 +54,7 @@ class OrganisationRegistrationForm extends Form
             ->add('info', 'textarea', [
               'attr' => [
                 'rows' => '5',
-                'maxlength' => '100'
+                'maxlength' => '300'
               ],
               'help_block' => [
                 'text' => 'Provide a sentence or two that sums up the work of your organisation',
