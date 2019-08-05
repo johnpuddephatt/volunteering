@@ -11,14 +11,13 @@
         @if(isset($opportunities) && count($opportunities))
           <ul class="list-group">
             @foreach($opportunities as $opportunity)
-            <li class="list-group-item">
-              <div class="item-title">{{$opportunity->title}}</div>
-              <span class="muted">{{$opportunity->expires_in() }} days remaining</span>
-              <div class="list-group-buttons">
-                <a href="/opportunity/renew/{{$opportunity->hash() }}">Renew</a> <a href="/opportunity/edit/{{$opportunity->hash() }}">Edit</a> <a href="/opportunity/delete/{{$opportunity->hash() }}">Delete</a>
-              </div>
+              <li class="list-group-item">
+                <div class="item-title">{{$opportunity->title}}</div>
+                <span class="muted">{{$opportunity->expires_in() }} days remaining</span>
+                <div class="list-group-buttons">
+                  <a class="button button__small button__ghost" href="/opportunity/renew/{{$opportunity->hash() }}">Renew</a> <a class="button button__small button__ghost" href="/opportunity/delete/{{$opportunity->hash() }}">Delete</a>  <a class="button button__small" href="/opportunity/edit/{{$opportunity->hash() }}">Edit</a>
+                </div>
               </li>
-
             @endforeach
           </ul>
         @else

@@ -29,7 +29,7 @@ class OrganisationController extends Controller
      */
     public function dashboard()
     {
-        $opportunities = Opportunity::where('organisation_id', Auth::id())->get();
+        $opportunities = Opportunity::withoutGlobalScopes()->where('organisation_id', Auth::id())->get();
         return view('organisation.dashboard', compact('opportunities'));
     }
 

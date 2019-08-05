@@ -53,6 +53,10 @@ $_button-background-color-hover: shade($action-color, 20%);
       color: $blue;
     }
   }
+  &__small {
+    font-size: modular-scale(-1);
+    padding: $small-spacing/2 $small-spacing;
+  }
   &__secondary {
     background-color: $green;
     &:hover {

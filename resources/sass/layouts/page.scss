@@ -7,4 +7,12 @@
 .page-content {
   margin-top: 2 * $base-spacing;
   margin-bottom: 2 * $base-spacing;
+  ul {
+    list-style-type: disc;
+    margin-left: $base-spacing;
+    margin-bottom: $base-spacing;
+  }
+  ol {
+    list-style-type: decimal;
+  }
 }
