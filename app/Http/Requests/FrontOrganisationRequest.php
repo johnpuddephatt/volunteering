@@ -27,7 +27,7 @@ class FrontOrganisationRequest extends FormRequest
     public function rules()
     {
         $rules =  [
-            'name' => 'required|unique:organisations|max:100',
+            'name' => 'required|max:100|unique:organisations,name,' . $this->id,
             'contact_name' => 'required',
             'contact_role' => 'required',
             'phone' => 'nullable',
