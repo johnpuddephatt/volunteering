@@ -99,11 +99,12 @@
       <h3 class="opportunity-sidebar--name">{{ $opportunity->organisation->name }}</h3>
       <div class="opportunity-sidebar--address">{{ $opportunity->organisation->address }}</div>
       <div class="opportunity-sidebar--info">{!! nl2br($opportunity->organisation->info) !!}</div>
-      @if($opportunity->organisation->phone)
-        <div class="opportunity-sidebar--phone">{{ $opportunity->organisation->phone }}</div>
+      @if($opportunity->phone)
+        <div class="opportunity-sidebar--phone">{{ $opportunity->phone }}</div>
       @endif
-      @if($opportunity->organisation->email)
-        <div class="opportunity-sidebar--email"><a href="mailto:{{ $opportunity->organisation->email }}">{{ $opportunity->organisation->email }}</a></div>
+
+      @if($opportunity->email)
+        <div class="opportunity-sidebar--email"><a href="mailto:{{ $opportunity->email }}">{{ $opportunity->email }}</a></div>
       @endif
       <a class="button button__inverted" href="{{ route('opportunity.index') }}?{{ http_build_query(['organisation' => $opportunity->organisation->slug]) }}">See all opportunities with this organisation</a>
     </div>
