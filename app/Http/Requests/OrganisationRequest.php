@@ -26,7 +26,7 @@ class OrganisationRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:100',
+            'name' => 'required|max:100|unique:organisations,name,' . $this->id,
             'email' => 'required|email',
             'contact_name' => 'required',
             'contact_role' => 'required',
