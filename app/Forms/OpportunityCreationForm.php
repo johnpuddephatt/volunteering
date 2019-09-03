@@ -67,11 +67,13 @@ class OpportunityCreationForm extends Form
             ])
             ->add('from_home', 'checkbox')
             ->add('phone', 'text', [
+              'default_value' => \Auth::user()->phone,
               'help_block' => [
                 'text' => 'Displayed publicly on the listing if provided.',
                ],
             ])
             ->add('email', 'text', [
+              'default_value' => \Auth::user()->email,
               'help_block' => [
                 'text' => 'Displayed publicly on the listing if provided.',
                ],
