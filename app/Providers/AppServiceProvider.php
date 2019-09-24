@@ -28,13 +28,9 @@ class AppServiceProvider extends ServiceProvider
         view()->share('view_name', $view_name);
 
         $total_opportunities = \Cache::rememberForever('opportunity_count', function() {
-          return \App\Models\Opportunity::count();
+          return \App\Models\Opportunity::active()->count();
         });
         view()->share('total_opportunities', $total_opportunities);
       });
-
-
-
-
     }
 }
