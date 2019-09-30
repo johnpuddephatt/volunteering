@@ -35,7 +35,6 @@ class FrontOrganisationRequest extends FormRequest
             'website' => 'nullable',
             'logo' => 'nullable',
             'photo' => 'nullable',
-
         ];
         if(\Auth::guest()) {
           $rules['password'] = 'required';
