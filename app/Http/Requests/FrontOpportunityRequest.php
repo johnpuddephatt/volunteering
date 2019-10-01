@@ -27,7 +27,7 @@ class FrontOpportunityRequest extends FormRequest
     {
         return [
             'title' => 'required|max:50',
-            'description' => 'required|max:1500',
+            'description' => 'required|max:2000',
             'intro' => 'required|max:100',
             'places' => 'nullable|numeric',
             'minimum_age' => 'nullable|numeric',
@@ -78,7 +78,7 @@ class FrontOpportunityRequest extends FormRequest
             //
             'end_date.date' => 'End date is optional but if provided must be a valid date in the format YYYY-MM-DD.',
             'start_date.date' => 'Start date is optional but if provided must be a valid date in the format YYYY-MM-DD.',
-            'description.max' => 'Description may be no more than 1200 characters.'
+            'description.max' => 'Description has exceeded the maximum length.'
         ];
     }
 }
