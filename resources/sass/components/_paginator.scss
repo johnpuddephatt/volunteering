@@ -1,27 +1,26 @@
 .pagination {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-end;
   width: 100%;
+  border: $base-border;
 }
 
 .page-link {
   font-size: modular-scale(1);
   display: inline-block;
-  background-color: $light-gray;
   color: $dark-gray;
-  border-radius: $base-border-radius;
   height: 1.25 * $base-spacing;
   padding: 0 $small-spacing;
   line-height: 1.25 * $base-spacing;
   text-align: center;
   text-decoration: none;
   transition: all $base-duration ease;
-  border-radius: 50%;
   @media screen and (min-width: $medium-screen) {
     height: 1.5 * $base-spacing;
+    width: 1.5 * $base-spacing;
     line-height: 1.5 * $base-spacing;
-    padding: 0 $small-spacing;
+    padding: 0;
   }
 }
 
@@ -35,10 +34,10 @@ a.page-link:hover {
   color: white;
 }
 
-.disabled .page-link {
-  color: $medium-gray;
+.page-link + .page-link {
+  border-left: $light-border;
 }
 
-.page-item + .page-item {
-  margin-left: $small-spacing;
+.disabled .page-link {
+  color: $medium-gray;
 }
