@@ -11,16 +11,17 @@
   background-color: $light-gray;
   color: $dark-gray;
   border-radius: $base-border-radius;
-  height: 1.5 * $base-spacing;
+  height: 1.25 * $base-spacing;
   padding: 0 $small-spacing;
-  line-height: 1.5 * $base-spacing;
+  line-height: 1.25 * $base-spacing;
   text-align: center;
   text-decoration: none;
   transition: all $base-duration ease;
+  border-radius: 50%;
   @media screen and (min-width: $medium-screen) {
-    height: 2 * $base-spacing;
-    line-height: 2 * $base-spacing;
-    padding: 0 $base-spacing;
+    height: 1.5 * $base-spacing;
+    line-height: 1.5 * $base-spacing;
+    padding: 0 $small-spacing;
   }
 }
 

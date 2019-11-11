@@ -28,7 +28,8 @@ class OpportunityRequest extends FormRequest
         return [
             'title' => 'required|max:50',
             'intro' => 'required|max:100',
-            'description' => 'required',
+            'description' => 'required|max:2000',
+
             // 'categories' => 'required'
         ];
 

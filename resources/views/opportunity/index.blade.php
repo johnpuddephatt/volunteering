@@ -89,7 +89,7 @@
   </div>
   <div class="card-footer">
     {{-- {{ $opportunities->links() }} --}}
-    {{ $opportunities->appends(request()->input())->links() }}
+    {{ $opportunities->appends(request()->input())->render() }}
   </div>
 </div>
 </div>
