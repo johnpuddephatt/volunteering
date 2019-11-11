@@ -4,6 +4,7 @@
   justify-content: flex-end;
   width: 100%;
   border: $base-border;
+  margin-left: auto;
 }
 
 .page-link {
@@ -17,9 +18,9 @@
   text-decoration: none;
   transition: all $base-duration ease;
   @media screen and (min-width: $medium-screen) {
-    height: 1.5 * $base-spacing;
-    width: 1.5 * $base-spacing;
-    line-height: 1.5 * $base-spacing;
+    height: 2 * $base-spacing;
+    width: 2 * $base-spacing;
+    line-height: 2 * $base-spacing;
     padding: 0;
   }
 }
@@ -34,7 +35,7 @@ a.page-link:hover {
   color: white;
 }
 
-.page-link + .page-link {
+.page-item + .page-item   {
   border-left: $light-border;
 }
 
