@@ -19,7 +19,6 @@
   transition: all $base-duration ease;
   @media screen and (min-width: $medium-screen) {
     height: 1.75 * $base-spacing;
-    width: 1.75 * $base-spacing;
     line-height: 1.75 * $base-spacing;
     padding: 0;
   }
