@@ -68,7 +68,8 @@ class Opportunity extends Model
       });
 
       static::saving(function($model) {
-        $model->slug = str_slug($model->title);
+
+        $model->slug = str_slug($model->title) . '-' . ($model->id ?? Cache::get('opportunity_count'));
 
         if($model->address) {
           $dirty_address = $model->address;
@@ -134,6 +135,7 @@ class Opportunity extends Model
     public function expires_in() {
       $validated_at = new Carbon($this->validated_at);
       $now = Carbon::now();
+
       $remaining = config('volunteering.opportunity_valid_for') - $validated_at->diffInDays($now);
       return ($remaining > 0) ? $remaining : false;
     }
