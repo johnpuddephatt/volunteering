@@ -71,6 +71,9 @@
 
 .item-title {
   margin-right: $small-spacing;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .list-group-buttons {
