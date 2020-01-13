@@ -7,6 +7,7 @@ use App\Models\Opportunity;
 use App\Models\Organisation;
 use Kris\LaravelFormBuilder\FormBuilder;
 use App\Http\Requests\FrontOrganisationRequest;
+use Vinkla\Hashids\Facades\Hashids;
 
 use Auth;
 
@@ -19,7 +20,7 @@ class OrganisationController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -27,10 +28,15 @@ class OrganisationController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function dashboard()
+    public function dashboard($hash)
     {
+      if($hash) {
+        $opportunities = Opportunity::withoutGlobalScopes()->where('organisation_id', Hashids::decode($hash)[0])->get();
+      }
+      else {
         $opportunities = Opportunity::withoutGlobalScopes()->where('organisation_id', Auth::id())->get();
-        return view('organisation.dashboard', compact('opportunities'));
+      }
+      return view('organisation.dashboard', compact('opportunities'));
     }
 
     public function account(FormBuilder $formBuilder)

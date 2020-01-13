@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Backpack\CRUD\CrudTrait;
+use Vinkla\Hashids\Facades\Hashids;
 use Mail;
 
 use App\Models\Admin;
@@ -74,6 +75,10 @@ class Organisation extends Authenticatable implements MustVerifyEmail
       static::saved(function(){
         \Cache::clear('index_organisations');
       });
+    }
+
+    public function hash() {
+      return Hashids::encode($this->id);
     }
 
     public function setLogoAttribute($value)

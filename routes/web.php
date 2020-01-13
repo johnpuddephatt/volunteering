@@ -26,9 +26,12 @@ Route::group(['middleware' => ['auth']], function () {
   Route::post('/account', 'OrganisationController@update')->name('organisation.update');
 });
 
+Route::group(['middleware' => config('backpack.base.middleware_key', 'admin')], function () {
+  Route::get('/dashboard/{hash}', 'OrganisationController@dashboard')->name('organisation.dashboard');
+});
+
 Route::group(['middleware' => ['auth','verified','activated']], function () {
     Route::get('/dashboard', 'OrganisationController@dashboard')->name('organisation.dashboard');
-
     Route::get('/opportunity/create', 'OpportunityController@new')->name('opportunity.new');
     Route::post('/opportunity/create', 'OpportunityController@store')->name('opportunity.store');
     Route::get('/opportunity/edit/{hashid}', 'OpportunityController@edit')->name('opportunity.edit');
@@ -36,6 +39,7 @@ Route::group(['middleware' => ['auth','verified','activated']], function () {
     Route::get('/opportunity/renew/{hashid}', 'OpportunityController@renew')->name('opportunity.renew');
     Route::get('/opportunity/delete/{hashid}', 'OpportunityController@delete')->name('opportunity.delete');
 });
+
 
 Route::get('/opportunities', 'OpportunityController@index')->name('opportunity.index');
 Route::post('/opportunities', 'OpportunityController@postcode')->name('opportunity.postcode');
