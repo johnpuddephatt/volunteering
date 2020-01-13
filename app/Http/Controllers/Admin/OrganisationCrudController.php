@@ -164,6 +164,7 @@ class OrganisationCrudController extends CrudController
         $this->crud->addFields([$nameArray, $infoArray, $logoFieldArray, $photoFieldArray, $contactNameArray, $contactRoleArray, $contactEmailArray, $contactPhoneArray, $contactWebsiteArray, $accountCreatedArray, $lastLoginArray]);
 
         $this->crud->addButtonFromView('line', 'renew', 'activate', 'beginning');
+        $this->crud->addButtonFromView('line', 'resend', 'resend', 'beginning');
 
         // add asterisk for fields that are required in OpportunityRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
@@ -207,6 +208,15 @@ class OrganisationCrudController extends CrudController
 
       $organisation->deactivate();
       \Alert::success('Organisation deactivated')->flash();
+
+      return redirect()->route('crud.organisation.index');
+    }
+
+    public function sendEmailVerification($id, Request $request) {
+      $organisation = Organisation::find($id);
+
+      $organisation->sendEmailVerificationNotification();
+      \Alert::success('Verification email resent')->flash();
 
       return redirect()->route('crud.organisation.index');
     }

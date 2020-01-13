@@ -104,7 +104,7 @@ class OpportunityController extends Controller
 
     public function renew(Request $request, $hash) {
       $id = Hashids::decode($hash)[0];
-      $opportunity = Opportunity::findOrFail($id);
+      $opportunity = Opportunity::withoutGlobalScopes->findOrFail($id);
       $opportunity->renew();
       $request->session()->flash('success', 'Opportunity renewed!');
       return redirect()->back();

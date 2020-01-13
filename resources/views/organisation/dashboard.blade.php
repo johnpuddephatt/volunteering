@@ -13,7 +13,11 @@
             @foreach($opportunities as $opportunity)
               <li class="list-group-item">
                 <div class="item-title">{{$opportunity->title}}</div>
-                <span class="muted">{{$opportunity->expires_in() }} days remaining</span>
+                @if($opportunity->expires_in())
+                  <span class="muted">{{$opportunity->expires_in() }} days remaining</span>
+                @else
+                  <span class="muted">Expired</span>
+                @endif
                 <div class="list-group-buttons">
                   <a class="button button__small button__ghost" href="/opportunity/renew/{{$opportunity->hash() }}">Renew</a> <a class="button button__small button__ghost" href="/opportunity/delete/{{$opportunity->hash() }}">Delete</a>  <a class="button button__small" href="/opportunity/edit/{{$opportunity->hash() }}">Edit</a>
                 </div>

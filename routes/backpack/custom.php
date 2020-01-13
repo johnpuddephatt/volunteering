@@ -24,4 +24,6 @@ Route::group([
     Route::get('organisation/{id}/activate','OrganisationCrudController@activation');
     Route::post('organisation/{id}/activate','OrganisationCrudController@activate');
     Route::post('organisation/{id}/deactivate','OrganisationCrudController@deactivate');
+    Route::post('organisation/{id}/sendemailverification','OrganisationCrudController@sendEmailVerification');
+
 }); // this should be the absolute last line of this file
