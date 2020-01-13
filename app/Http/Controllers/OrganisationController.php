@@ -28,14 +28,9 @@ class OrganisationController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function dashboard($hash)
+    public function dashboard()
     {
-      if($hash) {
-        $opportunities = Opportunity::withoutGlobalScopes()->where('organisation_id', Hashids::decode($hash)[0])->get();
-      }
-      else {
-        $opportunities = Opportunity::withoutGlobalScopes()->where('organisation_id', Auth::id())->get();
-      }
+      $opportunities = Opportunity::withoutGlobalScopes()->where('organisation_id', Auth::id())->get();
       return view('organisation.dashboard', compact('opportunities'));
     }
 

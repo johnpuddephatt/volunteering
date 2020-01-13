@@ -26,9 +26,9 @@ Route::group(['middleware' => ['auth']], function () {
   Route::post('/account', 'OrganisationController@update')->name('organisation.update');
 });
 
-Route::group(['middleware' => config('backpack.base.middleware_key', 'admin')], function () {
-  Route::get('/dashboard/{hash}', 'OrganisationController@dashboard')->name('organisation.dashboard');
-});
+// Route::group(['middleware' => config('backpack.base.middleware_key', 'admin')], function () {
+//   Route::get('/dashboard/{hash?}', 'OrganisationController@dashboard')->name('organisation.dashboard');
+// });
 
 Route::group(['middleware' => ['auth','verified','activated']], function () {
     Route::get('/dashboard', 'OrganisationController@dashboard')->name('organisation.dashboard');

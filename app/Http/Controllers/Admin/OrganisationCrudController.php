@@ -165,7 +165,7 @@ class OrganisationCrudController extends CrudController
 
         $this->crud->addButtonFromView('line', 'renew', 'activate', 'beginning');
         $this->crud->addButtonFromView('line', 'resend', 'resend', 'beginning');
-        $this->crud->addButtonFromView('line', 'view dashboard', 'dashboard', 'beginning');
+        // $this->crud->addButtonFromView('line', 'view dashboard', 'dashboard', 'beginning');
 
         // add asterisk for fields that are required in OpportunityRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
