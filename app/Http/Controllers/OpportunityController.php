@@ -66,7 +66,7 @@ class OpportunityController extends Controller
 
     public function edit(Request $request, FormBuilder $formBuilder, $hash) {
         $id = Hashids::decode($hash)[0];
-        $opportunity = Opportunity::findOrFail($id);
+        $opportunity = Opportunity::withoutGlobalScopes()->findOrFail($id);
 
         $form = $formBuilder->create('App\Forms\OpportunityCreationForm', [
             'method' => 'POST',
@@ -81,7 +81,7 @@ class OpportunityController extends Controller
       $id = Hashids::decode($hash)[0];
       $validated = $request->validated();
 
-      $opportunity = Opportunity::findOrFail($id);
+      $opportunity = Opportunity::withoutGlobalScopes()->findOrFail($id);
       $opportunity->update($validated);
       $opportunity->syncRelations($validated);
       $request->session()->flash('success', 'Opportunity updated!');
