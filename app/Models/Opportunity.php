@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Cache;
 
 use Backpack\CRUD\CrudTrait;
 use Malhal\Geographical\Geographical;
