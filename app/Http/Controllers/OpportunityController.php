@@ -47,9 +47,7 @@ class OpportunityController extends Controller
         $opportunity->organisation_id = Auth::id();
         $opportunity->active = true;
         $opportunity->save();
-
         $opportunity->syncRelations($validated);
-
         $request->session()->flash('status', 'Opportunity created successfully!');
 
         return redirect()->route('organisation.dashboard');
@@ -92,7 +90,7 @@ class OpportunityController extends Controller
 
     public function delete(Request $request, $hash) {
       $id = Hashids::decode($hash)[0];
-      Opportunity::destroy($id);
+      Opportunity::withoutGlobalScopes()->findOrFail($id)->delete();
       $request->session()->flash('success', 'Opportunity deleted!');
       return redirect()->back();
     }
