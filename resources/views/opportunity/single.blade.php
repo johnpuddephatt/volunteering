@@ -36,21 +36,21 @@
         @if($opportunity->categories->count())
           <div>
             <h3>Categories</h3>
-            {{ implode((array) $opportunity->categories->pluck('label')[0])}}
+            {{ $opportunity->categories->pluck('label')->join(', ') }}
           </div>
         @endif
 
         @if($opportunity->suitabilities->count())
           <div>
             <h3>Suitable for</h3>
-            {{ implode((array) $opportunity->suitabilities->pluck('label')[0])}}
+            {{ $opportunity->suitabilities->pluck('label')->join(', ') }}
           </div>
         @endif
 
         @if($opportunity->accessibilities->count())
           <div>
             <h3>Accessibility</h3>
-            {{ implode((array) $opportunity->accessibilities->pluck('label')[0])}}
+            {{ $opportunity->accessibilities->pluck('label')->join(', ') }}
           </div>
         @endif
 
