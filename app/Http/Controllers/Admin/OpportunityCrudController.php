@@ -358,8 +358,14 @@ class OpportunityCrudController extends CrudController
           }
         ];
 
+        $locationColumn = [
+          'name' => 'address_ward',
+          'label' => 'ward',
+          'type' => 'text'
+        ];
+
         $this->crud->addFields([$titleArray, $introFieldArray, $descriptionArray, $expensesFieldArray, $placesArray, $statusHeading, $activeFieldArray, $renewFieldArray, $organisationFieldArray, $locationHeading, $addressFieldArray, $contactHeading, $emailFieldArray, $phoneFieldArray, $fromHomeFieldArray, $hoursHeading, $frequencyFieldArray, $hoursFieldArray, $dateHeading, $startDateFieldArray, $endDateFieldArray, $deadlineHeading, $deadlineFieldArray, $categoriesFieldArray, $skillsNeededFieldArray, $skillsGainedFieldArray, $requirementsFieldArray, $suitabilitiesFieldArray, $accessibilityFieldArray]);
-        $this->crud->addColumns([$titleColumn, $expiryColumnArray]);
+        $this->crud->addColumns([$titleColumn, $locationColumn, $expiryColumnArray]);
 
         $this->crud->addButtonFromView('line', 'renew', 'renew', 'beginning');
         $this->crud->addButtonFromView('line', 'view', 'view', 'beginning');
