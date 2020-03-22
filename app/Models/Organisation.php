@@ -26,7 +26,7 @@ class Organisation extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'user_id','name','slug','contact_name', 'contact_role', 'email', 'password', 'phone', 'info', 'website', 'logo', 'photo', 'active'
+        'user_id','name','slug','contact_name', 'contact_role', 'email', 'password', 'phone', 'info', 'website', 'logo', 'photo', 'active','is_covid_centre','covid_description'
     ];
 
     /**

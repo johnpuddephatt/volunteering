@@ -139,6 +139,13 @@ class OrganisationCrudController extends CrudController
             'hint' => 'Enable organisation as a CoVid centre able to manage its volunteer needs page'
         ];
 
+        $covidDescriptionArray = [
+            'name' => 'covid_description',
+            'label' => 'Overview of Covid requirements',
+            'type' => 'textarea',
+            'tab' => 'Account settings',
+        ];
+
 
         $countColumnArray = [
             'name' => 'count',
