@@ -3,8 +3,9 @@
 @section('content')
   <div class="container container__center">
     <h2 class="page-title">Express your interest</h2>
-    @if($opportunity)
-      <div class="page-subtitle">in {{ $opportunity->title }}</div>
+
+    @if($enquirable)
+      <div class="page-subtitle">in {{ $enquirable->title }}</div>
     @endif
 
     <div class="card">
@@ -15,7 +16,6 @@
           <div class="alert alert__warning">{{ $message }}</div>
         @endforeach
         {!! form($form, ['class'=>'opportunity-form']) !!}
-
       </div>
     </div>
 

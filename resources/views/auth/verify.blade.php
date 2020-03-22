@@ -3,6 +3,7 @@
 @section('content')
   <div class="container container__center container__full-height">
     <div class="card">
+
       <div class="card-header">
         <h2 class="card-title">You’re almost there&hellip;</h2>
       </div>

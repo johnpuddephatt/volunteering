@@ -32,14 +32,25 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::group(['middleware' => ['auth','verified','activated']], function () {
     Route::get('/dashboard', 'OrganisationController@dashboard')->name('organisation.dashboard');
+
     Route::get('/opportunity/create', 'OpportunityController@new')->name('opportunity.new');
     Route::post('/opportunity/create', 'OpportunityController@store')->name('opportunity.store');
     Route::get('/opportunity/edit/{hashid}', 'OpportunityController@edit')->name('opportunity.edit');
     Route::post('/opportunity/edit/{hashid}', 'OpportunityController@update')->name('opportunity.update');
     Route::get('/opportunity/renew/{hashid}', 'OpportunityController@renew')->name('opportunity.renew');
     Route::get('/opportunity/delete/{hashid}', 'OpportunityController@delete')->name('opportunity.delete');
+
+    Route::get('/need/create', 'NeedController@new')->name('need.new');
+    Route::post('/need/create', 'NeedController@store')->name('need.store');
+    Route::get('/need/edit/{hashid}', 'NeedController@edit')->name('need.edit');
+    Route::post('/need/edit/{hashid}', 'NeedController@update')->name('need.update');
+    Route::get('/need/delete/{hashid}', 'NeedController@delete')->name('need.delete');
+    Route::get('/need/enquiries/{hashid}', 'NeedController@enquiries')->name('need.enquiries');
+    Route::get('/enquiry/delete/{hashid}', 'EnquiryController@delete')->name('enquiry.delete');
+
 });
 
+Route::get('/organisation/{slug}', 'OrganisationController@single')->name('organisation.single');
 
 Route::get('/opportunities', 'OpportunityController@index')->name('opportunity.index');
 Route::post('/opportunities', 'OpportunityController@postcode')->name('opportunity.postcode');

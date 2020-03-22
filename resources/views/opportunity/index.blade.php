@@ -9,13 +9,14 @@
   @include('opportunity.filter')
   <div class="card">
     <div class="card-header">
-      <h2 class="card-title">Opportunities</h2>
-
-      @if( $filters != new stdClass() )
-        <span>Showing {{ $opportunities->total() }} of {{ $total_opportunities }} opportunities</span>
-      @else
-        Viewing all {{ $total_opportunities }} opportunities
-      @endif
+      <div>
+        <h2 class="card-title">Opportunities</h2>
+        @if( $filters != new stdClass() )
+          <span>Showing {{ $opportunities->total() }} of {{ $total_opportunities }} opportunities</span>
+        @else
+          Viewing all {{ $total_opportunities }} opportunities
+        @endif
+      </div>
     </div>
 
     <div class="card-body">
@@ -89,7 +90,9 @@
   </div>
   <div class="card-footer">
     {{-- {{ $opportunities->links() }} --}}
-    {{ $opportunities->appends(request()->input())->render() }}
+    <div>
+      {{ $opportunities->appends(request()->input())->render() }}
+    </div>
   </div>
 </div>
 </div>

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Vinkla\Hashids\Facades\Hashids;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Opportunity;
 
@@ -15,16 +16,20 @@ class Enquiry extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['opportunity_id','name','phone','email','message'];
+    protected $fillable = ['enquirable_id','enquirable_type','name','phone','email','message'];
 
-    public function opportunity()
+    public function enquirable()
     {
-      return $this->belongsTo('App\Models\Opportunity');
+      return $this->morphTo();
     }
 
     public function sendEnquiryNotification() {
       $email = new NewEnquiryNotification($this);
-      $recipient = Opportunity::findOrFail($this->opportunity_id)->organisation;
+      $recipient = $this->enquirable->organisation;
       Mail::to($recipient)->send($email);
+    }
+
+    public function hash() {
+      return Hashids::encode($this->id);
     }
 }

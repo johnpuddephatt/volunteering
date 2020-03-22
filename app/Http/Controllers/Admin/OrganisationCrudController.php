@@ -131,12 +131,13 @@ class OrganisationCrudController extends CrudController
             ]
         ];
 
-        // $activeFieldArray = [
-        //     'name' => 'active',
-        //     'label' => 'Account activated?',
-        //     'type' => 'checkbox',
-        //     'tab' => 'Account settings',
-        // ];
+        $isCovidFieldArray = [
+            'name' => 'is_covid_centre',
+            'label' => 'Covid centre?',
+            'type' => 'checkbox',
+            'tab' => 'Account settings',
+            'hint' => 'Enable organisation as a CoVid centre able to manage its volunteer needs page'
+        ];
 
 
         $countColumnArray = [
@@ -161,7 +162,7 @@ class OrganisationCrudController extends CrudController
         ];
 
         $this->crud->addColumns([$nameArray, $activeColumnArray, $emailVerifiedColumnArray, $countColumnArray]);
-        $this->crud->addFields([$nameArray, $infoArray, $logoFieldArray, $photoFieldArray, $contactNameArray, $contactRoleArray, $contactEmailArray, $contactPhoneArray, $contactWebsiteArray, $accountCreatedArray, $lastLoginArray]);
+        $this->crud->addFields([$nameArray, $infoArray, $logoFieldArray, $photoFieldArray, $contactNameArray, $contactRoleArray, $contactEmailArray, $contactPhoneArray, $contactWebsiteArray, $accountCreatedArray, $lastLoginArray, $isCovidFieldArray]);
 
         $this->crud->addButtonFromView('line', 'renew', 'activate', 'beginning');
         $this->crud->addButtonFromView('line', 'resend', 'resend', 'beginning');

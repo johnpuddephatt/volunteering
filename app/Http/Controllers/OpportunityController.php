@@ -97,6 +97,7 @@ class OpportunityController extends Controller
 
     public function single($slug) {
       $opportunity = Opportunity::where('slug', $slug)->firstOrFail();
+
       return view('opportunity.single', compact('opportunity'));
     }
 
@@ -141,10 +142,10 @@ class OpportunityController extends Controller
           $filters = new \stdClass();
 
       $query = Opportunity::query();
-      if(Input::get('lat') && Input::get('long')) {
-        $longitude = Input::get('long', false);
-        $latitude = Input::get('lat', false);
-        $postcode = Input::get('postcode', false);
+      if($request->input('lat') && $request->input('long')) {
+        $longitude = $request->input('long', false);
+        $latitude = $request->input('lat', false);
+        $postcode = $request->input('postcode', false);
         $query = $query->distance($latitude, $longitude)->having('distance', '>', 0)->orderBy('distance', 'ASC');
         $filters->postcode = $postcode;
       }
@@ -152,16 +153,16 @@ class OpportunityController extends Controller
         $postcode = null;
       }
 
-      if(Input::get('location')) {
-        $location_slug = Input::get('location',false);
+      if($request->input('location')) {
+        $location_slug = $request->input('location',false);
         $location = Location::where('slug', $location_slug)->firstOrFail();
         $query = $query->distance($location->address['latlng']['lat'], $location->address['latlng']['lng']);
         // ->having('distance', '>', 0)->orderBy('distance', 'ASC');
         $filters->location = $location->label;
       }
 
-      if(Input::get('organisation')) {
-        $organisation_slug = Input::get('organisation',false);
+      if($request->input('organisation')) {
+        $organisation_slug = $request->input('organisation',false);
         $organisation = organisation::where('slug', $organisation_slug)->firstOrFail();
         $query = $query->whereHas('organisation', function ($query) use ($organisation_slug)  {
             $query->where('slug', $organisation_slug);
@@ -169,8 +170,8 @@ class OpportunityController extends Controller
         $filters->organisation = $organisation->name;
       }
 
-      if(Input::get('category')) {
-        $category_slug = Input::get('category',false);
+      if($request->input('category')) {
+        $category_slug = $request->input('category',false);
         $category = Category::where('slug', $category_slug)->firstOrFail();
         $query = $query->whereHas('categories', function ($query) use ($category_slug)  {
             $query->where('slug', $category_slug);
@@ -179,8 +180,8 @@ class OpportunityController extends Controller
         $filters->category = $category->label;
       }
 
-      if(Input::get('suitability')) {
-        $suitability_slug = Input::get('suitability',false);
+      if($request->input('suitability')) {
+        $suitability_slug = $request->input('suitability',false);
         $suitability = Suitability::where('slug', $suitability_slug)->firstOrFail();
         $query = $query->whereHas('suitabilities', function ($query) use ($suitability_slug)  {
             $query->where('slug', $suitability_slug);

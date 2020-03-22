@@ -12,17 +12,25 @@ class EnquiryCreationForm extends Form
 
     public function buildForm()
     {
+        if($this->getData('enquirable_type')) {
+          $type = explode('\\', $this->getData('enquirable_type'));
+        }
 
-
-        $this->add('opportunity_id', 'entity', [
-            'class' => 'App\Models\Opportunity',
+        $this->add('enquirable_id', 'entity', [
+            'label' => isset($type) ? end($type) : 'Opportunity',
+            'class' => $this->getData('enquirable_type') ? $this->getData('enquirable_type') : 'App\Models\Opportunity',
             'property' => 'title',
             'expanded' => false,
             'multiple' => false,
-            'selected' => $this->getData('opportunity_id') ?? '',
-            'wrapper' => ['class' => $this->getData('opportunity_id') ? 'form-group__hidden' : ''],
-         ]);
+            'selected' => $this->getData('enquirable_id') ?? '1',
+            'wrapper' => ['class' => $this->getData('enquirable_id') ? 'form-group__hidden' : ''],
+        ]);
 
+        $this->add('enquirable_type', 'text', [
+            'label' => 'Enquirable type',
+            'value' => $this->getData('enquirable_type'),
+            'wrapper' => ['class' => 'form-group__hidden'],
+        ]);
 
 
         $this

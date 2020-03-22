@@ -1,8 +1,8 @@
 @component('mail::message')
 
-## Enquiry about {{ $enquiry->opportunity->title }}
+## Enquiry about {{ $enquiry->enquirable->title }}
 
-You've received a new enquiry about one of your opportunities.
+You've received new interest in one of your opportunities.
 
 @component('mail::table')
 |               |               |

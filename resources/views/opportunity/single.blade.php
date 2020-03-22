@@ -3,7 +3,7 @@
 @section('content')
   <div class="container container__wide container__full">
     <div class="opportunity-single">
-      <a class="button button__secondary opportunity-single--enquire-button" href="{{ route('enquiry.new', ['opportunity_id' => $opportunity->id ])}}" >Enquire</a>
+      <a class="button button__secondary opportunity-single--enquire-button" href="{{ route('enquiry.new', ['enquirable_type' => 'App\Models\Opportunity', 'enquirable_id' => $opportunity->id ])}}" >Enquire</a>
 
       <h2 class="opportunity-single--title">{{ $opportunity->title}}</h2>
       <div class="opportunity-single--intro">{{ $opportunity->intro }}</div>
@@ -64,21 +64,21 @@
         @if($opportunity->skills_gained)
           <div>
             <h3>Skills gained</h3>
-            {{ implode($opportunity->skills_gained, ', ')}}
+            {{ implode(', ', $opportunity->skills_gained)}}
           </div>
         @endif
 
         @if($opportunity->skills_needed)
           <div>
             <h3>Skills needed</h3>
-            {{ implode($opportunity->skills_needed, ', ')}}
+            {{ implode(', ', $opportunity->skills_needed)}}
           </div>
         @endif
 
         @if($opportunity->requirements)
           <div>
             <h3>Requirements</h3>
-            {{ implode($opportunity->requirements, ', ')}}
+            {{ implode(', ', $opportunity->requirements)}}
           </div>
         @endif
 

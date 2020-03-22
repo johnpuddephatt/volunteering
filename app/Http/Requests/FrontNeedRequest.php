@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Http\Requests\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
-class FrontEnquiryRequest extends FormRequest
+class FrontNeedRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,15 +25,10 @@ class FrontEnquiryRequest extends FormRequest
      */
     public function rules()
     {
-        $rules =  [
-          'enquirable_type' => 'required',
-          'enquirable_id' => 'required|integer',
-          'name' => 'required|max:100',
-          'email' => 'nullable|email|max:100',
-          'phone' => 'required_without:email|max:100',
-          'message' => 'required|max:500'
+        return [
+          'title' => 'required|max:50',
+          'description' => 'required|max:180'
         ];
-        return $rules;
     }
 
     /**
@@ -59,9 +54,6 @@ class FrontEnquiryRequest extends FormRequest
     public function messages()
     {
         return [
-            'phone.required_without' => 'You must provide either an email address or phone number',
-            'name.required' => 'You must provide your name',
-            'message.required' => 'You must enter a message',
         ];
     }
 }

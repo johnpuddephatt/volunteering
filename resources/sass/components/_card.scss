@@ -13,12 +13,16 @@
 .card-footer {
   // border-bottom: $light-border;
   padding: $base-spacing 0 $small-spacing;
+
   @media screen and (min-width: $medium-screen) {
+    padding: 2 * $base-spacing 3 * $base-spacing $small-spacing;
+  }
+
+  > div {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 2 * $base-spacing 3 * $base-spacing $small-spacing;
   }
 }
 

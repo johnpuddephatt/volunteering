@@ -7,22 +7,31 @@ use App\Http\Requests\FrontEnquiryRequest;
 use Kris\LaravelFormBuilder\FormBuilder;
 use App\Models\Enquiry;
 use App\Models\Opportunity;
+use App\Models\Need;
+use Vinkla\Hashids\Facades\Hashids;
 
 class EnquiryController extends Controller
 {
   public function new(FormBuilder $formBuilder)
   {
+    if(isset($_GET['enquirable_id']) && isset($_GET['enquirable_type'])) {
+      $enquirableClass = new $_GET['enquirable_type'];
+      $enquirable = $enquirableClass::findOrFail($_GET['enquirable_id']);
+    }
+    else {
+      $enquirable = '';
+    }
 
-      $opportunity_id = $_GET['opportunity_id'] ?? '';
-      $opportunity = Opportunity::findOrFail($opportunity_id);
+    $form = $formBuilder->create('App\Forms\EnquiryCreationForm', [
+        'method' => 'POST',
+        'url' => route('enquiry.store')],
+        [
+          'enquirable_id' => $_GET['enquirable_id'] ?? '',
+          'enquirable_type' => $_GET['enquirable_type'] ?? '',
+        ]
+    );
+    return view('enquiry.form', compact('form','enquirable'));
 
-
-      $form = $formBuilder->create('App\Forms\EnquiryCreationForm', [
-          'method' => 'POST',
-          'url' => route('enquiry.store')],
-           ['opportunity_id' =>  $opportunity->id ]
-      );
-      return view('enquiry.form', compact('form','opportunity'));
   }
 
   public function store(FrontEnquiryRequest $request)
@@ -36,6 +45,14 @@ class EnquiryController extends Controller
 
       $request->session()->flash('success', 'Enquiry sent!');
 
-      return redirect('/opportunities');
+      return back();
+  }
+
+  public function delete(Request $request, $hash) {
+    $id = Hashids::decode($hash)[0];
+    dd($id);
+    Enquiry::findOrFail($id)->delete();
+    $request->session()->flash('success', 'Enquiry deleted!');
+    return redirect()->back();
   }
 }

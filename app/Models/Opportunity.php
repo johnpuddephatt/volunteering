@@ -179,7 +179,7 @@ class Opportunity extends Model
 
     public function enquiries()
     {
-        return $this->hasMany('App\Models\Enquiry');
+        return $this->morphMany('App\Models\Enquiry', 'enquirable');
     }
 
     public function categories()
