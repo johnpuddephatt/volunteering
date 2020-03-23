@@ -38,6 +38,12 @@
   @media screen and (min-width: $medium-screen) {
     padding: $base-spacing 3 * $base-spacing 3 * $base-spacing;
   }
+  + .card-body {
+     margin-top: -2 * $base-spacing;
+     @media screen and (min-width: $medium-screen) {
+       margin-top: -3 * $base-spacing;
+     }
+  }
 }
 
 .placeholder {

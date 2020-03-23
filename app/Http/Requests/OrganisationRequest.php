@@ -31,7 +31,8 @@ class OrganisationRequest extends FormRequest
           'contact_name' => 'required',
           'contact_role' => 'required',
           'phone' => 'nullable',
-          'info' => 'required|max:300'
+          'info' => 'required|max:300',
+          'covid_description' => 'nullable'
         ];
     }
 

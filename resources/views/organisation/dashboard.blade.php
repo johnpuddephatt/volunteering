@@ -46,6 +46,12 @@
             </div>
             <p class="alert">Your organisation is verified as a volunteer centre. <a href="{{ route('organisation.single', ['slug' => $organisation->slug] ) }}">View your page here</a></p>
           </div>
+          <form method="POST" action="{{ route('organisation.updateCovid')}}" class="card-body">
+            @csrf
+            <label for="covid_description">Overview</label>
+            <textarea name="covid_description" id="covid_description" placeholder="You can optionally enter general information to appear on your page here.">{{ $organisation->covid_description }}</textarea>
+            <input type="submit" value="Save" />
+          </form>
           @if(isset($needs) && count($needs))
             <ul class="list-group">
               @foreach($needs as $need)

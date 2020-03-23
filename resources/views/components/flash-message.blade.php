@@ -18,7 +18,7 @@
 
 
 @if ($message = Session::get('warning'))
-<div class="alert--wrapper">
+<div class="alert--wrapper fixed ">
   <div class="alert alert__warning">
   	<strong>{{ $message }}</strong>
   </div>
@@ -27,7 +27,7 @@
 
 
 @if ($message = Session::get('info'))
-  <div class="alert--wrapper  autodismiss">
+  <div class="alert--wrapper fixed  autodismiss">
   <div class="alert alert__info">
   	<strong>{{ $message }}</strong>
   </div>
@@ -35,7 +35,7 @@
 @endif
 
 @if ($errors->any())
-<div class="alert--wrapper">
+<div class="alert--wrapper fixed autodismiss">
   <div class="alert alert__danger">
   	Please check the form below for errors
   </div>

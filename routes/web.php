@@ -48,6 +48,8 @@ Route::group(['middleware' => ['auth','verified','activated']], function () {
     Route::get('/need/enquiries/{hashid}', 'NeedController@enquiries')->name('need.enquiries');
     Route::get('/enquiry/delete/{hashid}', 'EnquiryController@delete')->name('enquiry.delete');
 
+    Route::post('/organisation/covid', 'OrganisationController@updateCovid')->name('organisation.updateCovid');
+
 });
 
 Route::get('/organisation/{slug}', 'OrganisationController@single')->name('organisation.single');

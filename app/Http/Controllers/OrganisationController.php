@@ -62,6 +62,15 @@ class OrganisationController extends Controller
       \Auth::user()->update($validated);
 
       $request->session()->flash('success', 'Account updated!');
-      return redirect()->route('organisation.dashboard');
+      return back();
+    }
+
+    public function updateCovid(Request $request) {
+
+
+      \Auth::user()->update($request->all());
+
+      $request->session()->flash('success', 'Description updated');
+      return back();
     }
 }
