@@ -26,12 +26,14 @@
                 <li class="list-group-item">
                   <div class="item-title">
                     {{$need->title}}
-                    @if($need->enquiries)
+                    @if($need->enquiries->count())
                       <span class="muted">{{ $need->enquiries->count() }} people interested</span>
                     @endif
                   </div>
                   <div class="list-group-buttons">
-                    <a class="button button__small button__ghost" href="{{ route('need.enquiries', ['hashid' => $need->hash()]) }}">View enquiries</a>
+                    @if($need->enquiries->count())
+                      <a class="button button__small button__ghost" href="{{ route('need.enquiries', ['hashid' => $need->hash()]) }}">View enquiries</a>
+                    @endif
                     <a class="button button__small button__ghost" href="{{ route('need.delete', ['hashid' => $need->hash()]) }}">Delete</a>
                     <a class="button button__small" href="{{ route('need.edit', ['hashid' => $need->hash()]) }}">Edit</a>
                   </div>

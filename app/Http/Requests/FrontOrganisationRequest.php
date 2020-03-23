@@ -27,7 +27,7 @@ class FrontOrganisationRequest extends FormRequest
     public function rules()
     {
         $rules =  [
-            'name' => 'required|max:100|unique:organisations,name,' . $this->id,
+            'name' => 'required|unique:organisations,name,' . \Auth::id() . ',id|max:100',
             'contact_name' => 'required',
             'contact_role' => 'required',
             'phone' => 'nullable',
@@ -35,6 +35,8 @@ class FrontOrganisationRequest extends FormRequest
             'website' => 'nullable',
             'logo' => 'nullable',
             'photo' => 'nullable',
+            'address' => 'nullable',
+
         ];
         if(\Auth::guest()) {
           $rules['password'] = 'required';

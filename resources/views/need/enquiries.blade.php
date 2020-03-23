@@ -17,6 +17,9 @@
               @if($enquiry->email)
                 <span class="muted">{{ $enquiry->email }}</span>
               @endif
+              @if($enquiry->phone)
+                <span class="muted">{{ $enquiry->phone }}</span>
+              @endif
             </div>
             <div class="list-group-buttons">
               <a class="button button__small button__ghost" href="{{ route('enquiry.delete', ['hashid' => $enquiry->hash()]) }}">Delete</a>

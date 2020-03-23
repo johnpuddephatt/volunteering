@@ -13,10 +13,16 @@ class OrganisationRegistrationForm extends Form
     public function buildForm()
     {
         $this->addCustomField('logo', 'App\Forms\Fields\Logo');
+        $this->addCustomField('address', 'App\Forms\Fields\Address');
 
         $this
             ->add('name', 'text', [
               'label' => 'Organisation name'
+            ])
+            ->add('address', 'address', [
+                'country' => '["uk"]',
+                'radius' => 5000,
+                'location' => '53.6772339,-1.4042975'
             ])
             ->add('contact_name', 'text', [
               'wrapper' => ['class' => 'form-group__half-width'],
@@ -63,7 +69,7 @@ class OrganisationRegistrationForm extends Form
             ->add('logo', 'logo')
             ->add('submit', 'submit', [
               'attr' => ['class' => 'button__block'],
-              'label' => 'Register'
+              'label' => \Auth::id() ? 'Update' : 'Register'
             ]);
     }
 }

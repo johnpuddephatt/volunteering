@@ -26,7 +26,7 @@ class Organisation extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'user_id','name','slug','contact_name', 'contact_role', 'email', 'password', 'phone', 'info', 'website', 'logo', 'photo', 'active','is_covid_centre','covid_description'
+        'user_id','name','slug','contact_name', 'contact_role', 'email', 'password', 'phone', 'info', 'website', 'logo', 'photo', 'active','is_covid_centre','covid_description', 'address', 'latitude', 'longitude',
     ];
 
     /**
@@ -44,10 +44,9 @@ class Organisation extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+      'email_verified_at' => 'datetime',
+      'address' => 'json'
     ];
-
-
 
     /*
     |--------------------------------------------------------------------------
@@ -74,8 +73,22 @@ class Organisation extends Authenticatable implements MustVerifyEmail
     protected static function boot()
     {
       parent::boot();
+
       static::saving(function($model) {
         $model->slug = str_slug($model->name);
+
+        if($model->address) {
+          $dirty_address = $model->address;
+
+          if(gettype($dirty_address) == 'string') {
+            $dirty_address = json_decode($dirty_address,true);
+          }
+
+          $model->latitude = $dirty_address['latlng']['lat'];
+          $model->longitude = $dirty_address['latlng']['lng'];
+
+        }
+
       });
       static::saved(function(){
         \Cache::clear('index_organisations');
@@ -144,5 +157,18 @@ class Organisation extends Authenticatable implements MustVerifyEmail
     public function deactivate() {
       $this->active = 0;
       $this->save();
+    }
+
+    /*
+    * Mutators
+    */
+
+    public function setAddressAttribute($value) {
+      if(gettype($value) == 'string') {
+        $this->attributes['address'] = json_decode(json_encode($value),true);
+      }
+      else {
+        $this->attributes['address'] = json_encode($value);
+      }
     }
 }

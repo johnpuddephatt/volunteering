@@ -21,6 +21,7 @@
           <h3 class="fieldset-heading">About your organisation</h3>
           {!! form_row($form->name) !!}
           {!! form_row($form->logo) !!}
+          {!! form_row($form->address) !!}
           {!! form_row($form->info) !!}
           {!! form_row($form->website) !!}
           {!! form_row($form->phone) !!}
