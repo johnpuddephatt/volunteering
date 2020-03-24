@@ -35,6 +35,30 @@
       padding-bottom: 0;
     }
   }
+  &__covid {
+    @media screen and (min-width: $medium-screen) {
+      .container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      }
+      .hero--message-box {
+        width: 47.5%;
+        margin-right: $base-spacing;
+      }
+      .hero--search-box--container {
+        width: 52.5%;
+      }
+    }
+  }
+}
+
+.hero--message-box h1 {
+  font-size: modular-scale(7);
+  line-height: 1;
+  color: $blue;
+  margin-bottom: 0;
 }
 
 .hero--search-box--container {
@@ -61,6 +85,13 @@
     font-size: modular-scale(4);
     color: $blue;
     margin-bottom: 1.5 * $base-spacing;
+
+    &__covid {
+      color: $base-font-color;
+      font-size: modular-scale(3);
+      font-weight: 500;
+      font-family: $base-font-family;
+    }
   }
   a {
     text-decoration: none;

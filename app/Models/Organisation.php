@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Backpack\CRUD\CrudTrait;
+use Malhal\Geographical\Geographical;
 use Vinkla\Hashids\Facades\Hashids;
 use Mail;
 
@@ -17,6 +18,7 @@ class Organisation extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
     use CrudTrait;
+    use Geographical;
 
     protected $table = 'organisations';
 

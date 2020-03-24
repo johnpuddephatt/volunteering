@@ -1,0 +1,13 @@
+.needs-title {
+  color: $blue;
+}
+
+.needs--item {
+  padding: $base-spacing 0;
+  border-bottom: $light-border;
+}
+
+.needs--item--title {
+  font-family: $base-font-family;
+  font-weight: 500;
+}

@@ -29,7 +29,10 @@ main {
   &.background__opportunity-index,
   &.background__opportunity-single,
   &.background__enquiry-form,
+  &.background__organisation-single,
   &.background__auth-verify,
+  &.background__covid,
+  &.background__organisation-index,
   &.background__organisation-profile {
     @media screen and (min-width: $large-screen) {
       transform-style: preserve-3d;
@@ -81,7 +84,9 @@ main {
       left: 0;
       right: 0;
     }
-    &.background__opportunity-index {
+    &.background__opportunity-index,
+    &.background__organisation-index
+     {
       &::after {
         background-image: url('/images/pattern.svg'), url('/images/pattern2.svg');
         background-position: left (-2 * $base-spacing) top (10 * $base-spacing), right (-2 * $base-spacing) bottom (-0 * $base-spacing);
@@ -92,11 +97,19 @@ main {
     &.background__auth-verify,
     &.background__organisation-profile,
     &.background__opportunity-single,
+    &.background__organisation-single,
+    &.background__covid,
     &.background__enquiry-form {
       &::after {
         background-image: url('/images/pattern2.svg');
         background-position: right (-2 * $base-spacing) bottom (0 * $base-spacing);
         background-size: 20 * $base-spacing;
+      }
+    }
+    &.background__covid {
+      &::after {
+        background-size: 35 * $base-spacing;
+        background-position: right (0) bottom (6 * $base-spacing);
       }
     }
   }

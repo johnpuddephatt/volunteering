@@ -20,6 +20,9 @@ Route::post('/registration', 'Auth\RegisterController@showRegistrationForm')->na
 Route::post('/register', 'Auth\RegisterController@register')->name('register');
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/covid', 'HomeController@covid')->name('covid');
+Route::get('/covid-search', 'HomeController@covid')->name('covid');
+
 
 Route::group(['middleware' => ['auth']], function () {
   Route::get('/account', 'OrganisationController@account')->name('organisation.account');
@@ -53,6 +56,8 @@ Route::group(['middleware' => ['auth','verified','activated']], function () {
 });
 
 Route::get('/organisation/{slug}', 'OrganisationController@single')->name('organisation.single');
+Route::get('/organisation', 'OrganisationController@index')->name('organisation.index');
+Route::post('/organisation', 'OrganisationController@postcode')->name('organisation.postcode');
 
 Route::get('/opportunities', 'OpportunityController@index')->name('opportunity.index');
 Route::post('/opportunities', 'OpportunityController@postcode')->name('opportunity.postcode');

@@ -19,8 +19,6 @@ use Auth;
 use Vinkla\Hashids\Facades\Hashids;
 use GuzzleHttp\Client;
 
-
-
 class OpportunityController extends Controller
 {
 

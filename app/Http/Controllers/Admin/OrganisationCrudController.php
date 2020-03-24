@@ -168,8 +168,20 @@ class OrganisationCrudController extends CrudController
             'type' => 'check',
         ];
 
+        $addressFieldArray = [   // Address
+            'name' => 'address',
+            'label' => 'Address',
+            'type' => 'address_google',
+            // optional
+            'country' => '["uk"]',
+            'radius' => 5000,
+            'location' => '53.6772339,-1.4042975',
+            'store_as_json' => true,
+            'tab' => 'Contact'
+        ];
+
         $this->crud->addColumns([$nameArray, $activeColumnArray, $emailVerifiedColumnArray, $countColumnArray]);
-        $this->crud->addFields([$nameArray, $infoArray, $logoFieldArray, $photoFieldArray, $contactNameArray, $contactRoleArray, $contactEmailArray, $contactPhoneArray, $contactWebsiteArray, $accountCreatedArray, $lastLoginArray, $isCovidFieldArray, $covidDescriptionArray]);
+        $this->crud->addFields([$nameArray, $infoArray, $logoFieldArray, $photoFieldArray, $contactNameArray, $contactRoleArray, $contactEmailArray, $contactPhoneArray, $contactWebsiteArray, $addressFieldArray, $accountCreatedArray, $lastLoginArray, $isCovidFieldArray, $covidDescriptionArray]);
 
         $this->crud->addButtonFromView('line', 'renew', 'activate', 'beginning');
         $this->crud->addButtonFromView('line', 'resend', 'resend', 'beginning');

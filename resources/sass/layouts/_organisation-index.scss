@@ -1,0 +1,94 @@
+.organisation-card {
+  padding: 2 * $base-spacing;
+  + .organisation-card {
+    margin-top: $base-spacing;
+  }
+}
+
+.organisation-card--title {
+  font-size: modular-scale(1);
+  font-weight: 400;
+  margin-bottom: 0;
+  color: $blue;
+  a {
+    text-decoration: none;
+  }
+}
+
+.organisation-card--organisation {
+  font-size: modular-scale(1);
+  line-height: $heading-line-height;
+}
+
+.organisation-card--header {
+  margin-bottom: $base-spacing;
+}
+
+.opportunity-card--enquire-button {
+  float: right;
+}
+
+.organisation-card--intro {
+  // color: $dark-gray;
+  line-height: $heading-line-height;
+}
+
+.organisation-card--footer {
+  // color: $black;
+  color: $dark-gray;
+  // font-size: modular-scale(-1);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  line-height: $heading-line-height;
+  margin-top: $base-spacing;
+  flex-wrap: wrap;
+
+  span {
+    display: inline-block;
+    + span {
+      margin-left: $small-spacing/2;
+    }
+  }
+}
+
+.organisation-card--footer--left {
+  flex: 1 0 auto;
+  padding-right: $small-spacing;
+}
+
+.organisation-card--hours,
+.organisation-card--location,
+.organisation-card--distance {
+  padding-left: $base-spacing / 1.5;
+  &::before {
+    vertical-align: text-top;
+    content: '';
+    display: inline-block;
+    height: $base-spacing / 1.5;
+    width: $base-spacing / 1.5;
+    margin-left: -$base-spacing / 1.5;
+    margin-right: $small-spacing/3;
+    background-image: url('/images/icons/clock.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right center;
+  }
+}
+
+.organisation-card--location,
+.organisation-card--distance {
+  &::before {
+    background-image: url('/images/icons/map-marker.svg');
+  }
+}
+
+.organisation-card--distance {
+  color: $dark-gray;
+  border-radius: $base-border-radius;
+  padding: 0 $small-spacing;
+}
+
+.organisation-card--location + .organisation-card--distance::before {
+  content: none;
+}

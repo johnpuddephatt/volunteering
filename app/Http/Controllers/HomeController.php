@@ -40,4 +40,9 @@ class HomeController extends Controller
       });
       return view('home', compact('categories','locations','suitabilities'));
     }
+
+    public function covid()
+    {
+      return view('covid');
+    }
 }

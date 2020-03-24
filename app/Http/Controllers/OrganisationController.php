@@ -11,6 +11,7 @@ use App\Models\Need;
 use Kris\LaravelFormBuilder\FormBuilder;
 use App\Http\Requests\FrontOrganisationRequest;
 use Vinkla\Hashids\Facades\Hashids;
+use GuzzleHttp\Client;
 
 use Auth;
 
@@ -72,5 +73,44 @@ class OrganisationController extends Controller
 
       $request->session()->flash('success', 'Description updated');
       return back();
+    }
+
+    public function postcode(Request $request) {
+      if($request->postcode) {
+        $postcode = $request->postcode;
+        $client = new Client(['http_errors' => false]);
+        $response = $client->request('GET', 'https://api.postcodes.io/postcodes/' . $request->postcode);
+        if($response->getStatusCode() == 200) {
+          $response_body = $response->getBody();
+          $response_json = json_decode($response_body, true);
+          $filters = ['lat'=>$response_json['result']['latitude'],'long'=>$response_json['result']['longitude'],'postcode'=>$response_json['result']['postcode']];
+          return redirect()->route('organisation.index',$filters);
+        }
+        else {
+          $request->session()->flash('error', 'Postcode not found!');
+          return redirect()->back();
+        }
+      }
+      else {
+        $request->session()->flash('success', 'Postcode cleared!');
+        return redirect()->back();
+      }
+    }
+
+    public function index(Request $request) {
+
+      $query = Organisation::query();
+
+      if($request->input('lat') && $request->input('long')) {
+        $longitude = $request->input('long', false);
+        $latitude = $request->input('lat', false);
+        $postcode = $request->input('postcode', false);
+        $query = $query->distance($latitude, $longitude)->having('distance', '>', 0)->orderBy('distance', 'ASC');
+      }
+      else {
+        $postcode = null;
+      }
+      $organisations = $query->orderBy('distance', 'ASC')->take(4)->get();
+      return view('organisation.index', compact('organisations'));
     }
 }
