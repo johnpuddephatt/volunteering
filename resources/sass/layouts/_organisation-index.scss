@@ -1,5 +1,8 @@
 .organisation-card {
-  padding: 2 * $base-spacing;
+  padding: 2 * $base-spacing 0 0;
+  @media screen and (min-width: $medium-screen) {
+    padding: 2 * $base-spacing;
+  }
   + .organisation-card {
     margin-top: $base-spacing;
   }
@@ -26,6 +29,8 @@
 
 .opportunity-card--enquire-button {
   float: right;
+  margin-top: -$small-spacing;
+  margin-left: $small-spacing;
 }
 
 .organisation-card--intro {

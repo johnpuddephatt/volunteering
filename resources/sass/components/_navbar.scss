@@ -70,9 +70,12 @@
 
 .navbar--brand {
   font-family: $heading-font-family;
-  font-size: modular-scale(1);
+  -webkit-font-smoothing: antialiased;
   opacity: 1 !important;
-  margin-right: 3 * $base-spacing;
+  font-size: modular-scale(1);
+  @media screen and (min-width: $medium-screen) {
+    margin-right: 3 * $base-spacing;
+  }
   font-weight: 400;
   height: $base-spacing;
   line-height: $base-spacing;
@@ -86,16 +89,14 @@
 }
 
 .navbar--nav {
-  display: none;
-  @media screen and (min-width: $large-screen) {
-    display: flex;
-  }
-
+  display: flex;
   flex-direction: row;
 
   &__right {
     margin-left: auto;
-    padding-left: $base-spacing;
+    @media screen and (min-width: $medium-screen) {
+      padding-left: $base-spacing;
+    }
   }
 }
 
