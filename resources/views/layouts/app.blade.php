@@ -7,10 +7,17 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Volunteer Wakefield') }}</title>
     <!-- Scripts -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161874050-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-161874050-1');
+    </script>
     <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    {{-- <link href="https://fonts.googleapis.com/css?family=Rubik:400,700,900" rel="stylesheet" type="text/css"> --}}
     <link href="https://fonts.googleapis.com/css?family=Yantramanav" rel="stylesheet" type="text/css">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
