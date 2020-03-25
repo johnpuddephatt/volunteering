@@ -19,7 +19,7 @@ Route::post('/registration', 'Auth\RegisterController@showRegistrationForm')->na
 
 Route::post('/register', 'Auth\RegisterController@register')->name('register');
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@covid')->name('home');
 Route::get('/covid', 'HomeController@covid')->name('covid');
 Route::get('/covid-search', 'HomeController@covid')->name('covid');
 
