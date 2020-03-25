@@ -110,7 +110,7 @@ class OrganisationController extends Controller
       else {
         $postcode = null;
       }
-      $organisations = $query->orderBy('distance', 'ASC')->take(4)->get();
+      $organisations = $query->orderBy('distance', 'ASC')->paginate(config('volunteering.opportunities_per_page'));
       return view('organisation.index', compact('organisations'));
     }
 }

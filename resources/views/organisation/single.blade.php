@@ -9,6 +9,9 @@
         @if($organisation->address)
           <span class="opportunity-single--location">{{ $organisation->address['value'] }} <a target="_blank" href="https://maps.google.com/?q={{ urlencode($organisation->address['value']) }}">view map</a></span>
         @endif
+        @if($organisation->phone)
+          <div class="opportunity-sidebar--phone">{{ $organisation->phone }}</div>
+        @endif
       </div>
       @if(count($organisation->needs))
         <h3 class="needs-title">Opportunities available</h3>

@@ -14,11 +14,14 @@ use App\Models\Admin;
 use App\Mail\NewOrganisationNotification;
 use App\Mail\OrganisationActivationNotification;
 
+use JustBetter\PaginationWithHavings\PaginationWithHavings;
+
 class Organisation extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
     use CrudTrait;
     use Geographical;
+    use PaginationWithHavings;
 
     protected $table = 'organisations';
 
