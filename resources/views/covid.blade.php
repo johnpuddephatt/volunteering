@@ -8,6 +8,7 @@
   <div class="container">
     <div class="hero--message-box">
       <h1>We need volunteers more than ever.</h1>
+      <p>Volunteers are essential to help those in need during the coronavirus outbreak. Let’s show how much #WakefieldCares.</p>
     </div>
     <div class="hero--search-box--container">
       <div class="card hero--search-box">
