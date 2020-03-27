@@ -22,12 +22,12 @@
         </div>
       </div>
     @endforeach
-    <div class="card-footer">
+
+    <div class="card pagination-card">
       {{-- {{ $opportunities->links() }} --}}
-      <div>
-        {{ $organisations->appends(request()->input())->render() }}
-      </div>
+      {{ $organisations->appends(request()->input())->render() }}
     </div>
+
 </div>
 
 @endsection
