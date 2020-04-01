@@ -4,7 +4,7 @@
   <div class="container container__wide container__full">
     <div class="opportunity-single">
       <h2 class="opportunity-single--title">{{ $organisation->name}}</h2>
-      <div class="opportunity-single--intro">{{ $organisation->covid_description }}</div>
+      <div class="opportunity-single--intro">{!! $organisation->covid_description !!}</div>
       <div class="opportunity-single--key-features">
         @if($organisation->address)
           <span class="opportunity-single--location">{{ $organisation->address['value'] }} <a target="_blank" href="https://maps.google.com/?q={{ urlencode($organisation->address['value']) }}">view map</a></span>
