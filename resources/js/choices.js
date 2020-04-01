@@ -1,4 +1,4 @@
-import Choices from 'choices.js/public/assets/scripts/choices.min.js';
+import Choices from 'choices.js';
 
 document.addEventListener('DOMContentLoaded', function() {
 
