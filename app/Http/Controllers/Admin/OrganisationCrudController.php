@@ -120,6 +120,13 @@ class OrganisationCrudController extends CrudController
             ]
         ];
 
+        $passwordArray = [
+            'name' => 'password',
+            'label' => 'Password',
+            'type' => 'password',
+            'tab' => 'Account settings',
+        ];
+
         $lastLoginArray = [
             'name' => 'last_login',
             'label' => 'Date of last login',
@@ -181,7 +188,7 @@ class OrganisationCrudController extends CrudController
         ];
 
         $this->crud->addColumns([$nameArray, $activeColumnArray, $emailVerifiedColumnArray, $countColumnArray]);
-        $this->crud->addFields([$nameArray, $infoArray, $logoFieldArray, $photoFieldArray, $contactNameArray, $contactRoleArray, $contactEmailArray, $contactPhoneArray, $contactWebsiteArray, $addressFieldArray, $accountCreatedArray, $lastLoginArray, $isCovidFieldArray, $covidDescriptionArray]);
+        $this->crud->addFields([$nameArray, $infoArray, $logoFieldArray, $photoFieldArray, $contactNameArray, $contactRoleArray, $contactEmailArray, $contactPhoneArray, $contactWebsiteArray, $addressFieldArray, $passwordArray, $accountCreatedArray, $lastLoginArray, $isCovidFieldArray, $covidDescriptionArray]);
 
         $this->crud->addButtonFromView('line', 'renew', 'activate', 'beginning');
         $this->crud->addButtonFromView('line', 'resend', 'resend', 'beginning');
