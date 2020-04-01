@@ -112,6 +112,7 @@ class OrganisationController extends Controller
       }
       else {
         $postcode = null;
+        $query = $query->orderBy('name', 'ASC');
       }
       $organisations = $query->paginate(config('volunteering.opportunities_per_page'));
       return view('organisation.index', compact('organisations'));
