@@ -11,11 +11,15 @@
         <div class="organisation-card--header">
           <a class="button button__secondary opportunity-card--enquire-button" href="{{ route('organisation.single', ['slug' => $organisation->slug])}}">How to help</a>
           <h3 class="organisation-card--title">{{$organisation->name}}</h3>
-          <p class="organisation-card--subtitle">{{ $organisation->address['value'] }}</p>
+          @if($organisation->address)
+            <p class="organisation-card--subtitle">{{ $organisation->address['value'] }}</p>
+          @endif
         </div>
         <div class="organisation-card--footer">
           <div class="organisation-card--footer--left">
-            <span class="organisation-card--distance">{{ round($organisation->distance, 1) }} miles away</span>
+            @if($organisation->distance)
+              <span class="organisation-card--distance">{{ round($organisation->distance, 1) }} miles away</span>
+            @endif
           </div>
           <div class="organisation-card--footer--right">
           </div>

@@ -108,11 +108,12 @@ class OrganisationController extends Controller
         $latitude = $request->input('lat', false);
         $postcode = $request->input('postcode', false);
         $query = $query->distance($latitude, $longitude)->having('distance', '>', 0)->orderBy('distance', 'ASC');
+        $query = $query->orderBy('distance', 'ASC');
       }
       else {
         $postcode = null;
       }
-      $organisations = $query->orderBy('distance', 'ASC')->paginate(config('volunteering.opportunities_per_page'));
+      $organisations = $query->paginate(config('volunteering.opportunities_per_page'));
       return view('organisation.index', compact('organisations'));
     }
 }
