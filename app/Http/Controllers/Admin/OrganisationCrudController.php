@@ -188,7 +188,8 @@ class OrganisationCrudController extends CrudController
         ];
 
         $this->crud->addColumns([$nameArray, $activeColumnArray, $emailVerifiedColumnArray, $countColumnArray]);
-        $this->crud->addFields([$nameArray, $infoArray, $logoFieldArray, $photoFieldArray, $contactNameArray, $contactRoleArray, $contactEmailArray, $contactPhoneArray, $contactWebsiteArray, $addressFieldArray, $passwordArray, $accountCreatedArray, $lastLoginArray, $isCovidFieldArray, $covidDescriptionArray]);
+        $this->crud->addFields([$nameArray, $infoArray, $logoFieldArray, $photoFieldArray, $contactNameArray, $contactRoleArray, $contactEmailArray, $contactPhoneArray, $contactWebsiteArray, $addressFieldArray, $accountCreatedArray, $lastLoginArray, $isCovidFieldArray, $covidDescriptionArray], 'update');
+        $this->crud->addFields([$nameArray, $infoArray, $logoFieldArray, $photoFieldArray, $contactNameArray, $contactRoleArray, $contactEmailArray, $contactPhoneArray, $contactWebsiteArray, $addressFieldArray, $passwordArray, $isCovidFieldArray, $covidDescriptionArray], 'create');
 
         $this->crud->addButtonFromView('line', 'renew', 'activate', 'beginning');
         $this->crud->addButtonFromView('line', 'resend', 'resend', 'beginning');
