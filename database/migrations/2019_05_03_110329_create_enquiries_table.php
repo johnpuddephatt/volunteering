@@ -17,7 +17,6 @@ class CreateEnquiriesTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->bigInteger('opportunity_id')->unsigned();
-            $table->foreign('opportunity_id')->references('id')->on('opportunities')->onDelete('cascade');
             $table->string('name',100);
             $table->string('phone',100)->nullable();
             $table->string('email',100);

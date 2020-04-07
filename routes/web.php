@@ -35,6 +35,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::group(['middleware' => ['auth','verified','activated']], function () {
     Route::get('/dashboard', 'OrganisationController@dashboard')->name('organisation.dashboard');
+    Route::get('/dashboard/cards', 'OrganisationController@cards')->name('organisation.cards');
 
     Route::get('/opportunity/create', 'OpportunityController@new')->name('opportunity.new');
     Route::post('/opportunity/create', 'OpportunityController@store')->name('opportunity.store');

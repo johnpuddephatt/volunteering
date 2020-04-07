@@ -49,6 +49,18 @@
             </div>
           @endif
         </div>
+        <br><br>
+        <div class="card opportunity-list">
+          <div class="card-header">
+            <div>
+              <h4 class="card-title">Print ID cards</h4>
+            </div>
+          </div>
+          <div class="card-body centered">
+            <p>Use the link below to open the ID card maker which allows you to create volunteer cards for any of your volunteers.</p>
+            <a class="button" href="{{ route('organisation.cards')}}">Open card maker</a>
+          </div>
+        </div>
       @else
         <div class="card opportunity-list">
           <div class="card-header">

@@ -1,51 +1,26 @@
 require('intersection-observer');
 window.smoothScroll = require('./smoothscroll.min');
+window.Vue = require('vue');
 
-// require('./bootstrap');
 require('./scroller');
 require('date-input-polyfill');
 
+import Vue from 'vue';
 
-// const geoLocationButton = document.querySelector('.geolocation-button');
-// if(geoLocationButton) {
-//   geoLocationButton.onclick = function() {
-//     var startPos;
-//     var nudge = document.getElementById("nudge");
-//
-//     var showNudgeBanner = function() {
-//       nudge.style.display = "block";
-//     };
-//
-//     var hideNudgeBanner = function() {
-//       nudge.style.display = "none";
-//     };
-//
-//     var nudgeTimeoutId = setTimeout(showNudgeBanner, 5000);
-//
-//     var geoSuccess = function(position) {
-//       hideNudgeBanner();
-//       // We have the location, don't display banner
-//       clearTimeout(nudgeTimeoutId);
-// console.log('success');
-//       // Do magic with location
-//       startPos = position;
-//       document.getElementById('startLat').innerHTML = startPos.coords.latitude;
-//       document.getElementById('startLon').innerHTML = startPos.coords.longitude;
-//     };
-//     var geoError = function(error) {
-//       nudge.innerHTML = 'Error code ' + error.code;
-//       switch(error.code) {
-//         case error.TIMEOUT:
-//           // The user didn't accept the callout
-//           showNudgeBanner();
-//           break;
-//       }
-//     };
-//
-//     navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
-//   };
-//
-// }
+const requireComponent = require.context('./components', true, /.vue$/)
+
+requireComponent.keys().forEach(fileName => {
+  const componentConfig = requireComponent(fileName);
+  const componentName = fileName.replace(/^.*[\\\/]/, '').replace('.vue','');
+  Vue.component(
+    componentName, componentConfig.default || componentConfig
+  );
+});
+
+var card = new Vue({
+  el: '#app'
+});
+
 
 const footerElement = document.querySelector('.primary-footer');
 

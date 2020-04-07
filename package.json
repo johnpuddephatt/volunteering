@@ -26,7 +26,9 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "canvas-toBlob": "^1.0.0",
         "date-input-polyfill": "^2.14.0",
-        "intersection-observer": "^0.6.0"
+        "intersection-observer": "^0.6.0",
+        "jspdf": "^1.5.3"
     }
 }

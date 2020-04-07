@@ -117,4 +117,8 @@ class OrganisationController extends Controller
       $organisations = $query->paginate(config('volunteering.opportunities_per_page'));
       return view('organisation.index', compact('organisations'));
     }
+
+    public function cards(Request $request) {
+      return view('organisation.cards');
+    }
 }
