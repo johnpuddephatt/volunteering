@@ -29,8 +29,8 @@ class FrontNeedRequest extends FormRequest
           'title' => 'required|max:50',
           'description' => 'required|max:180',
           'accepts_enquiries' =>'boolean',
-          'contact_email' => 'optional',
-          'contact_phone' => 'optional'
+          'contact_email' => 'sometimes',
+          'contact_phone' => 'sometimes'
         ];
     }
 
