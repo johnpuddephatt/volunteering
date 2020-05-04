@@ -1,0 +1,35 @@
+.section__home-specialised {
+  .page-title {
+    margin-top: 0;
+  }
+}
+
+.specialised-needs {
+  a {
+    display: block;
+    text-align: left;
+    background-color: #fff;
+    border: $base-border;
+    margin-bottom: $small-spacing;
+    color: $base-font-color;
+    padding: $base-spacing;
+    font-weight: 400;
+    position: relative;
+    &::after {
+      position: absolute;
+      top: $base-spacing;
+      content: '';
+      right: $small-spacing;
+      width: $base-spacing;
+      height: $base-spacing;
+      background-image: url('../../images/icons/arrow-green.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+    &:hover {
+      &::after {
+        background-image: url('../../images/icons/arrow.svg');
+      }
+    }
+  }
+}

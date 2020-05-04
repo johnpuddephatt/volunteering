@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RemoveForeignKeyOnEnquiries extends Migration
+class AddSpecialisedFieldToOrganisations extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class RemoveForeignKeyOnEnquiries extends Migration
      */
     public function up()
     {
-      Schema::table('enquiries', function (Blueprint $table) {
-        $table->dropForeign('opportunities_enquirable_id_foreign');
-      });
+        Schema::table('organisations', function (Blueprint $table) {
+          $table->boolean('is_specialised')->default(false)->nullable();
+        });
     }
 
     /**
@@ -25,6 +25,8 @@ class RemoveForeignKeyOnEnquiries extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('organisations', function (Blueprint $table) {
+            //
+        });
     }
 }

@@ -20,8 +20,11 @@ Route::post('/registration', 'Auth\RegisterController@showRegistrationForm')->na
 Route::post('/register', 'Auth\RegisterController@register')->name('register');
 
 Route::get('/', 'HomeController@covid')->name('home');
+Route::get('/old', 'HomeController@index')->name('old');
 Route::get('/covid', 'HomeController@covid')->name('covid');
 Route::get('/covid-search', 'HomeController@covid')->name('covid');
+
+Route::get('/specialised', 'NeedController@specialised')->name('specialised');
 
 
 Route::group(['middleware' => ['auth']], function () {

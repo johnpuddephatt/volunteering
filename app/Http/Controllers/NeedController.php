@@ -6,13 +6,15 @@ use Illuminate\Http\Request;
 use App\Models\Need;
 use Vinkla\Hashids\Facades\Hashids;
 use Kris\LaravelFormBuilder\FormBuilder;
+use Illuminate\Database\Eloquent\Builder;
+
 use Auth;
 
 class NeedController extends Controller
 {
   public function __construct()
   {
-      $this->middleware('auth');
+      // $this->middleware('auth');
   }
 
   public function store(FrontNeedRequest $request)
@@ -74,5 +76,12 @@ class NeedController extends Controller
       ]);
 
       return view('need.form', compact('form'))->with('need', $need);
+  }
+
+  public function specialised() {
+    $specialised = Need::whereHas('organisation', function (Builder $query) {
+      $query->where('is_specialised', true);
+    })->get();
+    return view('need.specialised', compact('specialised'));
   }
 }

@@ -1,8 +1,8 @@
 @component('mail::message')
 
-## Enquiry about {{ $enquiry->enquirable->title }}
+## Enquiry about “{{ $enquiry->enquirable->title }}”
 
-You've received new interest in one of your opportunities.
+**{{ $enquiry->enquirable->organisation->name }}** has received new volunteer interest.
 
 @component('mail::table')
 |               |               |

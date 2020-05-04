@@ -14,6 +14,9 @@
             <fieldset> <!---->
               {!! form_row($form->title) !!}
               {!! form_row($form->description) !!}
+              {!! form_row($form->contact_email) !!}
+              {!! form_row($form->contact_phone) !!}
+              {!! form_row($form->accepts_enquiries) !!}
             </fieldset>
           </div>
           <div class="card-footer">

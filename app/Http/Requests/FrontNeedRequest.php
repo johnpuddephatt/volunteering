@@ -27,7 +27,8 @@ class FrontNeedRequest extends FormRequest
     {
         return [
           'title' => 'required|max:50',
-          'description' => 'required|max:180'
+          'description' => 'required|max:180',
+          'accepts_enquiries' =>'boolean'
         ];
     }
 

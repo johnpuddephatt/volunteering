@@ -36,6 +36,8 @@
     }
   }
   &__covid {
+    height: 90vh;
+
     @media screen and (min-width: $large-screen) {
       .container {
         display: flex;
@@ -44,11 +46,12 @@
         justify-content: center;
       }
       .hero--message-box {
-        width: 47.5%;
-        margin-right: $base-spacing;
+        width: 50%;
+        margin-right: $small-spacing;
       }
       .hero--search-box--container {
-        width: 52.5%;
+        width: 50%;
+        margin-top: 2 * $base-spacing;
       }
     }
   }

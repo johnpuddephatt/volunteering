@@ -16,7 +16,7 @@ class EnquiryController extends Controller
   {
     if(isset($_GET['enquirable_id']) && isset($_GET['enquirable_type'])) {
       $enquirableClass = new $_GET['enquirable_type'];
-      $enquirable = $enquirableClass::findOrFail($_GET['enquirable_id']);
+      $enquirable = $enquirableClass::with('organisation')->findOrFail($_GET['enquirable_id']);
     }
     else {
       $enquirable = '';

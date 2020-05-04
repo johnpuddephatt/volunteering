@@ -20,7 +20,11 @@ class Need extends Model
     protected $table = 'needs';
 
     protected $fillable = [
-        'title', 'description'
+        'title', 'description', 'contact_email', 'contact_phone', 'accepts_enquiries'
+    ];
+
+    protected $casts = [
+      'accepts_enquiries' => 'boolean'
     ];
 
     /*

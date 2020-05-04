@@ -24,8 +24,9 @@ class Enquiry extends Model
     }
 
     public function sendEnquiryNotification() {
+
       $email = new NewEnquiryNotification($this);
-      $recipient = $this->enquirable->organisation;
+      $recipient = $this->enquirable->contact_email ?? $this->enquirable->organisation;
       Mail::to($recipient)->send($email);
     }
 

@@ -50,7 +50,8 @@ class Organisation extends Authenticatable implements MustVerifyEmail
      */
     protected $casts = [
       'email_verified_at' => 'datetime',
-      'address' => 'json'
+      'address' => 'json',
+      'is_specialised' => 'boolean'
     ];
 
     /*

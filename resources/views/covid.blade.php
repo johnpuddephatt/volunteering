@@ -12,7 +12,7 @@
     </div>
     <div class="hero--search-box--container">
       <div class="card hero--search-box">
-        <h2 class="hero--search-box--title hero--search-box--title__covid">See what help is needed in your local community.</h2>
+        <h2 class="hero--search-box--title hero--search-box--title__covid">See what help your local community needs.</h2>
         <form method="POST" action="{{ route('organisation.postcode') }}">
           @csrf
           <input type="text" name="postcode" placeholder="Enter your postcode">
