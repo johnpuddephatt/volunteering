@@ -27,14 +27,11 @@
 
     @if(!in_array($view_name, ['auth-login', 'auth-register']))
     <!-- Left Side Of Navbar -->
-    {{-- <ul class="navbar--nav">
+    <ul class="navbar--nav">
       <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
+        <a class="nav-link" href="/specialised/">Specialised opportunities</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Contact</a>
-      </li>
-    </ul> --}}
+    </ul>
 
       <!-- Right Side Of Navbar -->
       <ul class="navbar--nav navbar--nav__right">
@@ -75,7 +72,6 @@
                   <a class="button button__inverted nav-link" href="{{ route('organisation.dashboard') }}">Dashboard</a>
                 </li>
               @endif
-
 
           @endauth
       </ul>
