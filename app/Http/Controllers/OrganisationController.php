@@ -102,6 +102,7 @@ class OrganisationController extends Controller
       $query = Organisation::query();
 
       $query = $query->where('is_covid_centre', true);
+      $query = $query->where('is_specialised', false);
 
       if($request->input('lat') && $request->input('long')) {
         $longitude = $request->input('long', false);
