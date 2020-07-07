@@ -6,6 +6,20 @@
   + .organisation-card {
     margin-top: $base-spacing;
   }
+
+  &.highlighted {
+    padding: $base-spacing 2 * $base-spacing;
+    border: .15rem solid $green;
+
+    .organisation-card--subtitle,
+    .organisation-card--header {
+      margin-bottom: 0;
+    }
+
+    .opportunity-card--enquire-button {
+      margin-top: 0;
+    }
+  }
 }
 
 .organisation-card--title {
