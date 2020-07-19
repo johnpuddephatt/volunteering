@@ -52,6 +52,7 @@ $action-color: $blue;
 
 //Shadows
 $base-box-shadow: 0 2 * $base-spacing 2 * $base-spacing (-$base-spacing) rgba(0,0,0,0.12);
+$small-box-shadow: 0 $small-spacing $base-spacing 0 rgba(0,0,0,0.24);
 
 // Border
 $base-border-color: $medium-gray;

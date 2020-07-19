@@ -32,6 +32,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+      $opportunities = Cache::rememberForever('home_opportunities', function () {
+        return Opportunity::take(5)->get();
+      });
       $locations =  Cache::rememberForever('home_locations', function () {
         return Location::all()->shuffle()->take(3);
       });
@@ -41,7 +44,7 @@ class HomeController extends Controller
       $suitabilities = Cache::rememberForever('home_suitabilities', function () {
         return Suitability::withCount('opportunities')->orderBy('opportunities_count', 'desc')->get();
       });
-      return view('home', compact('categories','locations','suitabilities'));
+      return view('home', compact('opportunities','categories','locations','suitabilities'));
     }
 
     public function covid()

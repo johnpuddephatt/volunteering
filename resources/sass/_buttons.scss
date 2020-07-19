@@ -51,6 +51,7 @@ $_button-background-color-hover: shade($action-color, 20%);
     background-color: white;
     color: $blue;
     color: transparentize($blue,.1);
+    box-shadow: $small-box-shadow;
     &:hover {
       background-color: white;
       color: $blue;

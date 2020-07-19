@@ -102,6 +102,7 @@ class Opportunity extends Model
        \Cache::clear('index_organisations');
        \Cache::clear('home_categories');
        \Cache::clear('home_suitabilities');
+       \Cache::clear('home_opportunities');
      });
 
 

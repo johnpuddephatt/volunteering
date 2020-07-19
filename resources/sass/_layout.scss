@@ -154,13 +154,23 @@ main {
   &__full-height {
     min-height: calc(100vh - #{ $navbar-height });
   }
-  &__wide {
+  &__row {
     @media screen and (min-width: $large-screen) {
       display: flex;
       flex-direction: row;
       justify-content: center;
     }
-
+  }
+  &__wide {
+    @media screen and (min-width: $large-screen) {
+      max-width: $xl-screen;
+    }
+    @media screen and (min-width: $xxl-screen) {
+      max-width: $xxl-screen;
+    }
+  }
+  &__narrow {
+    max-width: $medium-screen;
   }
   &__center {
     display: flex;

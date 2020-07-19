@@ -16,14 +16,28 @@
         <form method="POST" action="{{ route('opportunity.postcode') }}">
           @csrf
           <input type="text" name="postcode" placeholder="Enter postcode">
-          <input type="submit" value="Search" />
+          <input type="submit" formaction="{{ route('opportunity.postcode') }}" value="Find opportunities" />
+          <input type="submit" class="button__ghost" formaction="{{ route('organisation.postcode') }}" value="Find a Covid hub" />
         </form>
-        <p>Or <a href="{{ route('opportunity.index')}}">view all opportunities ></a>
+        <p>Alternatively, <a href="{{ route('opportunity.index')}}">view all opportunities</a>, or view all <a href="{{ route('organisation.index')}}">Covid community hubs</a>
       </div>
     </div>
   </div>
-
 </section>
+
+@if(count($opportunities) >= 1)
+  <section class="section section__home-opportunities">
+    <div class="container">
+      <h2 class="section-title">Latest opportunities</h2>
+      @foreach($opportunities as $opportunity)
+        @include('opportunity.card')
+      @endforeach
+      <div class="home-opportunities--footer">
+        <a href="{{ route('opportunity.index')}}">view all opportunities</a>
+      </div>
+    </div>
+  </section>
+@endif
 
 @if(count($categories) >= 4)
   <section class="section section__home-categories">

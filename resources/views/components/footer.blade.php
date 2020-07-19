@@ -1,5 +1,5 @@
 <footer class="primary-footer">
-  <div class="container">
+  <div class="container container__wide">
     <div class="primary-footer--left">
       <h3 class="footer-brand">Volunteer <svg xmlns="http://www.w3.org/2000/svg" width="20.2" height="15" viewbox="0 0 25.2 21"><path fill="#FFF" d="M.6 5.7L16 11.3 0 15.1 1.4 21l23.4-5.5.2-3.5.2-3.8L2.6 0z"/></svg> Wakefield</h3>
       <nav>

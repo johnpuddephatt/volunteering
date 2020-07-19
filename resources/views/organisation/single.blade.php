@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="container container__wide container__full">
+  <div class="container container__row container__full">
     <div class="opportunity-single">
       <h2 class="opportunity-single--title">{{ $organisation->name}}</h2>
       <div class="opportunity-single--intro">{!! $organisation->covid_description !!}</div>

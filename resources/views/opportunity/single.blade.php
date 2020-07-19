@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="container container__wide container__full">
+  <div class="container container__row container__full">
     <div class="opportunity-single">
       <a class="button button__secondary opportunity-single--enquire-button" href="{{ route('enquiry.new', ['enquirable_type' => 'App\Models\Opportunity', 'enquirable_id' => $opportunity->id ])}}" >Enquire</a>
 

@@ -18,7 +18,7 @@
           <input type="text" name="postcode" placeholder="Enter your postcode">
           <input type="submit" value="Search" />
         </form>
-        <p>Or <a href="{{ route('organisation.index')}}">view all centres</a>
+        <p>Or <a href="{{ route('organisation.index')}}">view all centres</a></p>
       </div>
     </div>
   </div>

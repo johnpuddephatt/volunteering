@@ -1,0 +1,50 @@
+.section__home-opportunities {
+  .section-title {
+    text-align: center;
+    margin-bottom: $base-spacing;
+  }
+
+  margin-bottom: 4 * $base-spacing;
+
+  .opportunity-card {
+    border-bottom: none;
+    background-color: #fff;
+    margin-top: $small-spacing/2;
+    box-shadow: $base-box-shadow;
+    padding: 0.75 * $base-spacing $base-spacing;
+    @media screen and (min-width: $medium-screen) {
+      padding: 1.25 * $base-spacing 1.5 * $base-spacing;
+    }
+    display: flex;
+  }
+
+  .opportunity-card--header {
+    margin-bottom: 0;
+  }
+
+  .opportunity-card--footer {
+    margin-top: auto;
+    margin-left: auto;
+    padding-left: $small-spacing;
+    flex: 0 0 30%;
+  }
+
+  .opportunity-card--intro {
+    display: none;
+  }
+}
+
+.home-opportunities--footer {
+  text-align: center;
+  margin-top: 2 * $base-spacing;
+
+  a {
+    text-decoration: none;
+    border-bottom: 2px solid transparentize($light-blue, 0.7);
+    transition: border-bottom ease 1s;
+
+    &:hover {
+      border-bottom: 2px solid $light-blue;
+    }
+  }
+}

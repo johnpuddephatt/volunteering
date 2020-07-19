@@ -42,7 +42,7 @@
     a:not(.button) {
       color: $blue
     }
-    svg path {
+    .navbar--brand svg path {
       fill: $blue;
     }
   }
@@ -88,20 +88,51 @@
   }
 }
 
-.navbar--nav {
+.navbar--navs {
   display: flex;
   flex-direction: row;
+  flex: 1;
+  @media screen and (max-width: $medium-screen) {
+    flex-direction: column;
+    background-color: white;
+    position: fixed;
+    transform: translateX(100%);
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+    transition: transform $base-timing $base-duration;
+
+    &.active {
+      transform: translateX(0%);
+    }
+  }
+}
+
+.navbar--nav {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  @media screen and (min-width: $medium-screen) {
+    text-align: left;
+    flex-direction: row;
+  }
 
   &__right {
-    margin-left: auto;
     @media screen and (min-width: $medium-screen) {
+      margin-left: auto;
       padding-left: $base-spacing;
     }
   }
 }
 
 .nav-item + .nav-item {
-  margin-left: $small-spacing;
+  @media screen and (min-width: $medium-screen) {
+    margin-left: $small-spacing;
+  }
 }
 .nav-link {
   padding-left: $small-spacing;
@@ -109,7 +140,25 @@
 }
 
 .navbar--toggler {
-  display: none;
+  position: fixed;
+  z-index: 99;
+  top: $small-spacing;
+  right: $base-spacing;
+  border-radius: 50%;
+  height: 2.5 * $base-spacing;
+  width: 2.5 * $base-spacing;
+  box-shadow: $small-box-shadow;
+
+  @media screen and (min-width: $medium-screen) {
+    display: none;
+  }
+
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
 }
 
 .dropdown-menu {

@@ -133,3 +133,10 @@ var limitedTextareas = document.getElementsByTagName('textarea');
      });
    }
  }
+
+ let navbarToggle = document.querySelector('.navbar--toggler');
+ if(navbarToggle) {
+   navbarToggle.addEventListener('click', () => {
+     document.querySelector('.navbar--navs').classList.toggle('active');
+   });
+ }
