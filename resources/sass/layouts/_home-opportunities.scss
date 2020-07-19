@@ -7,6 +7,7 @@
   margin-bottom: 4 * $base-spacing;
 
   .opportunity-card {
+    position: relative;
     border-bottom: none;
     background-color: #fff;
     margin-top: $small-spacing/2;
@@ -18,8 +19,17 @@
     display: flex;
   }
 
+  .opportunity-card--new-badge {
+    position: absolute;
+    right: $base-spacing;
+    @media screen and (min-width: $medium-screen) {
+      right: 1.5 * $base-spacing;
+    }
+  }
+
   .opportunity-card--header {
     margin-bottom: 0;
+    flex: 1;
   }
 
   .opportunity-card--footer {
