@@ -40,6 +40,7 @@ class Opportunity extends Model
         'skills_needed' => 'json',
         'requirements' => 'array',
         'from_home' => 'boolean',
+        'active' => 'boolean',
         // 'start_date' => 'date',
         // 'end_date' => 'date',
         'address' => 'json',
@@ -61,7 +62,8 @@ class Opportunity extends Model
     {
       parent::boot();
       static::addGlobalScope('active', function (Builder $builder) {
-        $builder->where('validated_at', '>=', Carbon::now()->subDays(config('volunteering.opportunity_valid_for')))
+        $builder->where('active', true)
+                ->where('validated_at', '>=', Carbon::now()->subDays(config('volunteering.opportunity_valid_for')))
                 ->where(function ($query) {
                   $query->where('deadline', '>', Carbon::now())
                   ->orWhereNull('deadline');
