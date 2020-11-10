@@ -97,12 +97,15 @@
         <img class="opportunity-sidebar--logo" src="/{{$opportunity->organisation->logo }}" />
       @endif
       <h3 class="opportunity-sidebar--name">{{ $opportunity->organisation->name }}</h3>
-      <div class="opportunity-sidebar--address">{{ $opportunity->organisation->address }}</div>
-      <div class="opportunity-sidebar--info">{!! nl2br($opportunity->organisation->info) !!}</div>
+      @if($opportunity->organisation->address && isset($opportunity->organisation->address['value']))
+        <div class="opportunity-sidebar--address">{{ $opportunity->organisation->address['value'] }}</div>
+      @endif
+      @if($opportunity->organisation->info)
+        <div class="opportunity-sidebar--info">{!! nl2br($opportunity->organisation->info) !!}</div>
+      @endif
       @if($opportunity->phone)
         <div class="opportunity-sidebar--phone">{{ $opportunity->phone }}</div>
       @endif
-
       @if($opportunity->email)
         <div class="opportunity-sidebar--email"><a href="mailto:{{ $opportunity->email }}">{{ $opportunity->email }}</a></div>
       @endif
