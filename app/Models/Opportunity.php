@@ -70,10 +70,11 @@ class Opportunity extends Model
                 });
       });
 
+      static::creating(function($model) {
+          $model->slug = str_slug($model->title) . '-' . ($model->id ?? Cache::get('opportunity_count'));
+      });
+
       static::saving(function($model) {
-
-        $model->slug = str_slug($model->title) . '-' . ($model->id ?? Cache::get('opportunity_count'));
-
         if($model->address) {
           $dirty_address = $model->address;
 
