@@ -32,7 +32,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-      $opportunities = Cache::rememberForever('home_opportunities', function () {
+      $opportunities = Cache::remember('home_opportunities', 86400, function () {
         return Opportunity::latest()->take(5)->get();
       });
       $locations =  Cache::rememberForever('home_locations', function () {
