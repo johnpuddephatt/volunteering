@@ -18,7 +18,6 @@
         "kris/laravel-form-builder": "^1.30",
         "laracasts/testdummy": "^2.3",
         "laravel/framework": "^6.0",
-        "laravel/telescope": "^3.2",
         "laravel/tinker": "^1.0",
         "malhal/laravel-geographical": "^1.0",
         "vinkla/hashids": "^7.0.0"
