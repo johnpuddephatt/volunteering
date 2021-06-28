@@ -50,7 +50,6 @@ class EnquiryController extends Controller
 
   public function delete(Request $request, $hash) {
     $id = Hashids::decode($hash)[0];
-    dd($id);
     Enquiry::findOrFail($id)->delete();
     $request->session()->flash('success', 'Enquiry deleted!');
     return redirect()->back();

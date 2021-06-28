@@ -11,18 +11,12 @@
 |
 */
 
-
 Auth::routes(['verify' => true]);
 
-Route::get('/registration', 'Auth\RegisterController@showRegistrationForm')->name('registration.get');
-Route::post('/registration', 'Auth\RegisterController@showRegistrationForm')->name('registration.post');
-
+Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('registration.get');
 Route::post('/register', 'Auth\RegisterController@register')->name('register');
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/old', 'HomeController@index')->name('old');
-Route::get('/covid', 'HomeController@covid')->name('covid');
-Route::get('/covid-search', 'HomeController@covid')->name('covid');
 
 Route::get('/specialised', 'NeedController@specialised')->name('specialised');
 
@@ -32,9 +26,6 @@ Route::group(['middleware' => ['auth']], function () {
   Route::post('/account', 'OrganisationController@update')->name('organisation.update');
 });
 
-// Route::group(['middleware' => config('backpack.base.middleware_key', 'admin')], function () {
-//   Route::get('/dashboard/{hash?}', 'OrganisationController@dashboard')->name('organisation.dashboard');
-// });
 
 Route::group(['middleware' => ['auth','verified','activated']], function () {
     Route::get('/dashboard', 'OrganisationController@dashboard')->name('organisation.dashboard');
@@ -73,8 +64,3 @@ Route::post('/enquire', 'EnquiryController@store')->name('enquiry.store');
 
 Route::get('{page}/{subs?}', ['uses' => 'PageController@index'])
     ->where(['page' => '^(((?=(?!admin))(?=(?!\/)).))*$', 'subs' => '.*']);
-
-// Route::get('/search', 'OpportunityController@index')    # shows all results
-// Route::get('/search/location/{lat}/{long}/', 'OpportunityController@locationSearch');
-// Route::get('/search/suitability/{category k}/', 'OpportunityController@locationSearch');
-// Route::get('/search/suitability/{slug}/', 'OpportunityController@locationSearch');

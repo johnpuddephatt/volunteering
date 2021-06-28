@@ -17,74 +17,83 @@
           @csrf
           <input type="text" name="postcode" placeholder="Enter postcode">
           <input type="submit" formaction="{{ route('opportunity.postcode') }}" value="Find opportunities" />
-          <input type="submit" class="button__ghost" formaction="{{ route('organisation.postcode') }}" value="Find a Covid hub" />
+          {{-- <input type="submit" class="button__ghost" formaction="{{ route('organisation.postcode') }}" value="Find
+          a Covid hub" /> --}}
         </form>
-        <p>Alternatively, <a href="{{ route('opportunity.index')}}">view all opportunities</a>, or view all <a href="{{ route('organisation.index')}}">Covid community hubs</a>
+        <p>Alternatively, <a href="{{ route('opportunity.index')}}">view all opportunities</a>.
       </div>
     </div>
   </div>
 </section>
 
 @if(count($opportunities) >= 1)
-  <section class="section section__home-opportunities">
-    <div class="container">
-      <h2 class="section-title">Latest opportunities</h2>
-      @foreach($opportunities as $opportunity)
-        @include('opportunity.card')
-      @endforeach
-      <div class="home-opportunities--footer">
-        <a href="{{ route('opportunity.index')}}">view all opportunities</a>
-      </div>
+<section class="section section__home-opportunities">
+  <div class="container">
+    <h2 class="section-title">Latest opportunities</h2>
+    @foreach($opportunities as $opportunity)
+    @include('opportunity.card')
+    @endforeach
+    <div class="home-opportunities--footer">
+      <a href="{{ route('opportunity.index')}}">view all opportunities</a>
     </div>
-  </section>
+  </div>
+</section>
 @endif
 
 @if(count($categories) >= 4)
-  <section class="section section__home-categories">
-    <h2 class="section-title">Explore by category</h2>
-    <div class="home-categories-scroller scroller-outer">
-      <div class="home-categories-inner scroller-inner">
-        @foreach($categories as $category)
-          <a href="{{ url('opportunities?category=' . $category->slug)}}" class="home-category">
-            @if($category->image)
-              <img class="home-category--image" src="{{ $category->image }}" />
-            @else
-              <img class="home-category--image" src="//placehold.it/320x240?text=×" />
-            @endif
-            <div class="home-category--text">
-              {{ $category->label }}
-            </div>
-          </a>
-        @endforeach
-      </div>
-
-      <div class="scroller-navigation">
-        <button class="scroller-previous" tabindex="-1">
-          <svg viewBox="0 0 18 18" aria-label="Previous" role="presentation" aria-hidden="true" focusable="false" style="height: 1em; width: 1em; display: block; fill: currentcolor;"><path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" fill-rule="evenodd"></path></svg>
-        </button>
-        <button class="scroller-next">
-          <svg viewBox="0 0 18 18"  aria-label="Next" role="presentation" aria-hidden="true" focusable="false" style="height: 1em; width: 1em; display: block; fill: currentcolor;"><path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" fill-rule="evenodd"></path></svg>
-        </button>
-      </div>
+<section class="section section__home-categories">
+  <h2 class="section-title">Explore by category</h2>
+  <div class="home-categories-scroller scroller-outer">
+    <div class="home-categories-inner scroller-inner">
+      @foreach($categories as $category)
+      <a href="{{ url('opportunities?category=' . $category->slug)}}" class="home-category">
+        @if($category->image)
+        <img class="home-category--image" src="{{ $category->image }}" />
+        @else
+        <img class="home-category--image" src="//placehold.it/320x240?text=×" />
+        @endif
+        <div class="home-category--text">
+          {{ $category->label }}
+        </div>
+      </a>
+      @endforeach
     </div>
-  </section>
+
+    <div class="scroller-navigation">
+      <button class="scroller-previous" tabindex="-1">
+        <svg viewBox="0 0 18 18" aria-label="Previous" role="presentation" aria-hidden="true" focusable="false"
+          style="height: 1em; width: 1em; display: block; fill: currentcolor;">
+          <path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z"
+            fill-rule="evenodd"></path>
+        </svg>
+      </button>
+      <button class="scroller-next">
+        <svg viewBox="0 0 18 18" aria-label="Next" role="presentation" aria-hidden="true" focusable="false"
+          style="height: 1em; width: 1em; display: block; fill: currentcolor;">
+          <path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z"
+            fill-rule="evenodd"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
 @endif
 
 @if(count($locations) >= 3)
-  <section class="section section__home-locations">
-    <h2 class="section-title">Search by location</h2>
+<section class="section section__home-locations">
+  <h2 class="section-title">Search by location</h2>
 
-    <div class="container">
-      @foreach($locations as $location)
-        <a class="home-location" href="{{ route('opportunity.index', ['location' => $location->slug ] )}}">
-          <div class="home-location--text">
-            {{ $location->label }}
-            @include('icons.arrow')
-          </div>
-        </a>
-      @endforeach
-    </div>
-  </section>
+  <div class="container">
+    @foreach($locations as $location)
+    <a class="home-location" href="{{ route('opportunity.index', ['location' => $location->slug ] )}}">
+      <div class="home-location--text">
+        {{ $location->label }}
+        @include('icons.arrow')
+      </div>
+    </a>
+    @endforeach
+  </div>
+</section>
 @endif
 
 <section class="section section__home-casestudies">
@@ -96,41 +105,49 @@
     @include('icons.arrow')
   </div>
   <div class="case-study--image">
-    <img src="/images/home-casestudies.jpg"/>
+    <img src="/images/home-casestudies.jpg" />
   </div>
 </section>
 
 @if(count($suitabilities) >= 3)
-  <section class="section section__home-suitabilities">
-    <h2 class="section-title">Find the opportunity that’s right for you</h2>
-    <div class="home-categories-scroller scroller-outer" data-slideby=".334">
+<section class="section section__home-suitabilities">
+  <h2 class="section-title">Find the opportunity that’s right for you</h2>
+  <div class="home-categories-scroller scroller-outer" data-slideby=".334">
 
-      <div class="container scroller-inner">
-        @foreach($suitabilities as $suitability)
-          <a class="home-suitability" href="{{ route('opportunity.index', ['suitability' => $suitability->slug ] )}}">
-            <div class="home-suitability--text">
-              @include('icons.arrow')
-              {{ $suitability->label }}
-            </div>
-            @if($suitability->image)
-              <img class="home-suitability--image" src="{{ $suitability->image }}" />
-            @else
-              <img class="home-suitability--image" src="//placehold.it/350x525?text=×" />
-            @endif
-          </a>
-        @endforeach
-      </div>
-
-      <div class="scroller-navigation">
-        <button class="scroller-previous" aria-label="Previous" tabindex="-1">
-          <svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false" style="height: 1em; width: 1em; display: block; fill: currentcolor;"><path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" fill-rule="evenodd"></path></svg>
-        </button>
-        <button class="scroller-next" aria-label="Next">
-          <svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false" style="height: 1em; width: 1em; display: block; fill: currentcolor;"><path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z" fill-rule="evenodd"></path></svg>
-        </button>
-      </div>
+    <div class="container scroller-inner">
+      @foreach($suitabilities as $suitability)
+      <a class="home-suitability" href="{{ route('opportunity.index', ['suitability' => $suitability->slug ] )}}">
+        <div class="home-suitability--text">
+          @include('icons.arrow')
+          {{ $suitability->label }}
+        </div>
+        @if($suitability->image)
+        <img class="home-suitability--image" src="{{ $suitability->image }}" />
+        @else
+        <img class="home-suitability--image" src="//placehold.it/350x525?text=×" />
+        @endif
+      </a>
+      @endforeach
     </div>
-  </section>
+
+    <div class="scroller-navigation">
+      <button class="scroller-previous" aria-label="Previous" tabindex="-1">
+        <svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false"
+          style="height: 1em; width: 1em; display: block; fill: currentcolor;">
+          <path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z"
+            fill-rule="evenodd"></path>
+        </svg>
+      </button>
+      <button class="scroller-next" aria-label="Next">
+        <svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false"
+          style="height: 1em; width: 1em; display: block; fill: currentcolor;">
+          <path d="m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z"
+            fill-rule="evenodd"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
 @endif
 
 @endsection

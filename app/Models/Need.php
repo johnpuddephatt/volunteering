@@ -2,14 +2,12 @@
 
 namespace App\Models;
 
-use Backpack\CRUD\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Vinkla\Hashids\Facades\Hashids;
 
 class Need extends Model
 {
-    use CrudTrait;
 
     /*
     |--------------------------------------------------------------------------

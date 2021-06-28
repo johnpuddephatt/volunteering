@@ -7,18 +7,14 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Cache;
 
-use Backpack\CRUD\CrudTrait;
 use Malhal\Geographical\Geographical;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Vinkla\Hashids\Facades\Hashids;
-use JustBetter\PaginationWithHavings\PaginationWithHavings;
 
 class Opportunity extends Model
 {
-    use CrudTrait;
     use Geographical;
-    use PaginationWithHavings;
 
     /*
     |--------------------------------------------------------------------------
