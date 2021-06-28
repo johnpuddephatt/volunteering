@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Malhal\Geographical\Geographical;
 use Vinkla\Hashids\Facades\Hashids;
 use Mail;
-use Backpack\CRUD\app\Models\Traits\CrudTrait;
+use Backpack\CRUD\CrudTrait;
 
 use App\Models\Admin;
 use App\Mail\NewOrganisationNotification;
