@@ -14,7 +14,7 @@
 Auth::routes(['verify' => true]);
 
 Route::post('/register-redirect', function() {
-  return redirect()->route('registration.redirect');
+  return redirect()->route('registration.get');
 })->name('registration.redirect');
 
 Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('registration.get');
