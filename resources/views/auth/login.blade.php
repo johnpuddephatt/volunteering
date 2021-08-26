@@ -54,7 +54,7 @@
         {{ __('Sign in') }}
       </button>
 
-      <button class="button__ghost" formaction="{{ route('register')}}" type="submit">
+      <button class="button__ghost" formaction="{{ route('registration.redirect')}}" type="submit">
         {{ __('Register') }}
       </button>
     </div>
