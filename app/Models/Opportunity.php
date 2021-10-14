@@ -12,11 +12,13 @@ use Malhal\Geographical\Geographical;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 use Vinkla\Hashids\Facades\Hashids;
+use JustBetter\PaginationWithHavings\PaginationWithHavings;
 
 class Opportunity extends Model
 {
     use Geographical;
     use CrudTrait;
+    use PaginationWithHavings;
 
     /*
     |--------------------------------------------------------------------------
