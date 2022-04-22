@@ -36,6 +36,11 @@ class EnquiryController extends Controller
 
   public function store(FrontEnquiryRequest $request)
   {
+      if($request->website) {
+        $request->session()->flash('error', 'Your enquiry could not be submitted at this time');
+        return back();
+      }
+
       $validated = $request->validated();
 
       $enquiry = new Enquiry($validated);

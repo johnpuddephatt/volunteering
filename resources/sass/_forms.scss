@@ -41,7 +41,7 @@ textarea {
   background-color: $light-gray;
   background-color: white;
   border: $base-border;
-  border: .1rem solid $medium-gray;
+  border: 0.1rem solid $medium-gray;
   border-radius: $base-border-radius;
   box-shadow: $_form-box-shadow;
   box-sizing: border-box;
@@ -103,7 +103,7 @@ select {
   height: 2.2 * $base-spacing;
   box-shadow: $_form-box-shadow;
   background-color: white;
-  border: .1em solid $medium-gray;
+  border: 0.1em solid $medium-gray;
   border-radius: 0;
   &:hover {
     border-color: shade($base-border-color, 20%);
@@ -138,7 +138,8 @@ select {
       margin-left: 5%;
     }
   }
-  &__hidden {
+  &__hidden,
+  &__website {
     display: none;
   }
 }

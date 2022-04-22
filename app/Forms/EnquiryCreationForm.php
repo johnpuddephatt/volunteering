@@ -36,6 +36,9 @@ class EnquiryCreationForm extends Form
         $this
             ->add('name', 'text')
             ->add('email', 'text')
+            ->add('website', 'text', [
+              'wrapper' => ['class' => 'form-group__website']
+            ])
             ->add('phone', 'text')
             ->add('message', 'textarea', [
               'attr' => ['rows' => '5'],
