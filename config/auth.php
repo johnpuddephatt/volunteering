@@ -106,7 +106,7 @@ return [
         'organisations' => [
             'provider' => 'organisations',
             'table' => 'password_resets',
-            'expire' => 60,
+            'expire' => 4320,
         ],
     ],
 
