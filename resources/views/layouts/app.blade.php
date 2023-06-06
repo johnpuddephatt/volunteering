@@ -6,16 +6,18 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Volunteer Wakefield') }}</title>
-    <!-- Scripts -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161874050-1"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EX0654F52T"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
-      gtag('config', 'UA-161874050-1');
+      gtag('config', 'G-EX0654F52T');
     </script>
+    
     <script src="{{ asset('js/app.js') }}" defer></script>
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Yantramanav" rel="stylesheet" type="text/css">
