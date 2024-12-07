@@ -29,7 +29,7 @@
         "canvas-toBlob": "^1.0.0",
         "date-input-polyfill": "^2.14.0",
         "intersection-observer": "^0.6.0",
-        "jspdf": "^1.5.3",
+        "jspdf": "^2.3.1",
         "vue-multiselect": "^2.1.6"
     }
 }
