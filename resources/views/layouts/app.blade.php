@@ -64,7 +64,6 @@
           right: 0;
           background: #f8f8f8;
           padding: 1em;
-          display: none;
         }
         .sunset-notice-backdrop {
           
