@@ -43,18 +43,20 @@
 
     </div>
 
-    <div class="sunset-notice" style="display: none;">
+    <div class="sunset-notice-wrapper" style="display: none;">
       <div class="sunset-notice-backdrop"></div>
+      <div class="sunset-notice" >
       <div class="sunset-notice__content">
         <h2>Volunteer Wakefield is closing.</h2>
         <p>Volunteer Wakefield won’t be available after January 31st 2025.</p>
         <p>Moving forward, opportunities can be advertised and discovered on <a href="https://www.citizencoin.uk" target="_blank">citizencoin.uk</a>.</p>
   
-        <button class="button" onclick="localStorage.setItem('sunset', 'true'); document.querySelector('.sunset-notice').style.display = 'none';">Close</button>
+        <button class="button" onclick="localStorage.setItem('sunset', 'true'); document.querySelector('.sunset-notice-wrapper').style.display = 'none';">Close</button>
       </div>
       </div>
 
       <style>
+
         .sunset-notice {
           position: fixed;
           bottom: 0;
@@ -81,7 +83,7 @@
 
     <script>
       if(!localStorage.getItem('sunset')) {
-        document.querySelector('.sunset-notice').style.display = 'block';
+        document.querySelector('.sunset-notice-wrapper').style.display = 'block';
       }
       </script>
 
