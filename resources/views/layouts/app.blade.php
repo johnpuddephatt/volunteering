@@ -44,6 +44,7 @@
     </div>
 
     <div class="sunset-notice" style="display: none;">
+      <div class="sunset-notice-backdrop"></div>
       <div class="sunset-notice__content">
         <h2>Volunteer Wakefield is closing.</h2>
         <p>Volunteer Wakefield won’t be available after January 31st 2025.</p>
@@ -63,8 +64,8 @@
           padding: 1em;
           display: none;
         }
-        .sunset-notice::before {
-          content: '';
+        .sunset-notice-backdrop {
+          
           position: fixed;
           inset: 0;
           background: rgba(0,0,0,0.5);
