@@ -74,7 +74,7 @@
 
     <script>
       if(!localStorage.getItem('sunset')) {
-        document.querySelector('sunset-notice').style.display = 'block';
+        document.querySelector('.sunset-notice').style.display = 'block';
       }
       </script>
 
