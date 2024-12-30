@@ -10,7 +10,13 @@
     @csrf
     <h2 class="login-form--title">Sign in or register to add your opportunities</h2>
 
+<div style="background-color: #2763c3; color: white; padding: 1rem; margin: 2rem 0; ">
+       <h2>Volunteer Wakefield is closing.</h2>
+        <p>Volunteer Wakefield won’t be available after January 31st 2025.</p>
+        <p>Moving forward, opportunities can be advertised and discovered on <a href="https://www.citizencoin.uk" target="_blank">citizencoin.uk</a>.</p>
+</div>
     <div class="login-form--body">
+
       <div class="form-group">
         <label for="email">{{ __('Email Address') }}</label>
         <input id="email" type="email" class="{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
