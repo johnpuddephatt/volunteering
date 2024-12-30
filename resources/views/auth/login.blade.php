@@ -13,7 +13,7 @@
 <div style="background-color: #2763c3; color: white; padding: 1rem; margin: 2rem 0; ">
        <h2>Volunteer Wakefield is closing.</h2>
         <p>Volunteer Wakefield won’t be available after January 31st 2025.</p>
-        <p>Moving forward, opportunities can be advertised and discovered on <a href="https://www.citizencoin.uk" target="_blank">citizencoin.uk</a>.</p>
+        <p>Moving forward, opportunities can be advertised and discovered on <a style="color: white; font-weight: bold; text-decoration: underline" href="https://www.citizencoin.uk" target="_blank">citizencoin.uk</a>.</p>
 </div>
     <div class="login-form--body">
 
