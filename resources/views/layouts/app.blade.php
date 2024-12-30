@@ -49,7 +49,7 @@
         <p>Volunteer Wakefield won’t be available after January 31st 2025.</p>
         <p>Moving forward, opportunities can be advertised and discovered on <a href="https://www.citizencoin.uk" target="_blank">citizencoin.uk</a>.</p>
   
-        <button class="button" onclick="localStorage.setItem('sunset', 'true'); document.querySelector('sunset-notice').style.display = 'none';">Close</button>
+        <button class="button" onclick="localStorage.setItem('sunset', 'true'); document.querySelector('.sunset-notice').style.display = 'none';">Close</button>
       </div>
       </div>
 
@@ -62,6 +62,11 @@
           background: #f8f8f8;
           padding: 1em;
           display: none;
+        }
+        .sunset-notice::before {
+          position: fixed;
+          inset: 0;
+          background: rgba(0,0,0,0.5);
         }
         .sunset-notice__content {
           max-width: 800px;
